@@ -5,3 +5,18 @@ change blog tag from date to category
 add blog list
 
 add blog page 
+
+---
+
+We're a small and agile team that adopts the best practices in all aspects of web development. 
+
+By having a lean approach to development we are able to deliver quality solutions made from technologies built by tech giants. 
+
+We believe in cooperating with growing businesses and offer solutions that will take them to the next step in growing their business.
+
+<p class="lead">We strive to do work outside of obligation. This lets us stay ahead of the curve
+for our clients and internal projects. </p>
+<p class="lead">We strive to embrace and drive change in our industry. This allows us
+to keep our clients relevant and ready to adapt.</p>
+<p class="lead">Working together on the daily requires each individual to let the greater good of the team's work surface above
+their own ego.</p>
