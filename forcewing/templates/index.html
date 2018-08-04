@@ -3,37 +3,41 @@
 
 <head>
   <!-- Title -->
-  <title>Forcewing - Web Solutions</title>
-
+  {% if title %}
+    <title>Forcewing - {{title}}</title>
+  {% else %}
+    <title>Forcewing - Web Solutions</title>
+  {% endif %}
+  
   <!-- Required Meta Tags Always Come First -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="favicon.png">
+  <link rel="shortcut icon" href="../static/favicon.png">
 
   <!-- CSS Global Compulsory -->
-  <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/assets/vendor/bootstrap/bootstrap.min.css">
 
   <!-- CSS Unify -->
-  <link rel="stylesheet" href="assets/vendor/animate.css">
-  <link rel="stylesheet" href="assets/vendor/hamburgers/hamburgers.min.css">
-  <link rel="stylesheet" href="assets/css/unify-core.css">
-  <link rel="stylesheet" href="assets/css/unify-components.css">
-  <link rel="stylesheet" href="assets/vendor/cubeportfolio-full/cubeportfolio/css/cubeportfolio.min.css">
-  <link rel="stylesheet" href="assets/css/unify-globals.css">
-  <link rel="stylesheet" href="assets/vendor/icon-line-pro/style.css">
-  <link rel="stylesheet" href="assets/vendor/icon-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="assets/vendor/slick-carousel/slick/slick.css">
+  <link rel="stylesheet" href="../static/assets/vendor/animate.css">
+  <link rel="stylesheet" href="../static/assets/vendor/hamburgers/hamburgers.min.css">
+  <link rel="stylesheet" href="../static/assets/css/unify-core.css">
+  <link rel="stylesheet" href="../static/assets/css/unify-components.css">
+  <link rel="stylesheet" href="../static/assets/vendor/cubeportfolio-full/cubeportfolio/css/cubeportfolio.min.css">
+  <link rel="stylesheet" href="../static/assets/css/unify-globals.css">
+  <link rel="stylesheet" href="../static/assets/vendor/icon-line-pro/style.css">
+  <link rel="stylesheet" href="../static/assets/vendor/icon-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/assets/vendor/slick-carousel/slick/slick.css">
   <!-- <link rel="stylesheet" href="assets/vendor/dzsparallaxer/dzsparallaxer.css"> -->
-  <link rel="stylesheet" href="assets/vendor/revolution-slider/revolution/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
-  <link rel="stylesheet" href="assets/vendor/revolution-slider/revolution/css/settings.css">
-  <link rel="stylesheet" href="assets/vendor/revolution-slider/revolution/css/layers.css">
-  <link rel="stylesheet" href="assets/vendor/revolution-slider/revolution/css/navigation.css">
+  <link rel="stylesheet" href="../static/assets/vendor/revolution-slider/revolution/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+  <link rel="stylesheet" href="../static/assets/vendor/revolution-slider/revolution/css/settings.css">
+  <link rel="stylesheet" href="../static/assets/vendor/revolution-slider/revolution/css/layers.css">
+  <link rel="stylesheet" href="../static/assets/vendor/revolution-slider/revolution/css/navigation.css">
 
   <!-- CSS Customization -->
-  <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="stylesheet" href="../static/assets/css/custom.css">
 </head>
 
 <body>
@@ -55,10 +59,10 @@
             </button>
             <!-- End Responsive Toggle Button -->
             <!-- Logo -->
-            <a href="index.html" class="navbar-brand u-header__logo" style="padding-top: 0px; padding-bottom: 0px;">
-              <img class="u-header__logo-img u-header__logo-img--main g-width-15 g-height-50" src="myassets/logo/mylogowhite.png" alt="Image Description">
+            <a href="{{url_for('index')}}" class="navbar-brand u-header__logo" style="padding-top: 0px; padding-bottom: 0px;">
+              <img class="u-header__logo-img u-header__logo-img--main g-width-15 g-height-50" src="../static/myassets/logo/mylogowhite.png" alt="Image Description">
 
-              <img class="u-header__logo-img g-width-15 g-height-50" src="myassets/logo/mylogodark.png" alt="Image Description">
+              <img class="u-header__logo-img g-width-15 g-height-50" src="../static/myassets/logo/mylogodark.png" alt="Image Description">
             </a>
             <!-- End Logo -->
 
@@ -103,6 +107,7 @@
       </div>
     </header>
     <!-- End Header -->
+    {% block content %}
     <!-- Revolution Slider -->
     <div id="home" class="g-overflow-hidden g-mt-60">
       <div id="rev_slider_26_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="mask-showcase" data-source="gallery"
@@ -116,7 +121,7 @@
               data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4=""
               data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
               <!-- MAIN IMAGE -->
-              <img src="assets/img/bg/transparent2.png" data-bgcolor='linear-gradient(120deg, #3DCDDB 0%, #3f2b96 100%)' style='background:linear-gradient(120deg, #3DCDDB 0%, #3f2b96 100%)'
+              <img src="../static/assets/img/bg/transparent2.png" data-bgcolor='linear-gradient(120deg, #3DCDDB 0%, #3f2b96 100%)' style='background:linear-gradient(120deg, #3DCDDB 0%, #3f2b96 100%)'
                 alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg"
                 data-no-retina>
               <!-- LAYERS -->
@@ -128,7 +133,7 @@
                 data-frames='[{"delay":200,"speed":750,"sfxcolor":"#243949","sfx_effect":"blockfromright","frame":"0","from":"z:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"sfxcolor":"#ffffff","sfx_effect":"blocktoright","frame":"999","to":"z:0;","ease":"Power4.easeOut"}]'
                 data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
                 data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;">
-                <img src="myassets/webportal.png" alt="" data-ww="['700px','700px','800px','500px']" data-hh="['563px','563px','450px','281px']"
+                <img src="../static/myassets/webportal.png" alt="" data-ww="['700px','700px','800px','500px']" data-hh="['563px','563px','450px','281px']"
                   width="510" height="445" data-no-retina>
               </div>
 
@@ -165,7 +170,7 @@
               data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4=""
               data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
               <!-- MAIN IMAGE -->
-              <img src="assets/img/bg/transparent2.png" data-bgcolor='linear-gradient(90deg, #108dc7 0%, #E7BE8A 100%)' style='background:linear-gradient(90deg, #108dc7 0%, #E7BE8A 100%)'
+              <img src="../static/assets/img/bg/transparent2.png" data-bgcolor='linear-gradient(90deg, #108dc7 0%, #E7BE8A 100%)' style='background:linear-gradient(90deg, #108dc7 0%, #E7BE8A 100%)'
                 alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg"
                 data-no-retina>
               <!-- LAYERS -->
@@ -187,7 +192,7 @@
                 data-frames='[{"delay":400,"speed":750,"sfxcolor":"#2f3b4a","sfx_effect":"blockfromleft","frame":"0","from":"z:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"sfxcolor":"#ffffff","sfx_effect":"blocktoleft","frame":"999","to":"z:0;","ease":"Power4.easeOut"}]'
                 data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
                 data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 6;">
-                <img src="myassets/main5.png" alt="" data-ww="['1000px','1000px','800px','500px']" data-hh="['563px','563px','450','281']"
+                <img src="../static/myassets/main5.png" alt="" data-ww="['1000px','1000px','800px','500px']" data-hh="['563px','563px','450','281']"
                   width="1200" height="675" data-no-retina>
               </div>
 
@@ -215,7 +220,7 @@
               data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4=""
               data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
               <!-- MAIN IMAGE -->
-              <img src="assets/img/bg/transparent2.png" data-bgcolor='linear-gradient(120deg, #b7ebf6 0%, rgba(228, 97, 210, 0.7) 100%)'
+              <img src="../static/assets/img/bg/transparent2.png" data-bgcolor='linear-gradient(120deg, #b7ebf6 0%, rgba(228, 97, 210, 0.7) 100%)'
                 style='background:linear-gradient(120deg, #b7ebf6 0%, rgba(228, 97, 210, 0.7) 100%)' alt="" data-bgposition="center center"
                 data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
               <!-- LAYERS -->
@@ -227,7 +232,7 @@
                 data-frames='[{"delay":200,"speed":750,"sfxcolor":"#243949","sfx_effect":"blockfromright","frame":"0","from":"z:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"sfxcolor":"#ffffff","sfx_effect":"blocktoright","frame":"999","to":"z:0;","ease":"Power4.easeOut"}]'
                 data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
                 data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;">
-                <img src="myassets/main8.png" alt="" data-ww="['1000px','1000px','800px','500px']" data-hh="['563px','563px','450px','281px']"
+                <img src="../static/myassets/main8.png" alt="" data-ww="['1000px','1000px','800px','500px']" data-hh="['563px','563px','450px','281px']"
                   width="1200" height="675" data-no-retina>
               </div>
 
@@ -265,6 +270,7 @@
       </div>
     </div>
     <!-- End Revolution Slider -->
+    
     <!-- about-->
     <section id="about" class="container g-pt-100 g-pb-70">
       <div class="row align-items-center">
@@ -281,7 +287,7 @@
         </div>
 
         <div class="col-md-5 g-mb-30">
-          <img class="img-fluid mb-4" src="assets/img-temp/770x502/img1.png" alt="Image description">
+          <img class="img-fluid mb-4" src="../static/assets/img-temp/770x502/img1.png" alt="Image description">
         </div>
       </div>
     </section>
@@ -407,7 +413,7 @@
             <!-- Cube Portfolio Blocks - Item -->
             <div class="cbp-item website">
               <div class="u-block-hover g-parent">
-                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="assets/img-temp/400x270/img13.jpg"
+                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="../static/assets/img-temp/400x270/img13.jpg"
                   alt="Image description">
                 <div class="d-flex w-100 h-100 g-bg-black-opacity-0_6 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-30">
                   <ul class="align-items-end flex-column list-inline mt-auto ml-auto mb-0">
@@ -417,7 +423,7 @@
                       </a>
                     </li>
                     <li class="list-inline-item">
-                      <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="assets/img-temp/400x270/img13.jpg">
+                      <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="../static/assets/img-temp/400x270/img13.jpg">
                         <i class="icon-communication-017 u-line-icon-pro"></i>
                       </a>
                     </li>
@@ -434,7 +440,7 @@
             <!-- Cube Portfolio Blocks - Item -->
             <div class="cbp-item website">
               <div class="u-block-hover g-parent">
-                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="assets/img-temp/400x270/img14.jpg"
+                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="../static/assets/img-temp/400x270/img14.jpg"
                   alt="Image description">
                 <div class="d-flex w-100 h-100 g-bg-black-opacity-0_6 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-30">
                   <ul class="align-items-end flex-column list-inline mt-auto ml-auto mb-0">
@@ -444,7 +450,7 @@
                       </a>
                     </li>
                     <li class="list-inline-item">
-                      <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="assets/img-temp/400x270/img14.jpg">
+                      <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="../static/assets/img-temp/400x270/img14.jpg">
                         <i class="icon-communication-017 u-line-icon-pro"></i>
                       </a>
                     </li>
@@ -461,7 +467,7 @@
             <!-- Cube Portfolio Blocks - Item -->
             <div class="cbp-item graphic website">
               <div class="u-block-hover g-parent">
-                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="assets/img-temp/400x270/img15.jpg"
+                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="../static/assets/img-temp/400x270/img15.jpg"
                   alt="Image description">
                 <div class="d-flex w-100 h-100 g-bg-black-opacity-0_6 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-30">
                   <ul class="align-items-end flex-column list-inline mt-auto ml-auto mb-0">
@@ -471,7 +477,7 @@
                       </a>
                     </li>
                     <li class="list-inline-item">
-                      <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="assets/img-temp/400x270/img15.jpg">
+                      <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="../static/assets/img-temp/400x270/img15.jpg">
                         <i class="icon-communication-017 u-line-icon-pro"></i>
                       </a>
                     </li>
@@ -488,7 +494,7 @@
             <!-- Cube Portfolio Blocks - Item -->
             <div class="cbp-item website">
               <div class="u-block-hover g-parent">
-                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="assets/img-temp/400x270/img16.jpg"
+                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="../static/assets/img-temp/400x270/img16.jpg"
                   alt="Image description">
                 <div class="d-flex w-100 h-100 g-bg-black-opacity-0_6 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-30">
                   <ul class="align-items-end flex-column list-inline mt-auto ml-auto mb-0">
@@ -498,7 +504,7 @@
                       </a>
                     </li>
                     <li class="list-inline-item">
-                      <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="assets/img-temp/400x270/img16.jpg">
+                      <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="../static/assets/img-temp/400x270/img16.jpg">
                         <i class="icon-communication-017 u-line-icon-pro"></i>
                       </a>
                     </li>
@@ -515,7 +521,7 @@
             <!-- Cube Portfolio Blocks - Item -->
             <div class="cbp-item webapp">
               <div class="u-block-hover g-parent">
-                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="assets/img-temp/400x270/img9.jpg"
+                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="../static/assets/img-temp/400x270/img9.jpg"
                   alt="Image description">
                 <div class="d-flex w-100 h-100 g-bg-black-opacity-0_6 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-30">
                   <ul class="align-items-end flex-column list-inline mt-auto ml-auto mb-0">
@@ -525,7 +531,7 @@
                       </a>
                     </li>
                     <li class="list-inline-item">
-                      <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="assets/img-temp/400x270/img9.jpg">
+                      <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="../static/assets/img-temp/400x270/img9.jpg">
                         <i class="icon-communication-017 u-line-icon-pro"></i>
                       </a>
                     </li>
@@ -542,7 +548,7 @@
             <!-- Cube Portfolio Blocks - Item -->
             <div class="cbp-item website">
               <div class="u-block-hover g-parent">
-                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="assets/img-temp/400x270/img10.jpg"
+                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="../static/assets/img-temp/400x270/img10.jpg"
                   alt="Image description">
                 <div class="d-flex w-100 h-100 g-bg-black-opacity-0_6 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-30">
                   <ul class="align-items-end flex-column list-inline mt-auto ml-auto mb-0">
@@ -552,7 +558,7 @@
                       </a>
                     </li>
                     <li class="list-inline-item">
-                      <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="assets/img-temp/400x270/img10.jpg">
+                      <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="../static/assets/img-temp/400x270/img10.jpg">
                         <i class="icon-communication-017 u-line-icon-pro"></i>
                       </a>
                     </li>
@@ -581,17 +587,17 @@
         <div class="row text-center g-mx-0--sm">
           <div class="col-lg-4 col-md-4 g-px-0--sm">
             <div class="g-brd-around g-brd-gray-light-v4 g-py-50 g-px-30 g-ml-minus-1 g-mb-minus-1">
-              <img class="mx-auto g-width-120 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="assets/img-temp/200x100/img1.png"
+              <img class="mx-auto g-width-120 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/assets/img-temp/200x100/img1.png"
                 alt="Image Description"> </div>
           </div>
           <div class="col-lg-4 col-md-4 g-px-0--sm">
             <div class="g-brd-around g-brd-gray-light-v4 g-py-50 g-px-30 g-ml-minus-1 g-mb-minus-1">
-              <img class="mx-auto g-width-120 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="assets/img-temp/200x100/img3.png"
+              <img class="mx-auto g-width-120 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/assets/img-temp/200x100/img3.png"
                 alt="Image Description"> </div>
           </div>
           <div class="col-lg-4 col-md-4 g-px-0--sm">
             <div class="g-brd-around g-brd-gray-light-v4 g-py-50 g-px-30 g-ml-minus-1 g-mb-minus-1">
-              <img class="mx-auto g-width-120 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="assets/img-temp/200x100/img2.png"
+              <img class="mx-auto g-width-120 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/assets/img-temp/200x100/img2.png"
                 alt="Image Description"> </div>
           </div>
 
@@ -631,39 +637,39 @@
                  }
                }]'>
           <div class="js-slide u-block-hover">
-            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="assets/img-temp/200x100/img1.png" alt="Image Description">
+            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/assets/img-temp/200x100/img1.png" alt="Image Description">
           </div>
   
           <div class="js-slide u-block-hover">
-            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="assets/img-temp/200x100/img2.png" alt="Image Description">
+            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/assets/img-temp/200x100/img2.png" alt="Image Description">
           </div>
   
           <div class="js-slide u-block-hover">
-            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="assets/img-temp/200x100/img3.png" alt="Image Description">
+            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/assets/img-temp/200x100/img3.png" alt="Image Description">
           </div>
   
           <div class="js-slide u-block-hover">
-            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="assets/img-temp/200x100/img4.png" alt="Image Description">
+            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/assets/img-temp/200x100/img4.png" alt="Image Description">
           </div>
   
           <div class="js-slide u-block-hover">
-            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="assets/img-temp/200x100/img5.png" alt="Image Description">
+            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/assets/img-temp/200x100/img5.png" alt="Image Description">
           </div>
   
           <div class="js-slide u-block-hover">
-            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="assets/img-temp/200x100/img6.png" alt="Image Description">
+            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/assets/img-temp/200x100/img6.png" alt="Image Description">
           </div>
   
           <div class="js-slide u-block-hover">
-            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="assets/img-temp/200x100/img7.png" alt="Image Description">
+            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/assets/img-temp/200x100/img7.png" alt="Image Description">
           </div>
   
           <div class="js-slide u-block-hover">
-            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="assets/img-temp/200x100/img8.png" alt="Image Description">
+            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/assets/img-temp/200x100/img8.png" alt="Image Description">
           </div>
   
           <div class="js-slide u-block-hover">
-            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="assets/img-temp/200x100/img9.png" alt="Image Description">
+            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/assets/img-temp/200x100/img9.png" alt="Image Description">
           </div>
         </div>
       </div>
@@ -688,7 +694,7 @@
             <!-- Article -->
             <article class="g-bg-white">
               <figure class="g-pos-rel">
-                <img class="img-fluid w-100" src="assets/img-temp/500x450/img2.jpg" alt="Image Description">
+                <img class="img-fluid w-100" src="../static/assets/img-temp/500x450/img2.jpg" alt="Image Description">
 
                 <figcaption class="g-pos-abs g-bottom-20 g-left-20">
                   <a class="btn btn-sm u-btn-black rounded-0" href="#!">July 07, 2017</a>
@@ -712,7 +718,7 @@
             <!-- Article -->
             <article class="g-bg-white">
               <figure class="g-pos-rel">
-                <img class="img-fluid w-100" src="assets/img-temp/500x450/img10.jpg" alt="Image Description">
+                <img class="img-fluid w-100" src="../static/assets/img-temp/500x450/img10.jpg" alt="Image Description">
 
                 <figcaption class="g-pos-abs g-bottom-20 g-left-20">
                   <a class="btn btn-sm u-btn-black rounded-0" href="#!">June 15, 2017</a>
@@ -736,7 +742,7 @@
             <!-- Article -->
             <article class="g-bg-white">
               <figure class="g-pos-rel">
-                <img class="img-fluid w-100" src="assets/img-temp/500x450/img11.jpg" alt="Image Description">
+                <img class="img-fluid w-100" src="../static/assets/img-temp/500x450/img11.jpg" alt="Image Description">
 
                 <figcaption class="g-pos-abs g-bottom-20 g-left-20">
                   <a class="btn btn-sm u-btn-black rounded-0" href="#!">May 26, 2017</a>
@@ -759,9 +765,8 @@
       </div>
 
     </section>
-    <!-- Footer -->
-    <!-- Footer -->
-    <section id="contact" class="g-bg-black-opacity-0_9 g-color-white g-py-100" src="assets/img/bg/transparent2.png" data-bgcolor='linear-gradient(90deg, #000000 0%, #24243e 100%)'
+
+    <section id="contact" class="g-bg-black-opacity-0_9 g-color-white g-py-100" src="../static/assets/img/bg/transparent2.png" data-bgcolor='linear-gradient(90deg, #000000 0%, #24243e 100%)'
       style='background:linear-gradient(90deg, #000000 0%, #24243e 100%)' alt="" data-bgposition="center center" data-bgfit="cover"
       data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
       <div class="container">
@@ -817,17 +822,13 @@
       </div>
     </section>
 
-    <!-- Social Links -->
-
-    <!-- End Social Links -->
-
-    <!-- End Footer -->
+    {% endblock %}
 
     <!-- Copyright Footer -->
     <div class="g-pt-1 g-bg-primary" style='background:linear-gradient(to right, #000000,#5338B6 , #24243e ); border-top-color: #aaaaaa;'>
 
     </div>
-    <footer class="g-py-20" src="assets/img/bg/transparent2.png" data-bgcolor='linear-gradient(90deg, #000000 0%, #24243e 100%)'
+    <footer class="g-py-20" src="../static/assets/img/bg/transparent2.png" data-bgcolor='linear-gradient(90deg, #000000 0%, #24243e 100%)'
       style='background:linear-gradient(90deg, #000000 0%, #24243e 100%); border-top-color: #aaaaaa;' alt="" data-bgposition="center center"
       data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
       <div class="container">
@@ -904,46 +905,46 @@
   </main>
 
   <!-- JS Global Compulsory -->
-  <script src="assets/vendor/jquery/jquery.min.js"></script>
-  <script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
-  <script src="assets/vendor/popper.min.js"></script>
-  <script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+  <script src="../static/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../static/assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+  <script src="../static/assets/vendor/popper.min.js"></script>
+  <script src="../static/assets/vendor/bootstrap/bootstrap.min.js"></script>
 
   <!-- JS Unify -->
 
 
-  <script src="assets/vendor/appear.js"></script>
+  <script src="../static/assets/vendor/appear.js"></script>
   <!-- <script src="assets/vendor/dzsparallaxer/dzsparallaxer.js"></script> -->
   <!-- <script src="assets/vendor/dzsparallaxer/dzsscroller/scroller.js"></script> -->
   <!-- <script src="assets/vendor/dzsparallaxer/advancedscroller/plugin.js"></script> -->
   <!-- <script src="assets/vendor/circles/circles.min.js"></script> -->
 
-  <script src="assets/js/hs.core.js"></script>
-  <script src="assets/js/components/hs.header.js"></script>
-  <script src="assets/js/helpers/hs.hamburgers.js"></script>
-  <script src="assets/vendor/cubeportfolio-full/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
-  <script src="assets/js/components/hs.scroll-nav.js"></script>
-  <script src="assets/js/helpers/hs.height-calc.js"></script>
-  <script src="assets/vendor/slick-carousel/slick/slick.js"></script>
-  <script src="assets/js/components/hs.carousel.js"></script>
+  <script src="../static/assets/js/hs.core.js"></script>
+  <script src="../static/assets/js/components/hs.header.js"></script>
+  <script src="../static/assets/js/helpers/hs.hamburgers.js"></script>
+  <script src="../static/assets/vendor/cubeportfolio-full/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+  <script src="../static/assets/js/components/hs.scroll-nav.js"></script>
+  <script src="../static/assets/js/helpers/hs.height-calc.js"></script>
+  <script src="../static/assets/vendor/slick-carousel/slick/slick.js"></script>
+  <script src="../static/assets/js/components/hs.carousel.js"></script>
   <!-- <script src="assets/js/components/hs.onscroll-animation.js"></script>
   <script src="assets/js/components/hs.counter.js"></script>
   <script src="assets/js/components/hs.chart-pie.js"></script> -->
-  <script src="assets/js/components/hs.cubeportfolio.js"></script>
+  <script src="../static/assets/js/components/hs.cubeportfolio.js"></script>
   <!-- JS Revolution Slider -->
-  <script src="assets/vendor/revolution-slider/revolution/js/jquery.themepunch.tools.min.js"></script>
-  <script src="assets/vendor/revolution-slider/revolution/js/jquery.themepunch.revolution.min.js"></script>
+  <script src="../static/assets/vendor/revolution-slider/revolution/js/jquery.themepunch.tools.min.js"></script>
+  <script src="../static/assets/vendor/revolution-slider/revolution/js/jquery.themepunch.revolution.min.js"></script>
 
-  <script src="assets/vendor/revolution-slider/revolution-addons/slicey/js/revolution.addon.slicey.min.js"></script>
+  <script src="../static/assets/vendor/revolution-slider/revolution-addons/slicey/js/revolution.addon.slicey.min.js"></script>
 
-  <script src="assets/vendor/revolution-slider/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-  <script src="assets/vendor/revolution-slider/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-  <script src="assets/vendor/revolution-slider/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-  <script src="assets/vendor/revolution-slider/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-  <script src="assets/vendor/revolution-slider/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-  <script src="assets/vendor/revolution-slider/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-  <script src="assets/vendor/revolution-slider/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-  <script src="assets/vendor/revolution-slider/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+  <script src="../static/assets/vendor/revolution-slider/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+  <script src="../static/assets/vendor/revolution-slider/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+  <script src="../static/assets/vendor/revolution-slider/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+  <script src="../static/assets/vendor/revolution-slider/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+  <script src="../static/assets/vendor/revolution-slider/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+  <script src="../static/assets/vendor/revolution-slider/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+  <script src="../static/assets/vendor/revolution-slider/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+  <script src="../static/assets/vendor/revolution-slider/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
 
 
 
@@ -951,7 +952,7 @@
 
 
   <!-- JS Custom -->
-  <script src="assets/js/custom.js"></script>
+  <script src="../static/assets/js/custom.js"></script>
 
   <script>
     // initialization of slider revolution

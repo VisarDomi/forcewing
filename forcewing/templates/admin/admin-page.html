@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Title -->
+  <title>Admin | Impresa Privacy</title>
+
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico') }}">
+  <!-- Google Fonts -->
+  <!-- <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans%3A400%2C300%2C500%2C600%2C700%7CPlayfair+Display%7CRoboto%7CRaleway%7CSpectral%7CRubik"> -->
+  <!-- CSS Global Compulsory -->
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/bootstrap/bootstrap.min.css') }}">
+  <!-- CSS Global Icons -->
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/icon-awesome/css/font-awesome.min.css') }}">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/icon-line/css/simple-line-icons.css') }}">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/icon-etlinefont/style.css') }}">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/icon-line-pro/style.css') }}">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/icon-hs/style.css') }}">
+
+  <link rel="stylesheet" href="{{url_for('static', filename='adminassets/vendor/hs-admin-icons/hs-admin-icons.css') }}">
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/animate.css') }}">
+  <link rel="stylesheet" href="{{url_for('static', filename='adminassets/vendor/bootstrap-select/css/bootstrap-select.min.css') }}">
+
+
+
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/hamburgers/hamburgers.min.css') }}">
+
+  <!-- CSS Unify -->
+  <link rel="stylesheet" href="{{url_for('static', filename='adminassets/css/unify-admin.css') }}">
+
+  <!-- CSS Customization -->
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/css/custom.css') }}">
+</head>
+
+<body>
+  <!-- Header -->
+  <header id="js-header" class="u-header u-header--sticky-top">
+    <div class="u-header__section u-header__section--admin-dark g-min-height-65">
+      <nav class="navbar no-gutters g-pa-0">
+        <div class="col-auto d-flex flex-nowrap u-header-logo-toggler g-py-12">
+          <!-- Logo -->
+          <a href="{{url_for('home')}}" class="navbar-brand d-flex align-self-center g-hidden-xs-down g-line-height-1 py-0 g-mt-5 g-height-100x">
+
+            <div class=" g-ma-10">Impresa Privacy</div>
+          </a>
+          <!-- End Logo -->
+
+          <!-- Sidebar Toggler -->
+          <a class="js-side-nav u-header__nav-toggler d-flex align-self-center ml-auto" href="#!" data-hssm-class="u-side-nav--mini u-sidebar-navigation-v1--mini"
+            data-hssm-body-class="u-side-nav-mini" data-hssm-is-close-all-except-this="true" data-hssm-target="#sideNav">
+            <i class="hs-admin-align-left"></i>
+          </a>
+          <!-- End Sidebar Toggler -->
+        </div>
+
+
+
+        <!-- Messages/Notifications/Top Search Bar/Top User -->
+        <div class="col-auto d-flex g-py-12 g-pl-40--lg ml-auto">
+
+
+
+
+          <!-- Top User -->
+          <div class="col-auto d-flex g-pt-5 g-pt-0--sm g-pl-10 g-pl-20--sm">
+            <div class="g-pos-rel g-px-10--lg">
+              <a id="profileMenuInvoker" class="d-block" href="#!" aria-controls="profileMenu" aria-haspopup="true" aria-expanded="false"
+                data-dropdown-event="click" data-dropdown-target="#profileMenu" data-dropdown-type="css-animation" data-dropdown-duration="300"
+                data-dropdown-animation-in="fadeIn" data-dropdown-animation-out="fadeOut">
+                <span class="g-pos-rel">
+                  <span class="u-badge-v2--xs u-badge--top-right g-hidden-sm-up g-bg-lightblue-v5 g-mr-5"></span>
+                  <img class="g-width-30 g-width-40--md g-height-30 g-height-40--md rounded-circle g-mr-10--sm" src="{{image_file}}" alt="Image description">
+                </span>
+                <span class="g-pos-rel g-top-2">
+                  <span class="g-hidden-sm-down">{{user.username}}</span>
+                  <i class="hs-admin-angle-down g-pos-rel g-top-2 g-ml-10"></i>
+                </span>
+              </a>
+
+              <!-- Top User Menu -->
+              <ul id="profileMenu" class="g-pos-abs g-left-0 g-width-100x--lg g-nowrap g-font-size-14 g-py-20 g-mt-17 rounded" aria-labelledby="profileMenuInvoker">
+
+                <li class="g-mb-10">
+                  <a class="media g-color-lightred-v2--hover g-py-5 g-px-20" href="{{url_for('admin_update_information')}}">
+                    <span class="d-flex align-self-center g-mr-12">
+                      <i class="hs-admin-user"></i>
+                    </span>
+                    <span class="media-body align-self-center">My Profile</span>
+                  </a>
+                </li>
+
+
+
+                <li class="mb-0">
+                  <a class="media g-color-lightred-v2--hover g-py-5 g-px-20" href="{{url_for('logout')}}">
+                    <span class="d-flex align-self-center g-mr-12">
+                      <i class="hs-admin-shift-right"></i>
+                    </span>
+                    <span class="media-body align-self-center">Sign Out</span>
+                  </a>
+                </li>
+              </ul>
+              <!-- End Top User Menu -->
+            </div>
+          </div>
+          <!-- End Top User -->
+        </div>
+        <!-- End Messages/Notifications/Top Search Bar/Top User -->
+
+
+      </nav>
+
+    </div>
+  </header>
+  <!-- End Header -->
+
+
+  <main class="container-fluid px-0 g-pt-65">
+    <div class="row no-gutters g-pos-rel g-overflow-x-hidden">
+      <!-- Sidebar Nav -->
+      <div id="sideNav" class="col-auto u-sidebar-navigation-v1 u-sidebar-navigation--dark">
+        <ul id="sideNavMenu" class="u-sidebar-navigation-v1-menu u-side-nav--top-level-menu g-min-height-100vh mb-0">
+
+
+          <!-- Blog -->
+          <li class="u-sidebar-navigation-v1-menu-item u-side-nav--top-level-menu-item">
+            <a class="media u-side-nav--top-level-menu-link u-side-nav--hide-on-hidden g-px-15 g-py-12" href="{{url_for('admin_page')}}">
+              <span class="d-flex align-self-center g-pos-rel g-font-size-18 g-mr-18">
+                <span class="u-badge-v2--xs u-badge--bottom-right g-bg-lightblue-v5"></span>
+                <i class="hs-admin-pencil"></i>
+              </span>
+              <span class="media-body align-self-center">Blog</span>
+              <span class="d-flex align-self-center">
+              </span>
+            </a>
+          </li>
+          <!-- End Blog -->
+
+          <!-- Categories -->
+          <li class="u-sidebar-navigation-v1-menu-item u-side-nav--top-level-menu-item">
+            <a class="media u-side-nav--top-level-menu-link u-side-nav--hide-on-hidden g-px-15 g-py-12" href="{{url_for('category')}}">
+              <span class="d-flex align-self-center g-pos-rel g-font-size-18 g-mr-18">
+                <span class="u-badge-v2--xs u-badge--bottom-right g-bg-lightblue-v5"></span>
+                <i class="hs-admin-list-ol"></i>
+              </span>
+              <span class="media-body align-self-center">Categories</span>
+              <span class="d-flex align-self-center">
+              </span>
+            </a>
+          </li>
+          <!-- End Categories -->
+
+
+
+
+        </ul>
+      </div>
+      <!-- End Sidebar Nav -->
+
+      {% block content%}
+      <div class="col g-ml-45 g-ml-0--lg g-pb-65--md">
+        <div class="g-pa-20">
+          <h1 class="g-font-weight-300 g-font-size-28 g-color-black g-mb-30">Blog posts</h1>
+          <div class="row g-mb-40">
+            <div class="col-auto g-width-280">
+              <a class="btn btn-xl btn-block u-btn-lightblue-v3 g-font-size-default" href="{{url_for('blog_new')}}">New post</a>
+            </div>
+          </div>
+
+          <div class="table-responsive g-mb-40">
+            <table class="table u-table--v3 g-color-black">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Date</th>
+                  <th>Category</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for blog in blogs %}
+                <tr>
+                  <td>{{blog.id}}</td>
+                  <td>
+                    <a href="{{url_for('blog', blog_id=blog.id)}}">{{blog.title}}</a>
+                  </td>
+                  <td>{{blog.author.username}}</td>
+                  <td>{{blog.date_posted.strftime('%d, %b %Y')}}</td>
+                  <td>
+                    <a href='{{url_for("filtered_blogs", category=blog.category)}}'>
+                      <span class="u-tags-v1 text-center g-width-110 g-brd-around g-brd-teal-v2 g-bg-teal-v2 g-font-weight-400 g-color-white g-rounded-50 g-py-4 g-px-15">{{blog.category}}</span>
+                    </a>
+                  </td>
+                  <td>
+                    <div class="g-pos-rel g-top-3 d-inline-block">
+                      <a id="dropDown1Invoker" class="u-link-v5 g-line-height-0 g-font-size-24 g-color-gray-light-v6 g-color-lightblue-v3--hover"
+                        href="#!" aria-controls="dropDown1" aria-haspopup="true" aria-expanded="false" data-dropdown-event="click"
+                        data-dropdown-target="#dropDown{{blog.id}}">
+                        <i class="hs-admin-more-alt"></i>
+                      </a>
+
+                      <div id="dropDown{{blog.id}}" class="u-shadow-v31 g-pos-abs g-right-0 g-z-index-2 g-bg-white u-dropdown--css-animation u-dropdown--hidden"
+                        aria-labelledby="dropDown1Invoker" style="animation-duration: 300ms;">
+                        <ul class="list-unstyled g-nowrap mb-0">
+                          <li>
+                            <a class="d-flex align-items-center u-link-v5 g-bg-gray-light-v8--hover g-font-size-12 g-font-size-default--md g-color-gray-dark-v6 g-px-25 g-py-14"
+                              href="{{url_for('blog_update', blog_id=blog.id)}}">
+                              <i class="hs-admin-pencil g-font-size-18 g-color-gray-light-v6 g-mr-10 g-mr-15--md"></i>
+                              Edit
+                            </a>
+                          </li>
+
+                          <li>
+                            <a class="d-flex align-items-center u-link-v5 g-bg-gray-light-v8--hover g-font-size-12 g-font-size-default--md g-color-gray-dark-v6 g-px-25 g-py-14"
+                              href="{{url_for('blog_delete', blog_id=blog.id)}}">
+                              <i class="hs-admin-trash g-font-size-18 g-color-gray-light-v6 g-mr-10 g-mr-15--md"></i>
+                              Delete
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                {%endfor%}
+              </tbody>
+            </table>
+          </div>
+
+
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer" class="u-footer--bottom-sticky g-bg-white g-color-gray-dark-v6 g-brd-top g-brd-gray-light-v7 g-pa-20">
+          <div class="row align-items-center">
+            <!-- Footer Nav -->
+            <div class="col-md-4 g-mb-10 g-mb-0--md">
+              <ul class="list-inline text-center text-md-left mb-0">
+
+                <li class="list-inline-item">
+                  <a class="g-color-gray-dark-v6 g-color-lightblue-v3--hover" href="#!">Contact Us</a>
+                </li>
+              </ul>
+            </div>
+            <!-- End Footer Nav -->
+
+            <!-- Footer Socials -->
+            <div class="col-md-4 g-mb-10 g-mb-0--md">
+              <ul class="list-inline g-font-size-16 text-center mb-0">
+                <li class="list-inline-item g-mx-10">
+                  <a href="#!" class="g-color-facebook g-color-lightblue-v3--hover">
+                    <i class="fa fa-facebook-square"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item g-mx-10">
+                  <a href="#!" class="g-color-google-plus g-color-lightblue-v3--hover">
+                    <i class="fa fa-google-plus"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item g-mx-10">
+                  <a href="#!" class="g-color-black g-color-lightblue-v3--hover">
+                    <i class="fa fa-github"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item g-mx-10">
+                  <a href="#!" class="g-color-twitter g-color-lightblue-v3--hover">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!-- End Footer Socials -->
+
+            <!-- Footer Copyrights -->
+            <div class="col-md-4 text-center text-md-right">
+              <small class="d-block g-font-size-default">&copy; 2018 Impresa Privacy. All Rights Reserved.</small>
+            </div>
+            <!-- End Footer Copyrights -->
+          </div>
+        </footer>
+        <!-- End Footer -->
+      </div>
+      {%endblock content%}
+    </div>
+  </main>
+
+  <!-- JS Global Compulsory -->
+  <script src="{{url_for('static', filename='adminassets/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{url_for('static', filename='adminassets/vendor/jquery-migrate/jquery-migrate.min.js') }}"></script>
+
+  <script src="{{url_for('static', filename='assets/vendor/popper.min.js') }}"></script>
+  <script src="{{url_for('static', filename='assets/vendor/bootstrap/bootstrap.min.js') }}"></script>
+
+
+
+
+  <!-- JS Plugins Init. -->
+  <script src="{{url_for('static', filename='assets/vendor/appear.js') }}"></script>
+  <script src="{{url_for('static', filename='adminassets/vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
+
+  <script src="{{url_for('static', filename='assets/vendor/cookiejs/jquery.cookie.js') }}"></script>
+
+
+  <!-- JS Unify -->
+  <script src="{{url_for('static', filename='assets/js/hs.core.js') }}"></script>
+  <script src="{{url_for('static', filename='adminassets/js/components/hs.side-nav.js') }}"></script>
+  <script src="{{url_for('static', filename='assets/js/helpers/hs.hamburgers.js') }}"></script>
+  <script src="{{url_for('static', filename='assets/js/components/hs.dropdown.js') }}"></script>
+  <script src="{{url_for('static', filename='assets/js/components/hs.scrollbar.js') }}"></script>
+
+  <script src="{{url_for('static', filename='assets/js/helpers/hs.focus-state.js') }}"></script>
+  <script src="{{url_for('static', filename='adminassets/js/components/hs.popup.js') }}"></script>
+  <script src="{{url_for('static', filename='assets/vendor/jquery.filer/js/jquery.filer.min.js') }}"></script>
+  <script src="{{url_for('static', filename='adminassets/js/components/hs.file-attachement.js') }}"></script>
+  <!-- JS Custom -->
+  <script src="{{url_for('static', filename='assets/js/custom.js') }}"></script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+    $(document).on('ready', function () {
+
+      console.log("im first");
+      // initialization of sidebar navigation component
+      $.HSCore.components.HSSideNav.init('.js-side-nav');
+
+      // initialization of hamburger
+      $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+      console.log("i'm second");
+
+      // initialization of forms
+      $.HSCore.components.HSFileAttachment.init('.js-file-attachment');
+
+      // initialization of HSDropdown component
+      $.HSCore.components.HSDropdown.init($('[data-dropdown-target]'), { dropdownHideOnScroll: false });
+
+      console.log($("#picture"));
+      $("#picture").attr("name", "picture");
+      $("#image_file").attr("name", "image_file");
+    });
+
+  </script>
+  {% block javascript %}
+
+  {% endblock %}
+
+</body>
+
+</html>
