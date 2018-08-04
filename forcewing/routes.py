@@ -67,20 +67,20 @@ def index():
 
     return render_template('index.html', blogs=blogs, loginForm = loginForm, contactForm=contactForm)
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['GET','POST'])
 def login():
-    blogs = Blog.query.order_by(Blog.date_posted.desc()).limit(3).all()
+    # blogs = Blog.query.order_by(Blog.date_posted.desc()).limit(3).all()
     loginForm = LoginForm()
-    contactForm = ContactForm()
+    # contactForm = ContactForm()
 
     if loginForm.validate_on_submit():
         user = User.query.filter_by(username=loginForm.username.data).first()
         hashed_password = bcrypt.generate_password_hash(loginForm.password.data).decode('utf-8')
-        if loginForm.username.data == 'Matteo' and bcrypt.check_password_hash(user.password, loginForm.password.data):
+        if loginForm.username.data == 'Forcewing' and bcrypt.check_password_hash(user.password, loginForm.password.data):
             login_user(user, remember=True)
             return redirect(url_for('admin_page'))
 
-    return render_template('index.html', blogs=blogs, loginForm = loginForm, contactForm=contactForm)
+    return render_template('login.html', loginForm = loginForm)
 
 @app.route('/contact', methods=['POST'])
 def contactForm():
@@ -100,10 +100,10 @@ def contactForm():
 @app.route('/bloglist', methods=['GET', 'POST'])
 def bloglist():
     blogs = Blog.query.paginate(per_page=5)
-
+    categories = Category.query.all()
     loginForm = LoginForm()
    
-    return render_template('bloglist.html',loginForm=loginForm ,title='Blog posts', blogs=blogs)
+    return render_template('bloglist.html',loginForm=loginForm ,title='Blog posts', blogs=blogs, categories=categories)
 
 @app.route('/blog/<int:blog_id>', methods=['GET', 'POST'])
 def blog(blog_id):
@@ -118,10 +118,11 @@ def blog(blog_id):
 def filtered_blogs(category):
     page = request.args.get('page', 1, type=int)
     form = LoginForm()
+    categories = Category.query.all()
     blogs = Blog.query.filter_by(category=category)\
             .order_by(Blog.date_posted.desc())\
             .paginate(page=page, per_page=5)
-    return render_template('blog-category.html',form=form, title=category, category=category, blogs=blogs)
+    return render_template('blog-category.html',form=form, title=category, category=category, blogs=blogs,categories=categories)
 
 @app.route('/logout')
 def logout():
