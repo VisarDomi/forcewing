@@ -20,7 +20,5 @@ db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 bcrypt = Bcrypt(app)
 
-
-
 from forcewing.errors import handlers
 from forcewing import routes

@@ -14,10 +14,10 @@ class LoginForm(FlaskForm):
 
 class BlogForm(FlaskForm):
     title = StringField('Blog Title', validators=[DataRequired()])
-    subtitle = StringField('Blog Subtitle', validators=[DataRequired()])
-    big_quote =  StringField('Big Quote', validators=[DataRequired()])
-    big_quote_author =  StringField('Big Quote Author', validators=[DataRequired()])
-    small_quote =  StringField('Small Quote', validators=[DataRequired()])
+    subtitle = StringField('Subtitle', validators=[DataRequired()])
+    section_title =  StringField('Section Title', validators=[DataRequired()])
+    subsection_title =  StringField('Subsection Title', validators=[DataRequired()])
+    quote =  StringField('Quote', validators=[DataRequired()])
     content =  TextAreaField('Blog Content', validators=[DataRequired()])
     image_file = FileField('Photo', validators=[DataRequired(), FileAllowed(['png', 'jpg', 'jpeg'])])
     category = SelectField('Category', choices=[], validators=[DataRequired()])
@@ -40,12 +40,12 @@ class UpdateAccountPhotoForm(FlaskForm):
 
 class UpdateBlogForm(FlaskForm):
     title = StringField('Blog Title', validators=[DataRequired()])
-    subtitle = StringField('Blog Subtitle', validators=[DataRequired()])
-    big_quote =  StringField('Big Quote', validators=[DataRequired()])
-    big_quote_author =  StringField('Big Quote Author', validators=[DataRequired()])
-    small_quote =  StringField('Small Quote', validators=[DataRequired()])
+    subtitle = StringField('Subtitle', validators=[DataRequired()])
+    section_title =  StringField('Section Title', validators=[DataRequired()])
+    subsection_title =  StringField('Subsection Title', validators=[DataRequired()])
+    quote =  StringField('Quote', validators=[DataRequired()])
     content =  TextAreaField('Blog Content', validators=[DataRequired()])
-    image_file = FileField('Photo', validators=[FileAllowed(['png', 'jpg'])])
+    image_file = FileField('Photo', validators=[DataRequired(), FileAllowed(['png', 'jpg', 'jpeg'])])
     category = SelectField('Category', choices=[], validators=[DataRequired()])
     submit = SubmitField('Update Blog')
 

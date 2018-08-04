@@ -69,36 +69,69 @@
             <!-- Navigation -->
             <div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg" id="navBar">
               <ul id="js-scroll-nav" class="navbar-nav text-uppercase g-font-weight-600 ml-auto">
-                <li class="nav-item g-mx-20--lg">
-                  <a href="#home" class="nav-link px-0">Home
+                {% if request.url_rule.rule == '/home'%}
+                <li class="nav-item g-mx-20--lg active">
+                    <a href="#home" class="nav-link px-0">Home 
+                      <span class="sr-only">(current)</span>
+                    </a>
+                  </li>
+                  <li class="nav-item g-mx-20--lg">
+                    <a href="#about" class="nav-link px-0">About
+  
+                    </a>
+                  </li>
+                  <li class="nav-item g-mx-20--lg">
+                    <a href="#services" class="nav-link px-0">Services
+  
+                    </a>
+                  </li>
+                  <li class="nav-item g-mx-20--lg">
+                    <a href="#portfolio" class="nav-link px-0">Portfolio
+  
+                    </a>
+                  </li>
+                  <li class="nav-item g-mx-20--lg">
+                    <a href="{{url_for('bloglist')}}" class="nav-link px-0">Blog
+  
+                    </a>
+                  </li>
+                  <li class="nav-item g-ml-20--lg g-mr-0--lg">
+                    <a href="#contact" class="nav-link px-0">Contact
+  
+                    </a>
+                  </li>
+  
+                {%else%} 
+                <li class="nav-item g-mx-20--lg active">
+                  <a href="{{url_for('index')}}#home" class="nav-link px-0">Home 
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>
                 <li class="nav-item g-mx-20--lg">
-                  <a href="#about" class="nav-link px-0">About
-
-                  </a>
-                </li>
-                <li class="nav-item g-mx-20--lg active">
-                  <a href="#services" class="nav-link px-0">Services
+                  <a href="{{url_for('index')}}#about" class="nav-link px-0">About
 
                   </a>
                 </li>
                 <li class="nav-item g-mx-20--lg">
-                  <a href="#portfolio" class="nav-link px-0">Portfolio
+                  <a href="{{url_for('index')}}#services" class="nav-link px-0">Services
 
                   </a>
                 </li>
                 <li class="nav-item g-mx-20--lg">
-                  <a href="#blog" class="nav-link px-0">Blog
+                  <a href="{{url_for('index')}}#portfolio" class="nav-link px-0">Portfolio
 
+                  </a>
+                </li>
+                <li class="nav-item g-mx-20--lg">
+                  <a href="{{url_for('bloglist')}}" class="nav-link px-0">Blog
                   </a>
                 </li>
                 <li class="nav-item g-ml-20--lg g-mr-0--lg">
-                  <a href="#contact" class="nav-link px-0">Contact
+                  <a href="{{url_for('index')}}#contact" class="nav-link px-0">Contact
 
                   </a>
                 </li>
+                {%endif%}
               </ul>
             </div>
             <!-- End Navigation -->
@@ -690,6 +723,7 @@
         </div>
         <!-- End Heading -->
         <div class="row">
+          {% for blog in blogs %}
           <div class="col-lg-4 g-mb-30">
             <!-- Article -->
             <article class="g-bg-white">
@@ -703,64 +737,14 @@
 
               <div class="g-pa-30">
                 <h3 class="g-font-weight-300 g-mb-15">
-                  <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">Focused on helping our clients to build a great business</a>
+                  <a class="u-link-v5 g-color-main g-color-primary--hover" href="{{url_for('blog', blog_id=blog.id)}}">{{blog.title}}</a>
                 </h3>
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
-                  atque corrupti quos dolores.</p>
+                <p>{{blog.subtitle}}</p>
               </div>
-
-
             </article>
             <!-- End Article -->
           </div>
-
-          <div class="col-lg-4 g-mb-30">
-            <!-- Article -->
-            <article class="g-bg-white">
-              <figure class="g-pos-rel">
-                <img class="img-fluid w-100" src="../static/assets/img-temp/500x450/img10.jpg" alt="Image Description">
-
-                <figcaption class="g-pos-abs g-bottom-20 g-left-20">
-                  <a class="btn btn-sm u-btn-black rounded-0" href="#!">June 15, 2017</a>
-                </figcaption>
-              </figure>
-
-              <div class="g-pa-30">
-                <h3 class="g-font-weight-300 g-mb-15">
-                  <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">We build your website to realise your vision, project and more</a>
-                </h3>
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
-                  atque corrupti quos dolores.</p>
-              </div>
-
-
-            </article>
-            <!-- End Article -->
-          </div>
-
-          <div class="col-lg-4 g-mb-30">
-            <!-- Article -->
-            <article class="g-bg-white">
-              <figure class="g-pos-rel">
-                <img class="img-fluid w-100" src="../static/assets/img-temp/500x450/img11.jpg" alt="Image Description">
-
-                <figcaption class="g-pos-abs g-bottom-20 g-left-20">
-                  <a class="btn btn-sm u-btn-black rounded-0" href="#!">May 26, 2017</a>
-                </figcaption>
-              </figure>
-
-              <div class="g-pa-30">
-                <h3 class="g-font-weight-300 g-mb-15">
-                  <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">Praesentium to website realise imperdiet demore elementum</a>
-                </h3>
-                <p>Nullam elementum tincidunt massa, a pulvinar leo ultricies ut. Ut fringilla lectus tellusimp imperdiet molestie
-                  est volutpat at. Sed viverra cursus nibh.</p>
-              </div>
-
-
-            </article>
-            <!-- End Article -->
-          </div>
+          {% endfor %}
         </div>
       </div>
 

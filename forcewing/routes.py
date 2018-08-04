@@ -195,8 +195,8 @@ def blog_new():
         photo_image_file = url_for('static', filename='blog_pics/' + image_file)
     
         user = User.query.first()
-        blog = Blog(title= form.title.data, content=form.content.data, big_quote_author = form.big_quote_author.data, 
-        image_file=photo_image_file, small_quote=form.small_quote.data, author=user, big_quote=form.big_quote.data, 
+        blog = Blog(title= form.title.data, content=form.content.data, quote = form.quote.data, 
+        image_file=photo_image_file, section_title=form.section_title.data, author=user, subsection_title=form.subsection_title.data, 
         subtitle=form.subtitle.data, category=form.category.data)
     
         db.session.add(blog)
@@ -225,16 +225,15 @@ def blog_update(blog_id):
 
     choiceList = [(choice.name, choice.name) for choice in Category.query.all()]
     form.category.choices = choiceList
-
+    print(form.validate_on_submit())
     if form.validate_on_submit():
         blog.title = form.title.data 
-        blog.subtitletitle = form.subtitle.data 
+        blog.subtitle = form.subtitle.data
+        blog.section_title = form.section_title.data 
         blog.content = form.content.data 
-        blog.big_quote = form.big_quote.data 
-        blog.big_quote_author = form.big_quote_author.data 
-        blog.small_quote = form.small_quote.data
+        blog.quote = form.quote.data 
+        blog.subsection_title = form.subsection_title.data 
         blog.category = form.category.data
-
         #image_file is the input name
         if 'image_file' in request.files:
             image_file = save_picture(form.image_file.data, 'blog_pics', 900, 900)
@@ -247,10 +246,10 @@ def blog_update(blog_id):
     elif request.method == 'GET':
         form.title.data = blog.title  
         form.subtitle.data = blog.subtitle
+        form.section_title.data = blog.section_title
         form.content.data = blog.content 
-        form.big_quote.data = blog.big_quote 
-        form.big_quote_author.data = blog.big_quote_author
-        form.small_quote.data = blog.small_quote
+        form.subsection_title.data = blog.subsection_title 
+        form.quote.data = blog.quote
         form.category.data = blog.category
         # if blog.image_file:
             # form.image_file = blog.image_file

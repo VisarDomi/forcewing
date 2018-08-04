@@ -25,15 +25,15 @@ class Category(db.Model):
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     #here
+    image_file = db.Column(db.String(20), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(1000), nullable=False)
     subtitle = db.Column(db.String(1000), default='Placeholder')
-    big_quote = db.Column(db.String(3000), default='Placeholder')
-    small_quote = db.Column(db.String(3000), default='Placeholder')
-    big_quote_author = db.Column(db.String(200), default='Placeholder')
+    section_title = db.Column(db.String(3000), default='Placeholder')
     content = db.Column(db.Text, nullable=False)
+    subsection_title = db.Column(db.String(3000), default='Placeholder')
+    quote = db.Column(db.String(200), default='Placeholder')
     #First\r\nSecond line\r\n\r\n
-    image_file = db.Column(db.String(20), nullable=False)
     category = db.Column(db.String(100), nullable=False)
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
