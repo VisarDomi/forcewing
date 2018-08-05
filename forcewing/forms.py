@@ -10,6 +10,7 @@ from forcewing.models import Category
 class LoginForm(FlaskForm):
     username = StringField('Login', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
+    remember = BooleanField('Remeber Me')
     submitLogin = SubmitField('Log In')
 
 class BlogForm(FlaskForm):
@@ -25,8 +26,8 @@ class BlogForm(FlaskForm):
 
 class ContactForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
-    phone = StringField('Phone')
-    subject =  StringField('Subject', validators=[DataRequired()])
+    email = StringField('Email')
+    # subject =  StringField('Subject', validators=[DataRequired()])
     message =  TextAreaField('Message', validators=[DataRequired()])
     submitContact = SubmitField('Send')
 

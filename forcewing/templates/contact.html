@@ -1,36 +1,4 @@
 {% extends "index.html" %}
-
-{% block navbar  %}
-
-  <div id="navBar" class="js-mega-menu collapse navbar-collapse w-100">
-    <!-- Navigation -->
-    <div class="navbar-collapse align-items-md-end flex-sm-row">
-      <ul id="js-scroll-nav" class="navbar-nav text-uppercase g-font-weight-700 g-font-size-13 g-py-20 g-py-0--lg">
-        <li class="nav-item g-mr-10--lg g-mr-15--xl g-my-7 g-mb-0--lg">
-                      
-          <a href="{{url_for('home')}}#home" class="nav-link p-0">Home <span class="sr-only">(current)</span></a>
-          
-        </li>
-        <li class="nav-item g-mx-10--lg g-mx-15--xl g-my-7 g-mb-0--lg">
-          <a href="{{url_for('home')}}#about" class="nav-link p-0">About</a>
-        </li>
-        <li class="nav-item g-mx-10--lg g-mx-15--xl g-my-7 g-mb-0--lg">
-          <a href="{{url_for('home')}}#services" class="nav-link p-0">Services</a>
-        </li>
-        <li class="nav-item g-mx-10--lg g-mx-15--xl g-my-7 g-mb-0--lg">
-          <a href="{{url_for('home')}}#process" class="nav-link p-0">Process</a>
-        </li>
-        <li class="nav-item g-mx-10--lg g-mx-15--xl g-my-7 g-mb-0--lg">
-          <a href="{{url_for('bloglist')}}" class="nav-link p-0">Blog</a>
-        </li>
-  
-        <li class="nav-item g-ml-10--lg g-ml-15--xl g-my-7 g-mb-0--lg">
-          <a href="{{url_for('home')}}#contact" class="nav-link p-0">Contact</a>
-        </li>
-  
-      </ul>
-    </div>
-    <!-- End Navigation -->
   
     <!-- <div class="g-pos-rel g-width-50 g-pt-3--lg g-ml-30 g-ml-0--lg">
         <a href="#!" id="languages-dropdown-invoker-2" class="g-color-gray-dark-v2 g-color-primary--hover g-text-underline--none--hover" aria-controls="languages-dropdown-2" aria-haspopup="true" aria-expanded="false" data-dropdown-event="click" data-dropdown-target="#languages-dropdown-2" data-dropdown-type="css-animation" data-dropdown-duration="500" data-dropdown-hide-on-scroll="false" data-dropdown-animation-in="fadeIn" data-dropdown-animation-out="fadeOut">
@@ -51,9 +19,7 @@
           </li>
         </ul>
       </div> -->
-  </div>
   
-  {% endblock navbar %}
 
 {% block content %}
 <div class="container g-py-100">
