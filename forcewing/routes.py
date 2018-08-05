@@ -19,17 +19,15 @@ def change_text(id):
             html.append(string)
     return html
 #--------------------------------
-def send_contact_email(name, phone, subject, message):
+def send_contact_email(name, email, message):
     #send a email to recipients from sender with the following arguments as information
 
-    msg = Message(subject, sender='impresa.worker@gmail.com', recipients=['erdal.domi@gmail.com'])
-    msg.body = f'''Someone just submitted your form on impresaprivacy.com, here's what they had to say:
+    msg = Message('Forcewing', sender='forcewing.worker@gmail.com', recipients=['ronalddomi4@gmail.com'])
+    msg.body = f'''Someone just submitted your form on forcewing.com, here's what they had to say:
     ------
     Name:  {name}
 
-    Phone:  {phone}
-
-    Subject:  {subject}
+    Email:  {email}
 
     Message:  {message}
     
@@ -77,21 +75,23 @@ def login():
         user = User.query.filter_by(username=loginForm.username.data).first()
         hashed_password = bcrypt.generate_password_hash(loginForm.password.data).decode('utf-8')
         if loginForm.username.data == 'Forcewing' and bcrypt.check_password_hash(user.password, loginForm.password.data):
-            login_user(user, remember=True)
+            login_user(user, remember=loginForm.remember.data)
             return redirect(url_for('admin_page'))
 
     return render_template('login.html', loginForm = loginForm)
 
-@app.route('/contact', methods=['POST'])
+@app.route('/contact', methods=['POST', 'GET'])
 def contactForm():
     blogs = Blog.query.order_by(Blog.date_posted.desc()).limit(3).all()
     loginForm = LoginForm()
     contactForm = ContactForm()
 
+    print('ready to get validated')
     if contactForm.validate_on_submit():
+        print('validated')
         send_contact_email(contactForm.name.data, 
-                           contactForm.phone.data,
-                           contactForm.subject.data,
+                           contactForm.email.data,
+                        #    contactForm.subject.data,
                            contactForm.message.data)
         return redirect(url_for('form_sent'))
 
@@ -129,7 +129,7 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-@app.route('/form_sent')
+@app.route('/form_sent', methods=['GET', 'POST'])
 def form_sent():
     return render_template('contact.html')
 

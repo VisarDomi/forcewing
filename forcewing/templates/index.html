@@ -742,29 +742,44 @@
           </div>
 
           <div class="col-lg-7 align-self-center">
-            <form>
+            <form method="POST" action='{{url_for("contactForm")}}' enctype="multipart/form-data">
+              {{ contactForm.hidden_tag()}}
               <div class="row">
                 <div class="col-md-5">
                   <div class="form-group g-mb-20">
-                    <input id="inputGroup10_3" class="form-control g-bg-transparent g-bg-transparent--focus g-brd-white-opacity-0_5 g-brd-white--focus g-color-white g-rounded-10 g-px-20 g-py-12"
-                      type="email" placeholder="Name">
+                      {{contactForm.name.label()}}
+                      {% if contactForm.name.errors %}
+                          <div class='invalid-feedback'>
+                              {% for error in contactForm.name.errors %}
+                                  <span> {{error}} </span>
+                              {% endfor %}
+                          </div>
+                      {% else %}    
+                        {{contactForm.name( id="inputGroup10_3", class="form-control g-bg-transparent g-bg-transparent--focus g-brd-white-opacity-0_5 g-brd-white--focus g-color-white g-rounded-10 g-px-20 g-py-12")}}
+                      {% endif %}
                   </div>
 
                   <div class="form-group g-mb-20">
-                    <input id="inputGroup10_4" class="form-control g-bg-transparent g-bg-transparent--focus g-brd-white-opacity-0_5 g-brd-white--focus g-color-white g-rounded-10 g-px-20 g-py-12"
-                      type="text" placeholder="Email *">
+                    <!-- <input id="inputGroup10_4" class="form-control g-bg-transparent g-bg-transparent--focus g-brd-white-opacity-0_5 g-brd-white--focus g-color-white g-rounded-10 g-px-20 g-py-12"
+                      type="text" placeholder="Email *"> -->
+                      {{contactForm.email.label()}}
+                      {{contactForm.email(id="inputGroup10_4", class="form-control g-bg-transparent g-bg-transparent--focus g-brd-white-opacity-0_5 g-brd-white--focus g-color-white g-rounded-10 g-px-20 g-py-12")}}
                   </div>
                 </div>
 
                 <div class="col-md-7">
                   <div class="form-group g-mb-20">
-                    <textarea id="inputGroup10_5" class="form-control g-resize-none g-bg-transparent g-bg-transparent--focus g-brd-white-opacity-0_5 g-brd-white--focus g-color-white g-rounded-10 g-px-20 g-py-10"
-                      rows="5" placeholder="Message"></textarea>
+                    <!-- <textarea id="inputGroup10_5" class="form-control g-resize-none g-bg-transparent g-bg-transparent--focus g-brd-white-opacity-0_5 g-brd-white--focus g-color-white g-rounded-10 g-px-20 g-py-10"
+                      rows="5" placeholder="Message"></textarea> -->
+                      {{contactForm.message.label()}}
+                      {{contactForm.message(class='form-control g-resize-none g-bg-transparent g-bg-transparent--focus g-brd-white-opacity-0_5 g-brd-white--focus g-color-white g-rounded-10 g-px-20 g-py-10', rows=5, id='inputGroup10_5')}}
                   </div>
 
                   <div class="text-right">
-                    <button class="btn u-btn-white g-font-size-11 text-uppercase g-font-weight-700 g-rounded-10 g-py-10 g-px-20" type="submit"
-                      role="button">Submit</button>
+                    <!-- <button class="btn u-btn-white g-font-size-11 text-uppercase g-font-weight-700 g-rounded-10 g-py-10 g-px-20" type="submit"
+                      role="button">Submit</button> -->
+                      <!-- {{contactForm.submitContact.label()}} -->
+                      {{contactForm.submitContact(class='btn u-btn-white g-font-size-11 text-uppercase g-font-weight-700 g-rounded-10 g-py-10 g-px-20')}}
                   </div>
                 </div>
               </div>
@@ -810,6 +825,15 @@
                 <li class="list-inline-item">
                   <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Support</a>
                 </li>
+                {% if current_user.is_authenticated %}
+                <li class="list-inline-item">
+                  <span>|</span>
+                </li>
+                <li class="list-inline-item">
+                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{{url_for('logout')}}">Logout</a>
+                </li>
+                {% endif %}
+
               </ul>
             </div>
           </div>
