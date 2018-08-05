@@ -48,7 +48,7 @@
                   </li>
 
                     <li class="list-inline-item g-mb-10 float-right">
-                        <a class="u-tags-v1 g-color-white g-bg-primary g-bg-black--hover g-rounded-50 g-py-4 g-px-15" href="#">{{blog.category}}</a>
+                        <a class="u-tags-v1 g-color-white g-bg-primary g-bg-black--hover g-rounded-50 g-py-4 g-px-15" href="{{url_for('filtered_blogs', category=blog.category)}}">{{blog.category}}</a>
                       </li>
 
                 </ul>
