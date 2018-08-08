@@ -755,7 +755,7 @@
                               {% endfor %}
                           </div>
                       {% else %}    
-                        {{contactForm.name( id="inputGroup10_3", class="form-control g-bg-transparent g-bg-transparent--focus g-brd-white-opacity-0_5 g-brd-white--focus g-color-white g-rounded-10 g-px-20 g-py-12")}}
+                        {{contactForm.name( id="inputGroup10_3", class="form-control g-bg-transparent g-bg-transparent--focus g-brd-white-opacity-0_5 g-brd-white--focus g-color-white g-rounded-10 g-px-20 g-py-12",placeholder="Name")}}
                       {% endif %}
                   </div>
 
@@ -763,7 +763,7 @@
                     <!-- <input id="inputGroup10_4" class="form-control g-bg-transparent g-bg-transparent--focus g-brd-white-opacity-0_5 g-brd-white--focus g-color-white g-rounded-10 g-px-20 g-py-12"
                       type="text" placeholder="Email *"> -->
                       {{contactForm.email.label()}}
-                      {{contactForm.email(id="inputGroup10_4", class="form-control g-bg-transparent g-bg-transparent--focus g-brd-white-opacity-0_5 g-brd-white--focus g-color-white g-rounded-10 g-px-20 g-py-12")}}
+                      {{contactForm.email(id="inputGroup10_4", class="form-control g-bg-transparent g-bg-transparent--focus g-brd-white-opacity-0_5 g-brd-white--focus g-color-white g-rounded-10 g-px-20 g-py-12",placeholder="Email *")}}
                   </div>
                 </div>
 
@@ -772,7 +772,7 @@
                     <!-- <textarea id="inputGroup10_5" class="form-control g-resize-none g-bg-transparent g-bg-transparent--focus g-brd-white-opacity-0_5 g-brd-white--focus g-color-white g-rounded-10 g-px-20 g-py-10"
                       rows="5" placeholder="Message"></textarea> -->
                       {{contactForm.message.label()}}
-                      {{contactForm.message(class='form-control g-resize-none g-bg-transparent g-bg-transparent--focus g-brd-white-opacity-0_5 g-brd-white--focus g-color-white g-rounded-10 g-px-20 g-py-10', rows=5, id='inputGroup10_5')}}
+                      {{contactForm.message(class='form-control g-resize-none g-bg-transparent g-bg-transparent--focus g-brd-white-opacity-0_5 g-brd-white--focus g-color-white g-rounded-10 g-px-20 g-py-10', rows=5, id='inputGroup10_5',placeholder="Message")}}
                   </div>
 
                   <div class="text-right">
