@@ -1,0 +1,8 @@
+Lisphera Coaching
+A whole other world
+
+This platform is the amazing result of experience, optimized work processes and consolidated design. This coaching platform allows our client to closely follow, analyse and guide their athletes through a centralized system. Once the athletes sign up, they can synchronize their smart watches so their training data is shown on their dashboard. 
+
+The platform also features social networking features, where athletes can follow and interact with the achievements, records and results of their peers. The administrator area of the coach gives full visibility and control over the athletes, in order to gauge and direct their efforts through training schedules.
+
+The images are taken from the Beta 1 version of the site, and functionality will grow with time. Planned features include messaging, reacting to post, implementation of records, achievements and athlete poduims, PDF creating of personal training data etc.

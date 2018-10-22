@@ -134,7 +134,9 @@ def form_sent():
     return render_template('contact.html')
 
 
-
+@app.route('/portfolio')
+def portfolio():
+    return render_template('portfolio.html')
 
 
 @app.route('/admin/admin-page', methods=['POST', 'GET'])
