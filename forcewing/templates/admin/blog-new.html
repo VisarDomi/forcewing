@@ -9,95 +9,116 @@
             <fieldset class='form-group'>
                 <legend class='border-bottom mb-4'>New Blog</legend>
                 <div class='form-group'>
-                    {{form.title.label(class='form-control-label')}} {% if form.title.errors %} {{form.title(class='form-control form-control-lg
-                    is-invalid')}}
-                    <div class='invalid-feedback'>
-                        {% for error in form.title.errors %}
-                        <span> {{error}} </span>
-                        {% endfor %}
-                    </div>
-                    {% else %} {{form.title(class='form-control form-control-lg')}} {% endif %}
+                    {{form.title.label(class='form-control-label')}} 
+                    {% if form.title.errors %} 
+                        {{form.title(class='form-control form-control-lg is-invalid')}}
+                        <div class='invalid-feedback'>
+                            {% for error in form.title.errors %}
+                                <span> {{error}} </span>
+                            {% endfor %}
+                        </div>
+                    {% else %} 
+                        {{form.title(class='form-control form-control-lg')}} 
+                    {% endif %}
                 </div>
                 <div class='form-group'>
-                    {{form.subtitle.label(class='form-control-label')}} {% if form.subtitle.errors %} {{form.subtitle(class='form-control form-control-lg
-                    is-invalid')}}
-                    <div class='invalid-feedback'>
-                        {% for error in form.subtitle.errors %}
-                        <span> {{error}} </span>
-                        {% endfor %}
-                    </div>
-                    {% else %} {{form.subtitle(class='form-control form-control-lg')}} {% endif %}
+                    {{form.subtitle.label(class='form-control-label')}} 
+                        {% if form.subtitle.errors %} 
+                            {{form.subtitle(class='form-control form-control-lg is-invalid')}}
+                            <div class='invalid-feedback'>
+                                {% for error in form.subtitle.errors %}
+                                    <span> {{error}} </span>
+                                {% endfor %}
+                            </div>
+                    {% else %} 
+                        {{form.subtitle(class='form-control form-control-lg')}} 
+                    {% endif %}
                 </div>
                 <div class='form-group'>
-                    {{form.content.label(class='form-control-label')}} {% if form.content.errors %} {{form.content(class='form-control form-control-lg
-                    is-invalid')}}
-                    <div class='invalid-feedback'>
-                        {% for error in form.content.errors %}
-                        <span> {{error}} </span>
-                        {% endfor %}
-                    </div>
-                    {% else %} {{form.content(class='form-control form-control-lg', rows=40)}} {% endif %}
+                    {{form.content.label(class='form-control-label')}} 
+                    {% if form.content.errors %} 
+                        {{form.content(class='form-control form-control-lg is-invalid')}}
+                        <div class='invalid-feedback'>
+                            {% for error in form.content.errors %}
+                                <span> {{error}} </span>
+                            {% endfor %}
+                        </div>
+                    {% else %} 
+                        {{form.content(class='form-control form-control-lg', rows=40)}} 
+                    {% endif %}
                 </div>
                 <div class='form-group'>
-                    {{form.section_title.label(class='form-control-label')}} {% if form.section_title.errors %} {{form.section_title(class='form-control
-                    form-control-lg is-invalid')}}
-                    <div class='invalid-feedback'>
-                        {% for error in form.section_title.errors %}
-                        <span> {{error}} </span>
-                        {% endfor %}
-                    </div>
-                    {% else %} {{form.section_title(class='form-control form-control-lg')}} {% endif %}
+                    {{form.section_title.label(class='form-control-label')}} 
+                    {% if form.section_title.errors %} 
+                        {{form.section_title(class='form-control form-control-lg is-invalid')}}
+                        <div class='invalid-feedback'>
+                            {% for error in form.section_title.errors %}
+                                <span> {{error}} </span>
+                            {% endfor %}
+                        </div>
+                    {% else %} 
+                        {{form.section_title(class='form-control form-control-lg')}} 
+                    {% endif %}
                 </div>
                 <div class='form-group'>
-                    {{form.subsection_title.label(class='form-control-label')}} {% if form.subsection_title.errors %} {{form.subsection_title(class='form-control
-                    form-control-lg is-invalid')}}
-                    <div class='invalid-feedback'>
-                        {% for error in form.subsection_title.errors %}
-                        <span> {{error}} </span>
-                        {% endfor %}
-                    </div>
-                    {% else %} {{form.subsection_title(class='form-control form-control-lg')}} {% endif %}
+                    {{form.subsection_title.label(class='form-control-label')}} 
+                    {% if form.subsection_title.errors %} 
+                    {{form.subsection_title(class='form-control form-control-lg is-invalid')}}
+                        <div class='invalid-feedback'>
+                            {% for error in form.subsection_title.errors %}
+                                <span> {{error}} </span>
+                            {% endfor %}
+                        </div>
+                    {% else %} 
+                        {{form.subsection_title(class='form-control form-control-lg')}} 
+                    {% endif %}
                 </div>
                 <div class='form-group'>
-                    {{form.quote.label(class='form-control-label')}} {% if form.quote.errors %} {{form.quote(class='form-control form-control-lg
-                    is-invalid')}}
-                    <div class='invalid-feedback'>
-                        {% for error in form.quote.errors %}
-                        <span> {{error}} </span>
-                        {% endfor %}
-                    </div>
-                    {% else %} {{form.quote(class='form-control form-control-lg')}} {% endif %}
+                    {{form.quote.label(class='form-control-label')}} 
+                    {% if form.quote.errors %} 
+                        {{form.quote(class='form-control form-control-lg is-invalid')}}
+                        <div class='invalid-feedback'>
+                            {% for error in form.quote.errors %}
+                                <span> {{error}} </span>
+                            {% endfor %}
+                        </div>
+                    {% else %} 
+                        {{form.quote(class='form-control form-control-lg')}} 
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.category.label() }} {{ form.category(class="form-control rounded-0") }} 
+                    {% if form.category.errors %} 
+                        {% for error in form.category.errors %}
+                            <span class="text-danger">{{ error }}</span>
+                            </br>
+                        {% endfor %} 
+                    {% endif %}
                 </div>
                 <div class="form-group">
 
-
-                    {{ form.category.label() }} {{ form.category(class="form-control rounded-0") }} {% if form.category.errors %} {% for error
-                    in form.category.errors %}
-                    <span class="text-danger">{{ error }}</span>
-                    </br>
-                    {% endfor %} {% endif %}
+                    {{ form.image_file.label()}} 
+                    {{ form.image_file(class="form-control-file js-file-attachment", style="position: absolute;
+                    left: -9999px; top: -9999px; z-index: -9999;") }} 
+                    {% if form.image_file.errors %} 
+                        {% for error in form.image_file.errors %}
+                            <span class="text-danger">{{ error }}</span>
+                            </br>
+                        {% endfor %} 
+                    {% endif %}
                 </div>
-                <div class="form-group">
-
-                    {{ form.image_file.label()}} {{ form.image_file(class="form-control-file js-file-attachment", style="position: absolute;
-                    left: -9999px; top: -9999px; z-index: -9999;") }} {% if form.image_file.errors %} {% for error in form.image_file.errors
-                    %}
-                    <span class="text-danger">{{ error }}</span>
-                    </br>
-                    {% endfor %} {% endif %}
-                </div>
-
-
 
             </fieldset>
-            <div class='form-group'>
-                <div class="text-center">
-                    <!-- <button class="btn btn-md btn-xl--md u-btn-lightblue-v3 g-width-160--md g-font-size-12 g-font-size-default--md g-mb-10" type="submit">Save Changes</button> -->
+                <div class='form-group'>
+                    <div class="text-center">
+                        <!-- <button class="btn btn-md btn-xl--md u-btn-lightblue-v3 
+                            g-width-160--md g-font-size-12 g-font-size-default--md g-mb-10" type="submit">Save Changes</button> -->
 
-                    {{ form.submit(class="btn btn-md btn-xl--md u-btn-lightblue-v3 g-width-160--md g-font-size-12 g-font-size-default--md g-mb-10")}}
+                        {{ form.submit(class="btn btn-md btn-xl--md u-btn-lightblue-v3 
+                        g-width-160--md g-font-size-12 g-font-size-default--md g-mb-10")}}
 
+                    </div>
                 </div>
-            </div>
         </form>
     </div>
 </div>

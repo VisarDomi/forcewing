@@ -43,20 +43,25 @@ def save_picture(form_picture, dest_folder, output_size_1, output_size_2):
     _, f_ext = os.path.splitext(form_picture.filename)
 
     picture_fn = random_hex + f_ext
-    # picture_path = os.path.join(app.root_path, 'static/', dest_folder, picture_fn)
-    picture_path = os.path.join(bp.root_path, 'static/', dest_folder, picture_fn)
+    # print('picture_fn: ', picture_fn)
+    picture_path = os.path.join(os.path.dirname(bp.root_path), 'static/', dest_folder, picture_fn)
+    # print('picture_path: ', picture_path)
+
 
     output_size = (output_size_1, output_size_2)
+    # print('output_size: ', output_size)
     i = Image.open(form_picture)
+    # print('Image.open(form_picture): ', i)
     i = i.convert('RGB')
+    # print("i.convert('RGB'): ", i)
     # i.thumbnail(output_size)
     i = ImageOps.fit(i, output_size, Image.ANTIALIAS)
+    # print('ImageOps.fit(i, output_size, Image.ANTIALIAS): ', i)
 
     i.save(picture_path)
+    # print('save(picture_path): ', i)
 
     return picture_fn
-
-
 
 @bp.route('/', methods=['GET', 'POST'])
 @bp.route('/home', methods=['GET', 'POST'])
@@ -67,7 +72,7 @@ def index():
 
     return render_template('index.html', blogs=blogs, loginForm=loginForm, contactForm=contactForm)
 
-@bp.route('/login', methods=['GET','POST'])
+@bp.route('/login', methods=['GET', 'POST'])
 def login():
     #blogs = Blog.query.order_by(Blog.date_posted.desc()).limit(3).all()
     loginForm = LoginForm()
@@ -75,7 +80,7 @@ def login():
 
     if loginForm.validate_on_submit():
         user = User.query.filter_by(username=loginForm.username.data).first()
-        hashed_password = bcrypt.generate_password_hash(loginForm.password.data).decode('utf-8')
+        # hashed_password = bcrypt.generate_password_hash(loginForm.password.data).decode('utf-8')
         if loginForm.username.data == 'Forcewing' and bcrypt.check_password_hash(user.password, loginForm.password.data):
             login_user(user, remember=loginForm.remember.data)
             return redirect(url_for('main.admin_page'))
@@ -201,7 +206,7 @@ def blog_new():
         user = User.query.first()
         blog = Blog(title=form.title.data, content=form.content.data, quote=form.quote.data, 
                     image_file=photo_image_file, section_title=form.section_title.data, author=user, 
-                    subsection_title=form.subsection_title.data, 
+                    subsection_title=form.subsection_title.data,
                     subtitle=form.subtitle.data, category=form.category.data)
 
         db.session.add(blog)
@@ -241,9 +246,13 @@ def blog_update(blog_id):
         blog.category = form.category.data
         #image_file is the input name
         if 'image_file' in request.files:
+            # image_to_be_deleted = blog.image_file 
+            print('1 blog.image_file: ', blog.image_file)
+            # blog.delete_images
             image_file = save_picture(form.image_file.data, 'blog_pics', 900, 900)
             photo_image_file = url_for('static', filename='blog_pics/' + image_file)
             blog.image_file = photo_image_file
+            print('2 blog.image_file: ', blog.image_file)
 
         db.session.commit()
         return redirect(url_for('main.admin_page'))

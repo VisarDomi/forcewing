@@ -10,7 +10,7 @@ from forcewing.models import Category
 class LoginForm(FlaskForm):
     username = StringField('Login', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
-    remember = BooleanField('Remeber Me')
+    remember = BooleanField('Remember Me')
     submitLogin = SubmitField('Log In')
 
 class BlogForm(FlaskForm):
