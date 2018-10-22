@@ -87,7 +87,7 @@
               <ul id="profileMenu" class="g-pos-abs g-left-0 g-width-100x--lg g-nowrap g-font-size-14 g-py-20 g-mt-17 rounded" aria-labelledby="profileMenuInvoker">
 
                 <li class="g-mb-10">
-                  <a class="media g-color-lightred-v2--hover g-py-5 g-px-20" href="{{url_for('main.admin_update_information')}}">
+                  <a class="media g-color-lightred-v2--hover g-py-5 g-px-20" href="{{url_for('admin.admin_update_information')}}">
                     <span class="d-flex align-self-center g-mr-12">
                       <i class="hs-admin-user"></i>
                     </span>
@@ -130,7 +130,7 @@
 
           <!-- Blog -->
           <li class="u-sidebar-navigation-v1-menu-item u-side-nav--top-level-menu-item">
-            <a class="media u-side-nav--top-level-menu-link u-side-nav--hide-on-hidden g-px-15 g-py-12" href="{{url_for('main.admin_page')}}">
+            <a class="media u-side-nav--top-level-menu-link u-side-nav--hide-on-hidden g-px-15 g-py-12" href="{{url_for('admin.admin_page')}}">
               <span class="d-flex align-self-center g-pos-rel g-font-size-18 g-mr-18">
                 <span class="u-badge-v2--xs u-badge--bottom-right g-bg-lightblue-v5"></span>
                 <i class="hs-admin-pencil"></i>
@@ -144,7 +144,7 @@
 
           <!-- Categories -->
           <li class="u-sidebar-navigation-v1-menu-item u-side-nav--top-level-menu-item">
-            <a class="media u-side-nav--top-level-menu-link u-side-nav--hide-on-hidden g-px-15 g-py-12" href="{{url_for('main.category')}}">
+            <a class="media u-side-nav--top-level-menu-link u-side-nav--hide-on-hidden g-px-15 g-py-12" href="{{url_for('admin.category')}}">
               <span class="d-flex align-self-center g-pos-rel g-font-size-18 g-mr-18">
                 <span class="u-badge-v2--xs u-badge--bottom-right g-bg-lightblue-v5"></span>
                 <i class="hs-admin-list-ol"></i>
@@ -169,7 +169,7 @@
           <h1 class="g-font-weight-300 g-font-size-28 g-color-black g-mb-30">Blog posts</h1>
           <div class="row g-mb-40">
             <div class="col-auto g-width-280">
-              <a class="btn btn-xl btn-block u-btn-lightblue-v3 g-font-size-default" href="{{url_for('main.blog_new')}}">New post</a>
+              <a class="btn btn-xl btn-block u-btn-lightblue-v3 g-font-size-default" href="{{url_for('admin.blog_new')}}">New post</a>
             </div>
           </div>
 
@@ -191,12 +191,12 @@
                 <tr>
                   <td>{{blog.id}}</td>
                   <td>
-                    <a href="{{url_for('main.blog', blog_id=blog.id)}}">{{blog.title}}</a>
+                    <a href="{{url_for('blog.blog', blog_id=blog.id)}}">{{blog.title}}</a>
                   </td>
                   <td>{{blog.author.username}}</td>
                   <td>{{blog.date_posted.strftime('%d, %b %Y')}}</td>
                   <td>
-                    <a href='{{url_for("main.filtered_blogs", category=blog.category)}}'>
+                    <a href='{{url_for("blog.filtered_blogs", category=blog.category)}}'>
                       <span class="u-tags-v1 text-center g-width-110 g-brd-around g-brd-teal-v2 g-bg-teal-v2 g-font-weight-400 g-color-white g-rounded-50 g-py-4 g-px-15">{{blog.category}}</span>
                     </a>
                   </td>
@@ -213,7 +213,7 @@
                         <ul class="list-unstyled g-nowrap mb-0">
                           <li>
                             <a class="d-flex align-items-center u-link-v5 g-bg-gray-light-v8--hover g-font-size-12 g-font-size-default--md g-color-gray-dark-v6 g-px-25 g-py-14"
-                              href="{{url_for('main.blog_update', blog_id=blog.id)}}">
+                              href="{{url_for('admin.blog_update', blog_id=blog.id)}}">
                               <i class="hs-admin-pencil g-font-size-18 g-color-gray-light-v6 g-mr-10 g-mr-15--md"></i>
                               Edit
                             </a>
@@ -221,7 +221,7 @@
 
                           <li>
                             <a class="d-flex align-items-center u-link-v5 g-bg-gray-light-v8--hover g-font-size-12 g-font-size-default--md g-color-gray-dark-v6 g-px-25 g-py-14"
-                              href="{{url_for('main.blog_delete', blog_id=blog.id)}}">
+                              href="{{url_for('admin.blog_delete', blog_id=blog.id)}}">
                               <i class="hs-admin-trash g-font-size-18 g-color-gray-light-v6 g-mr-10 g-mr-15--md"></i>
                               Delete
                             </a>

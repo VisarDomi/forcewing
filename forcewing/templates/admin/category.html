@@ -25,7 +25,7 @@
                 <tr>
                   <td>{{category.id}}</td>
                   <td>
-                    <a href='{{url_for("main.filtered_blogs", category=category.name)}}'>
+                    <a href='{{url_for("blog.filtered_blogs", category=category.name)}}'>
                         <span class="u-tags-v1 text-center g-width-110 g-brd-around g-brd-teal-v2 g-bg-teal-v2 g-font-weight-400 g-color-white g-rounded-50 g-py-4 g-px-15">{{category.name}}</span>
                     </a>
                   </td>
@@ -41,7 +41,7 @@
 
                           <li>
                             <a class="d-flex align-items-center u-link-v5 g-bg-gray-light-v8--hover g-font-size-12 g-font-size-default--md g-color-gray-dark-v6 g-px-25 g-py-14" 
-                                    href="{{url_for('main.category_delete', category_id = category.id)}}">
+                                    href="{{url_for('admin.category_delete', category_id = category.id)}}">
                               <i class="hs-admin-trash g-font-size-18 g-color-gray-light-v6 g-mr-10 g-mr-15--md"></i>
                               Delete
                             </a>

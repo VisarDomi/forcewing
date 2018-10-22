@@ -16,8 +16,6 @@ login_manager = LoginManager()
 bcrypt = Bcrypt()
 login_manager.login_view = 'main.login'
 
-
-
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(Config)
@@ -28,6 +26,11 @@ def create_app(config_class=Config):
     bcrypt.init_app(app)
     migrate.init_app(app, db)
 
+    from forcewing.admin import bp as admin_bp
+    app.register_blueprint(admin_bp)
+
+    from forcewing.blog import bp as blog_bp
+    app.register_blueprint(blog_bp)
 
     from forcewing.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
@@ -35,9 +38,8 @@ def create_app(config_class=Config):
     from forcewing.main import bp as main_bp
     app.register_blueprint(main_bp)
 
-    from forcewing.blog import bp as blog_bp
-    app.register_blueprint(blog_bp)
-
+    from forcewing.portfolio import bp as portfolio_bp
+    app.register_blueprint(portfolio_bp)
 
     if not app.debug and not app.testing:
         if app.config['MAIL_SERVER']:
@@ -70,6 +72,5 @@ def create_app(config_class=Config):
         app.logger.info('Project startup')
 
     return app
-
 
 from forcewing import models

@@ -70,67 +70,67 @@
             <div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg" id="navBar">
               <ul id="js-scroll-nav" class="navbar-nav text-uppercase g-font-weight-600 ml-auto">
                 {% if request.url_rule.rule == '/home'%}
-                <li class="nav-item g-mx-20--lg active">
-                    <a href="#home" class="nav-link px-0">Home 
-                      <span class="sr-only">(current)</span>
-                    </a>
-                  </li>
-                  <li class="nav-item g-mx-20--lg">
-                    <a href="#about" class="nav-link px-0">About
-  
-                    </a>
-                  </li>
-                  <li class="nav-item g-mx-20--lg">
-                    <a href="#services" class="nav-link px-0">Services
-  
-                    </a>
-                  </li>
-                  <li class="nav-item g-mx-20--lg">
-                    <a href="#portfolio" class="nav-link px-0">Portfolio
-  
-                    </a>
-                  </li>
-                  <li class="nav-item g-mx-20--lg">
-                    <a href="{{url_for('main.bloglist')}}" class="nav-link px-0">Blog
-  
-                    </a>
-                  </li>
-                  <li class="nav-item g-ml-20--lg g-mr-0--lg">
-                    <a href="#contact" class="nav-link px-0">Contact
-  
-                    </a>
-                  </li>
+                    <li class="nav-item g-mx-20--lg active">
+                        <a href="#home" class="nav-link px-0">Home 
+                        <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item g-mx-20--lg">
+                        <a href="#about" class="nav-link px-0">About
+    
+                        </a>
+                    </li>
+                    <li class="nav-item g-mx-20--lg">
+                        <a href="#services" class="nav-link px-0">Services
+    
+                        </a>
+                    </li>
+                    <li class="nav-item g-mx-20--lg">
+                        <a href="#portfolio" class="nav-link px-0">Portfolio
+    
+                        </a>
+                    </li>
+                    <li class="nav-item g-mx-20--lg">
+                        <a href="{{url_for('blog.bloglist')}}" class="nav-link px-0">Blog
+    
+                        </a>
+                    </li>
+                    <li class="nav-item g-ml-20--lg g-mr-0--lg">
+                        <a href="#contact" class="nav-link px-0">Contact
+    
+                        </a>
+                    </li>
   
                 {%else%} 
-                <li class="nav-item g-mx-20--lg active">
-                  <a href="{{url_for('main.index')}}#home" class="nav-link px-0">Home 
-                    <span class="sr-only">(current)</span>
-                  </a>
-                </li>
-                <li class="nav-item g-mx-20--lg">
-                  <a href="{{url_for('main.index')}}#about" class="nav-link px-0">About
+                    <li class="nav-item g-mx-20--lg active">
+                    <a href="{{url_for('main.index')}}#home" class="nav-link px-0">Home 
+                        <span class="sr-only">(current)</span>
+                    </a>
+                    </li>
+                    <li class="nav-item g-mx-20--lg">
+                    <a href="{{url_for('main.index')}}#about" class="nav-link px-0">About
 
-                  </a>
-                </li>
-                <li class="nav-item g-mx-20--lg">
-                  <a href="{{url_for('main.index')}}#services" class="nav-link px-0">Services
+                    </a>
+                    </li>
+                    <li class="nav-item g-mx-20--lg">
+                    <a href="{{url_for('main.index')}}#services" class="nav-link px-0">Services
 
-                  </a>
-                </li>
-                <li class="nav-item g-mx-20--lg">
-                  <a href="{{url_for('main.index')}}#portfolio" class="nav-link px-0">Portfolio
+                    </a>
+                    </li>
+                    <li class="nav-item g-mx-20--lg">
+                    <a href="{{url_for('main.index')}}#portfolio" class="nav-link px-0">Portfolio
 
-                  </a>
-                </li>
-                <li class="nav-item g-mx-20--lg">
-                  <a href="{{url_for('main.bloglist')}}" class="nav-link px-0">Blog
-                  </a>
-                </li>
-                <li class="nav-item g-ml-20--lg g-mr-0--lg">
-                  <a href="{{url_for('main.index')}}#contact" class="nav-link px-0">Contact
+                    </a>
+                    </li>
+                    <li class="nav-item g-mx-20--lg">
+                    <a href="{{url_for('blog.bloglist')}}" class="nav-link px-0">Blog
+                    </a>
+                    </li>
+                    <li class="nav-item g-ml-20--lg g-mr-0--lg">
+                    <a href="{{url_for('main.index')}}#contact" class="nav-link px-0">Contact
 
-                  </a>
-                </li>
+                    </a>
+                    </li>
                 {%endif%}
               </ul>
             </div>
@@ -140,6 +140,7 @@
       </div>
     </header>
     <!-- End Header -->
+
     {% block content %}
     <!-- Revolution Slider -->
     <div id="home" class="g-overflow-hidden g-mt-60">
@@ -403,6 +404,8 @@
 
       </div>
     </section>
+    
+    <!-- portfolio-->
     <section id="portfolio" class="g-pb-70">
       <div class="container">
         <!-- Heading -->
@@ -613,7 +616,6 @@
 
     </section>
 
-    
     <!-- Clients -->
     <section id="clients" class="g-pb-130 g-pt-40">
       <div class="container ">
@@ -671,8 +673,7 @@
       </div>
     </section>
 
-    <!-- End Clients -->
-    
+    <!-- Blog -->
     <section id="blog" class="g-pb-100">
       <div class="container">
         <!-- Heading -->
@@ -695,14 +696,14 @@
 
                 <figcaption class="g-pos-abs g-bottom-20 g-left-20">
                   <a class="btn btn-sm u-btn-primary rounded-0" 
-                        href="{{url_for('main.filtered_blogs', category=blog.category)}}">{{blog.category}}</a>
+                        href="{{url_for('blog.filtered_blogs', category=blog.category)}}">{{blog.category}}</a>
                 </figcaption>
               </figure>
 
               <div class="g-pa-30">
                 <h3 class="g-font-weight-300 g-mb-15">
                   <a class="u-link-v5 g-color-main g-color-primary--hover" 
-                        href="{{url_for('main.blog', blog_id=blog.id)}}">{{blog.title}}</a>
+                        href="{{url_for('blog.blog', blog_id=blog.id)}}">{{blog.title}}</a>
                 </h3>
                 <p>{{blog.subtitle}}</p>
               </div>
@@ -712,14 +713,15 @@
           {% endfor %}
         </div>
         <div class="text-center">
-            <a href="{{url_for('main.bloglist')}}" class="btn btn-xl u-btn-primary g-mr-10 g-mb-15">All posts</a>
-          <!-- <a href="{{url_for('main.bloglist')}}" class="btn btn-lg g-color-white g-mr-10 g-mb-15 align-self-md-center" data-bgcolor='linear-gradient(90deg, #000000 0%, #24243e 100%)'
+            <a href="{{url_for('blog.bloglist')}}" class="btn btn-xl u-btn-primary g-mr-10 g-mb-15">All posts</a>
+          <!-- <a href="{{url_for('blog.bloglist')}}" class="btn btn-lg g-color-white g-mr-10 g-mb-15 align-self-md-center" data-bgcolor='linear-gradient(90deg, #000000 0%, #24243e 100%)'
           style='background:linear-gradient(90deg, #000000 0%, #24243e 100%)'>Read more</a> -->
         </div>
       </div>
 
     </section>
 
+    <!-- Contact -->
     <section id="contact" class="g-bg-black-opacity-0_9 g-color-white g-py-100"  data-bgcolor='linear-gradient(90deg, #000000 0%, #24243e 100%)'
       style='background:linear-gradient(90deg, #000000 0%, #24243e 100%)' alt="" data-bgposition="center center" data-bgfit="cover"
       data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>

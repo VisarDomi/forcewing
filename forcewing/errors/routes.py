@@ -1,7 +1,4 @@
-from flask import render_template, redirect, flash, url_for
-from flask_login import login_user
-from forcewing import bcrypt
-from forcewing.models import User
+from flask import render_template
 from forcewing.main.forms import LoginForm
 from forcewing.errors import bp
 
