@@ -7,11 +7,13 @@
   
           <ul class="u-list-inline">
             <li class="list-inline-item g-mr-5">
-              <a class="u-link-v5 g-color-gray-dark-v5 g-color-primary--hover" href="{{url_for('index')}}">Home</a>
+              <a class="u-link-v5 g-color-gray-dark-v5 g-color-primary--hover" 
+                    href="{{url_for('main.index')}}">Home</a>
               <i class="g-color-gray-light-v2 g-ml-5">/</i>
             </li>
             <li class="list-inline-item g-mr-5">
-              <a class="u-link-v5 g-color-gray-dark-v5 g-color-primary--hover" href="{{url_for('bloglist')}}">Blog</a>
+              <a class="u-link-v5 g-color-gray-dark-v5 g-color-primary--hover" 
+                    href="{{url_for('main.bloglist')}}">Blog</a>
               <!-- <i class="g-color-gray-light-v2 g-ml-5">/</i> -->
             </li>
             <!-- <li class="list-inline-item g-color-primary">
@@ -48,7 +50,8 @@
                   </li>
 
                     <li class="list-inline-item g-mb-10 float-right">
-                        <a class="u-tags-v1 g-color-white g-bg-primary g-bg-black--hover g-rounded-50 g-py-4 g-px-15" href="{{url_for('filtered_blogs', category=blog.category)}}">{{blog.category}}</a>
+                        <a class="u-tags-v1 g-color-white g-bg-primary g-bg-black--hover g-rounded-50 g-py-4 g-px-15" 
+                                href="{{url_for('main.filtered_blogs', category=blog.category)}}">{{blog.category}}</a>
                       </li>
 
                 </ul>
@@ -63,7 +66,8 @@
                         {% if  blogs.has_prev %}
                         <li class="list-inline-item float-left g-hidden-xs-down">
     
-                            <a class="u-pagination-v1__item u-pagination-v1-4 g-brd-gray-light-v3 g-brd-primary--hover g-rounded-50 g-pa-7-16" href="{{ url_for('bloglist', page=blogs.prev_num) }}"
+                            <a class="u-pagination-v1__item u-pagination-v1-4 g-brd-gray-light-v3 g-brd-primary--hover g-rounded-50 g-pa-7-16" 
+                                    href="{{ url_for('main.bloglist', page=blogs.prev_num) }}"
                                 aria-label="Previous">
                                 <span aria-hidden="true">
                                     <i class="fa fa-angle-left g-mr-5"></i> Previous
@@ -88,13 +92,15 @@
                         {% if  page_num %} 
     
                         <li class="list-inline-item">
-                            <a class="u-pagination-v1__item u-pagination-v1-4 u-pagination-v1-4--active g-rounded-50 g-pa-7-14" href="{{url_for('bloglist', page=page_num)}}">{{page_num}}</a>
+                            <a class="u-pagination-v1__item u-pagination-v1-4 u-pagination-v1-4--active g-rounded-50 g-pa-7-14" 
+                                    href="{{url_for('main.bloglist', page=page_num)}}">{{page_num}}</a>
                         </li>
     
     
                         {% else %}
                         <li class="list-inline-item">
-                                <a class="u-pagination-v1__item u-pagination-v1-4 u-pagination-v1-4--active g-rounded-50 g-pa-7-14" href="{{url_for('bloglist', page=page_num)}}">{{page_num}}</a>
+                                <a class="u-pagination-v1__item u-pagination-v1-4 u-pagination-v1-4--active g-rounded-50 g-pa-7-14" 
+                                        href="{{url_for('main.bloglist', page=page_num)}}">{{page_num}}</a>
                             </li>
                         {% endif %}
     
@@ -102,7 +108,8 @@
     
                         {% if blogs.has_next %}
                         <li class="list-inline-item float-right g-hidden-xs-down">
-                            <a class="u-pagination-v1__item u-pagination-v1-4 g-brd-gray-light-v3 g-brd-primary--hover g-rounded-50 g-pa-7-16" href="{{ url_for('bloglist', page=blogs.next_num) }}"
+                            <a class="u-pagination-v1__item u-pagination-v1-4 g-brd-gray-light-v3 g-brd-primary--hover g-rounded-50 g-pa-7-16" 
+                                    href="{{ url_for('main.bloglist', page=blogs.next_num) }}"
                                 aria-label="Next">
                                 <span aria-hidden="true">
                                     Next
@@ -167,7 +174,8 @@
                     
                     {%for category in categories%}
                     <li class="list-inline-item g-mb-10">
-                      <a class="u-tags-v1 g-color-gray-dark-v4 g-color-white--hover g-bg-gray-light-v5 g-bg-primary--hover g-font-size-12 g-rounded-50 g-py-4 g-px-15" href="{{url_for('filtered_blogs', category=category.name)}}">{{category.name}}</a>
+                      <a class="u-tags-v1 g-color-gray-dark-v4 g-color-white--hover g-bg-gray-light-v5 g-bg-primary--hover g-font-size-12 g-rounded-50 g-py-4 g-px-15" 
+                            href="{{url_for('main.filtered_blogs', category=category.name)}}">{{category.name}}</a>
                     </li>
                     {%endfor%}
                   </ul>

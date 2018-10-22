@@ -1,8 +1,8 @@
-from flask_wtf import FlaskForm 
+from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, ValidationError
 from flask_wtf.file import FileField, FileAllowed
-from forcewing.models import Category 
+from forcewing.models import Category
 
 
 
@@ -16,10 +16,10 @@ class LoginForm(FlaskForm):
 class BlogForm(FlaskForm):
     title = StringField('Blog Title', validators=[DataRequired()])
     subtitle = StringField('Subtitle', validators=[DataRequired()])
-    section_title =  StringField('Section Title', validators=[DataRequired()])
-    subsection_title =  StringField('Subsection Title', validators=[DataRequired()])
-    quote =  StringField('Quote', validators=[DataRequired()])
-    content =  TextAreaField('Blog Content', validators=[DataRequired()])
+    section_title = StringField('Section Title', validators=[DataRequired()])
+    subsection_title = StringField('Subsection Title', validators=[DataRequired()])
+    quote = StringField('Quote', validators=[DataRequired()])
+    content = TextAreaField('Blog Content', validators=[DataRequired()])
     image_file = FileField('Photo', validators=[DataRequired(), FileAllowed(['png', 'jpg', 'jpeg'])])
     category = SelectField('Category', choices=[], validators=[DataRequired()])
     submit = SubmitField('Create blog')
@@ -27,8 +27,8 @@ class BlogForm(FlaskForm):
 class ContactForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     email = StringField('Email')
-    # subject =  StringField('Subject', validators=[DataRequired()])
-    message =  TextAreaField('Message', validators=[DataRequired()])
+    # subject = StringField('Subject', validators=[DataRequired()])
+    message = TextAreaField('Message', validators=[DataRequired()])
     submitContact = SubmitField('Send')
 
 class UpdateAccountInformationForm(FlaskForm):
@@ -42,10 +42,10 @@ class UpdateAccountPhotoForm(FlaskForm):
 class UpdateBlogForm(FlaskForm):
     title = StringField('Blog Title', validators=[DataRequired()])
     subtitle = StringField('Subtitle', validators=[DataRequired()])
-    section_title =  StringField('Section Title', validators=[DataRequired()])
-    subsection_title =  StringField('Subsection Title', validators=[DataRequired()])
-    quote =  StringField('Quote', validators=[DataRequired()])
-    content =  TextAreaField('Blog Content', validators=[DataRequired()])
+    section_title = StringField('Section Title', validators=[DataRequired()])
+    subsection_title = StringField('Subsection Title', validators=[DataRequired()])
+    quote = StringField('Quote', validators=[DataRequired()])
+    content = TextAreaField('Blog Content', validators=[DataRequired()])
     image_file = FileField('Photo', validators=[DataRequired(), FileAllowed(['png', 'jpg', 'jpeg'])])
     category = SelectField('Category', choices=[], validators=[DataRequired()])
     submit = SubmitField('Update Blog')
@@ -58,5 +58,3 @@ class CategoryForm(FlaskForm):
         category = Category.query.filter_by(name=category_type.data).first()
         if category:
             raise ValidationError('That category is taken. Please choose a different one')
-
-

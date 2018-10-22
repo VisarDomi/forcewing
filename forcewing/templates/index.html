@@ -59,7 +59,7 @@
             </button>
             <!-- End Responsive Toggle Button -->
             <!-- Logo -->
-            <a href="{{url_for('index')}}" class="navbar-brand u-header__logo" style="padding-top: 0px; padding-bottom: 0px;">
+            <a href="{{url_for('main.index')}}" class="navbar-brand u-header__logo" style="padding-top: 0px; padding-bottom: 0px;">
               <img class="u-header__logo-img u-header__logo-img--main g-width-15 g-height-50" src="../static/myassets/logo/mylogowhite.png" alt="Image Description">
 
               <img class="u-header__logo-img g-width-15 g-height-50" src="../static/myassets/logo/mylogodark.png" alt="Image Description">
@@ -91,7 +91,7 @@
                     </a>
                   </li>
                   <li class="nav-item g-mx-20--lg">
-                    <a href="{{url_for('bloglist')}}" class="nav-link px-0">Blog
+                    <a href="{{url_for('main.bloglist')}}" class="nav-link px-0">Blog
   
                     </a>
                   </li>
@@ -103,31 +103,31 @@
   
                 {%else%} 
                 <li class="nav-item g-mx-20--lg active">
-                  <a href="{{url_for('index')}}#home" class="nav-link px-0">Home 
+                  <a href="{{url_for('main.index')}}#home" class="nav-link px-0">Home 
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>
                 <li class="nav-item g-mx-20--lg">
-                  <a href="{{url_for('index')}}#about" class="nav-link px-0">About
+                  <a href="{{url_for('main.index')}}#about" class="nav-link px-0">About
 
                   </a>
                 </li>
                 <li class="nav-item g-mx-20--lg">
-                  <a href="{{url_for('index')}}#services" class="nav-link px-0">Services
+                  <a href="{{url_for('main.index')}}#services" class="nav-link px-0">Services
 
                   </a>
                 </li>
                 <li class="nav-item g-mx-20--lg">
-                  <a href="{{url_for('index')}}#portfolio" class="nav-link px-0">Portfolio
+                  <a href="{{url_for('main.index')}}#portfolio" class="nav-link px-0">Portfolio
 
                   </a>
                 </li>
                 <li class="nav-item g-mx-20--lg">
-                  <a href="{{url_for('bloglist')}}" class="nav-link px-0">Blog
+                  <a href="{{url_for('main.bloglist')}}" class="nav-link px-0">Blog
                   </a>
                 </li>
                 <li class="nav-item g-ml-20--lg g-mr-0--lg">
-                  <a href="{{url_for('index')}}#contact" class="nav-link px-0">Contact
+                  <a href="{{url_for('main.index')}}#contact" class="nav-link px-0">Contact
 
                   </a>
                 </li>
@@ -694,13 +694,15 @@
                 <img class="img-fluid w-100" src="{{blog.image_file}}" alt="Image Description">
 
                 <figcaption class="g-pos-abs g-bottom-20 g-left-20">
-                  <a class="btn btn-sm u-btn-primary rounded-0" href="{{url_for('filtered_blogs', category=blog.category)}}">{{blog.category}}</a>
+                  <a class="btn btn-sm u-btn-primary rounded-0" 
+                        href="{{url_for('main.filtered_blogs', category=blog.category)}}">{{blog.category}}</a>
                 </figcaption>
               </figure>
 
               <div class="g-pa-30">
                 <h3 class="g-font-weight-300 g-mb-15">
-                  <a class="u-link-v5 g-color-main g-color-primary--hover" href="{{url_for('blog', blog_id=blog.id)}}">{{blog.title}}</a>
+                  <a class="u-link-v5 g-color-main g-color-primary--hover" 
+                        href="{{url_for('main.blog', blog_id=blog.id)}}">{{blog.title}}</a>
                 </h3>
                 <p>{{blog.subtitle}}</p>
               </div>
@@ -710,8 +712,8 @@
           {% endfor %}
         </div>
         <div class="text-center">
-            <a href="{{url_for('bloglist')}}" class="btn btn-xl u-btn-primary g-mr-10 g-mb-15">All posts</a>
-          <!-- <a href="{{url_for('bloglist')}}" class="btn btn-lg g-color-white g-mr-10 g-mb-15 align-self-md-center" data-bgcolor='linear-gradient(90deg, #000000 0%, #24243e 100%)'
+            <a href="{{url_for('main.bloglist')}}" class="btn btn-xl u-btn-primary g-mr-10 g-mb-15">All posts</a>
+          <!-- <a href="{{url_for('main.bloglist')}}" class="btn btn-lg g-color-white g-mr-10 g-mb-15 align-self-md-center" data-bgcolor='linear-gradient(90deg, #000000 0%, #24243e 100%)'
           style='background:linear-gradient(90deg, #000000 0%, #24243e 100%)'>Read more</a> -->
         </div>
       </div>
@@ -742,7 +744,7 @@
           </div>
 
           <div class="col-lg-7 align-self-center">
-            <form method="POST" action='{{url_for("contactForm")}}' enctype="multipart/form-data">
+            <form method="POST" action='{{url_for("main.contactForm")}}' enctype="multipart/form-data">
               {{ contactForm.hidden_tag()}}
               <div class="row">
                 <div class="col-md-5">
@@ -830,7 +832,7 @@
                   <span>|</span>
                 </li>
                 <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{{url_for('logout')}}">Logout</a>
+                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="{{url_for('main.logout')}}">Logout</a>
                 </li>
                 {% endif %}
 
