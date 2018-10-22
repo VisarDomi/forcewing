@@ -36,8 +36,8 @@ class Blog(db.Model):
     __tablename__ = 'blogs'
     id = db.Column(db.Integer, primary_key=True)
     #here
-    # image_file = db.Column(db.String(100), nullable=False)
-    image_files = db.relationship('BlogImage', backref='blog', lazy='dynamic')
+    image_file = db.Column(db.String(100), nullable=False)
+    # image_files = db.relationship('BlogImage', backref='blog', lazy='dynamic')
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(1000), nullable=False)
     subtitle = db.Column(db.String(1000), default='Placeholder')
@@ -53,19 +53,19 @@ class Blog(db.Model):
     def __repr__(self):
         return f"Blog(('{self.title}'), ('{self.user_id}')"
 
-class BlogImage(db.Model):
-    """
-    One to many relationship with Blog
-    one -> Blog
-    many-> BlogImage
-    blog.image_files
-    blogimage.blog
-    """
-    __tablename__ = 'blogimages'
-    id = db.Column(db.Integer, primary_key=True)
-    image_file = db.Column(db.String(100), nullable=False)
+# class BlogImage(db.Model):
+#     """
+#     One to many relationship with Blog
+#     one -> Blog
+#     many-> BlogImage
+#     blog.image_files
+#     blogimage.blog
+#     """
+#     __tablename__ = 'blogimages'
+#     id = db.Column(db.Integer, primary_key=True)
+#     image_file = db.Column(db.String(100), nullable=False)
 
-    blog_id = db.Column(db.Integer, db.ForeignKey('blogs.id'))
+#     blog_id = db.Column(db.Integer, db.ForeignKey('blogs.id'))
 
-    def __repr__(self):
-        return f"BlogImage(('{self.id}'), ('{self.image_file}'))"
+#     def __repr__(self):
+#         return f"BlogImage(('{self.id}'), ('{self.image_file}'))"
