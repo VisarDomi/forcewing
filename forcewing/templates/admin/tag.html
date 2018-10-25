@@ -1,0 +1,94 @@
+{% extends 'admin/admin-page.html' %}
+{% block content %}
+
+<div class="col g-ml-45 g-ml-0--lg g-pb-65--md">
+  <div class="g-pa-20">
+
+        <!-- </div> -->
+
+        <div class="row">
+            <legend class='border-bottom mb-4 text-center'>Existing Tags</legend>
+          <div class="table-responsive g-mb-40">
+            <table class="table u-table--v3 g-color-black">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <!-- <th>Date</th>
+                  <th>Tag</th> -->
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for tag in tags %}
+                <tr>
+                  <td>{{tag.id}}</td>
+                  <td>
+                    <a href='{{url_for("portfolio.filtered_portfolios", tag=tag.name)}}'>
+                        <span class="u-tags-v1 text-center g-width-110 g-brd-around g-brd-teal-v2 g-bg-teal-v2 g-font-weight-400 g-color-white g-rounded-50 g-py-4 g-px-15">
+                            {{tag.name}}
+                        </span>
+                    </a>
+                  </td>
+                  <td>
+                    <div class="g-pos-rel g-top-3 d-inline-block">
+                      <a id="dropDown1Invoker" class="u-link-v5 g-line-height-0 g-font-size-24 g-color-gray-light-v6 g-color-lightblue-v3--hover" 
+                            href="#!" aria-controls="dropDown1" aria-haspopup="true" aria-expanded="false" data-dropdown-event="click" 
+                            data-dropdown-target="#dropDown{{tag.id}}">
+                        <i class="hs-admin-more-alt"></i>
+                      </a>
+
+                      <div id="dropDown{{tag.id}}" class="u-shadow-v31 g-pos-abs g-right-0 g-z-index-2 g-bg-white u-dropdown--css-animation u-dropdown--hidden" 
+                            aria-labelledby="dropDown1Invoker" style="animation-duration: 300ms;">
+                        <ul class="list-unstyled g-nowrap mb-0">
+
+
+                          <li>
+                            <a class="d-flex align-items-center u-link-v5 g-bg-gray-light-v8--hover g-font-size-12 g-font-size-default--md g-color-gray-dark-v6 g-px-25 g-py-14" 
+                                    href="{{url_for('admin.tag_delete', tag_id = tag.id)}}">
+                              <i class="hs-admin-trash g-font-size-18 g-color-gray-light-v6 g-mr-10 g-mr-15--md"></i>
+                              Delete
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                    {%endfor%}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="row text-center">
+          <form method='post' action='' enctype="multipart/form-data" style="margin:auto;">
+              {{form.hidden_tag()}}
+              <fieldset class='form-group'>
+                  <legend class='border-bottom mb-4'>Create Tag</legend>
+                  <div class='form-group'>
+                      <!-- {{form.tag_type.label(class='form-control-label')}} -->
+      
+                      {% if form.tag_type.errors %}
+                          {{form.tag_type(class='form-control form-control-lg is-invalid')}}
+                          <div class='invalid-feedback'>
+                              {% for error in form.tag_type.errors %}
+                                  <span> {{error}} </span>
+                              {% endfor %}
+                          </div>
+                      {% else %}    
+                          {{form.tag_type(class='form-control form-control-lg')}}
+                      {% endif %}
+                  </div>
+              </fieldset>
+              <div class='form-group'>
+                  {{form.submit(class='btn btn-md btn-xl--md u-btn-lightblue-v3 g-width-160--md g-font-size-12 g-font-size-default--md g-mb-10')}}
+              </div>
+          </form>
+
+          </div>
+</div>
+</div>
+        
+{%endblock content%}

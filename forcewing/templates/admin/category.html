@@ -26,16 +26,21 @@
                   <td>{{category.id}}</td>
                   <td>
                     <a href='{{url_for("blog.filtered_blogs", category=category.name)}}'>
-                        <span class="u-tags-v1 text-center g-width-110 g-brd-around g-brd-teal-v2 g-bg-teal-v2 g-font-weight-400 g-color-white g-rounded-50 g-py-4 g-px-15">{{category.name}}</span>
+                        <span class="u-tags-v1 text-center g-width-110 g-brd-around g-brd-teal-v2 g-bg-teal-v2 g-font-weight-400 g-color-white g-rounded-50 g-py-4 g-px-15">
+                            {{category.name}}
+                        </span>
                     </a>
                   </td>
                   <td>
                     <div class="g-pos-rel g-top-3 d-inline-block">
-                      <a id="dropDown1Invoker" class="u-link-v5 g-line-height-0 g-font-size-24 g-color-gray-light-v6 g-color-lightblue-v3--hover" href="#!" aria-controls="dropDown1" aria-haspopup="true" aria-expanded="false" data-dropdown-event="click" data-dropdown-target="#dropDown{{category.id}}">
+                      <a id="dropDown1Invoker" class="u-link-v5 g-line-height-0 g-font-size-24 g-color-gray-light-v6 g-color-lightblue-v3--hover" 
+                      href="#!" aria-controls="dropDown1" aria-haspopup="true" aria-expanded="false" data-dropdown-event="click" 
+                      data-dropdown-target="#dropDown{{category.id}}">
                         <i class="hs-admin-more-alt"></i>
                       </a>
 
-                      <div id="dropDown{{category.id}}" class="u-shadow-v31 g-pos-abs g-right-0 g-z-index-2 g-bg-white u-dropdown--css-animation u-dropdown--hidden" aria-labelledby="dropDown1Invoker" style="animation-duration: 300ms;">
+                      <div id="dropDown{{category.id}}" class="u-shadow-v31 g-pos-abs g-right-0 g-z-index-2 g-bg-white u-dropdown--css-animation u-dropdown--hidden" 
+                      aria-labelledby="dropDown1Invoker" style="animation-duration: 300ms;">
                         <ul class="list-unstyled g-nowrap mb-0">
 
 
@@ -86,4 +91,4 @@
 </div>
 </div>
         
-    {%endblock content%}
+{%endblock content%}

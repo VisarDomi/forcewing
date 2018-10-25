@@ -1,0 +1,78 @@
+{%extends 'admin/admin-page.html'%}
+{% block content %}
+<div class="g-pa-20">
+        <h1 class="g-font-weight-300 g-font-size-28 g-color-black g-mb-30">Portfolios</h1>
+        <div class="row g-mb-40">
+          <div class="col-auto g-width-280">
+            <a class="btn btn-xl btn-block u-btn-lightblue-v3 g-font-size-default" href="{{url_for('admin.portfolio_new')}}">New post</a>
+          </div>
+        </div>
+
+        <div class="table-responsive g-mb-40">
+          <table class="table u-table--v3 g-color-black">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>User</th>
+                <th>Date</th>
+                <th>Tag</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for portfolio in portfolios %}
+              <tr>
+                <td>{{portfolio.id}}</td>
+                <td>
+                  <a href="{{url_for('portfolio.portfolio', portfolio_id=portfolio.id)}}">{{portfolio.title}}</a>
+                </td>
+                <td>{{portfolio.user.username}}</td>
+                <td>{{portfolio.date_posted.strftime('%d, %b %Y')}}</td>
+                <td>
+                  <a href='{{url_for("portfolio.filtered_portfolios", tag=portfolio.tag)}}'>
+                    <span class="u-tags-v1 text-center g-width-110 g-brd-around g-brd-teal-v2 g-bg-teal-v2 g-font-weight-400 g-color-white g-rounded-50 g-py-4 g-px-15">
+                        {{portfolio.tag}}
+                    </span>
+                  </a>
+                </td>
+                <td>
+                  <div class="g-pos-rel g-top-3 d-inline-block">
+                    <a id="dropDown1Invoker" class="u-link-v5 g-line-height-0 g-font-size-24 g-color-gray-light-v6 g-color-lightblue-v3--hover"
+                      href="#!" aria-controls="dropDown1" aria-haspopup="true" aria-expanded="false" data-dropdown-event="click"
+                      data-dropdown-target="#dropDown{{portfolio.id}}">
+                      <i class="hs-admin-more-alt"></i>
+                    </a>
+
+                    <div id="dropDown{{portfolio.id}}" class="u-shadow-v31 g-pos-abs g-right-0 g-z-index-2 g-bg-white u-dropdown--css-animation u-dropdown--hidden"
+                      aria-labelledby="dropDown1Invoker" style="animation-duration: 300ms;">
+                      <ul class="list-unstyled g-nowrap mb-0">
+                        <li>
+                          <a class="d-flex align-items-center u-link-v5 g-bg-gray-light-v8--hover g-font-size-12 g-font-size-default--md g-color-gray-dark-v6 g-px-25 g-py-14"
+                            href="{{url_for('admin.portfolio_update', portfolio_id=portfolio.id)}}">
+                            <i class="hs-admin-pencil g-font-size-18 g-color-gray-light-v6 g-mr-10 g-mr-15--md"></i>
+                            Edit
+                          </a>
+                        </li>
+
+                        <li>
+                          <a class="d-flex align-items-center u-link-v5 g-bg-gray-light-v8--hover g-font-size-12 g-font-size-default--md g-color-gray-dark-v6 g-px-25 g-py-14"
+                            href="{{url_for('admin.portfolio_delete', portfolio_id=portfolio.id)}}">
+                            <i class="hs-admin-trash g-font-size-18 g-color-gray-light-v6 g-mr-10 g-mr-15--md"></i>
+                            Delete
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              {%endfor%}
+            </tbody>
+          </table>
+        </div>
+
+
+      </div>
+{% endblock content %}

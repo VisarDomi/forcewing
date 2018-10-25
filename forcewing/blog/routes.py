@@ -1,5 +1,4 @@
 from flask import render_template, request
-from forcewing import db
 from forcewing.blog import bp
 from forcewing.main.forms import LoginForm
 from forcewing.models import Blog, Category

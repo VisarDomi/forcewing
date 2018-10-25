@@ -155,7 +155,34 @@
             </a>
           </li>
           <!-- End Categories -->
+          
+          <!-- Portfolio -->
+          <li class="u-sidebar-navigation-v1-menu-item u-side-nav--top-level-menu-item">
+            <a class="media u-side-nav--top-level-menu-link u-side-nav--hide-on-hidden g-px-15 g-py-12" href="{{url_for('admin.portfolio_page')}}">
+              <span class="d-flex align-self-center g-pos-rel g-font-size-18 g-mr-18">
+                <span class="u-badge-v2--xs u-badge--bottom-right g-bg-lightblue-v5"></span>
+                <i class="hs-admin-pencil"></i>
+              </span>
+              <span class="media-body align-self-center">Portfolio</span>
+              <span class="d-flex align-self-center">
+              </span>
+            </a>
+          </li>
+          <!-- End Portfolio -->
 
+          <!-- Tags -->
+          <li class="u-sidebar-navigation-v1-menu-item u-side-nav--top-level-menu-item">
+            <a class="media u-side-nav--top-level-menu-link u-side-nav--hide-on-hidden g-px-15 g-py-12" href="{{url_for('admin.tag')}}">
+              <span class="d-flex align-self-center g-pos-rel g-font-size-18 g-mr-18">
+                <span class="u-badge-v2--xs u-badge--bottom-right g-bg-lightblue-v5"></span>
+                <i class="hs-admin-list-ol"></i>
+              </span>
+              <span class="media-body align-self-center">Tags</span>
+              <span class="d-flex align-self-center">
+              </span>
+            </a>
+          </li>
+          <!-- End Tags -->
 
 
 
@@ -163,8 +190,8 @@
       </div>
       <!-- End Sidebar Nav -->
 
-      {% block content%}
       <div class="col g-ml-45 g-ml-0--lg g-pb-65--md">
+        {% block content%}
         <div class="g-pa-20">
           <h1 class="g-font-weight-300 g-font-size-28 g-color-black g-mb-30">Blog posts</h1>
           <div class="row g-mb-40">
@@ -238,7 +265,7 @@
 
 
         </div>
-
+        {%endblock content%}
         <!-- Footer -->
         <footer id="footer" class="u-footer--bottom-sticky g-bg-white g-color-gray-dark-v6 g-brd-top g-brd-gray-light-v7 g-pa-20">
           <div class="row align-items-center">
@@ -289,7 +316,6 @@
         </footer>
         <!-- End Footer -->
       </div>
-      {%endblock content%}
     </div>
   </main>
 

@@ -54,10 +54,10 @@ class Blog(db.Model):
     __tablename__ = 'blogs'
     id = db.Column(db.Integer, primary_key=True)
     #here
-    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    date_posted = db.Column(db.DateTime, default=datetime.utcnow)
     title = db.Column(db.String(1000), nullable=False)
     subtitle = db.Column(db.String(1000))
-    section_title = db.Column(db.String(3000), nullable=False)
+    section_title = db.Column(db.String(3000))
     section_content = db.Column(db.Text, nullable=False)
     subsection_title = db.Column(db.String(3000))
     subsection_content = db.Column(db.Text)
@@ -90,14 +90,16 @@ class Portfolio(db.Model):
     """
     __tablename__ = 'portfolios'
     id = db.Column(db.Integer, primary_key=True)
-    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    date_posted = db.Column(db.DateTime, default=datetime.utcnow)
     title = db.Column(db.String(1000), nullable=False)
     subtitle = db.Column(db.String(1000), default='Subtitle')
     content = db.Column(db.Text, nullable=False)
     tag = db.Column(db.String(100), nullable=False)
-    image_file = db.Column(db.String(100), nullable=False)
-    client_logo = db.Column(db.String(100), nullable=False)
-    client_name = db.Column(db.String(100), nullable=False)
+    image_file1 = db.Column(db.String(100))
+    image_file2 = db.Column(db.String(100))
+    image_file3 = db.Column(db.String(100))
+    client_logo = db.Column(db.String(100))
+    client_name = db.Column(db.String(100))
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
