@@ -5,9 +5,19 @@ from forcewing.main.forms import LoginForm
 from forcewing.models import Blog, Category
 
 # blog
-def change_text(id):
+def change_text_section_content(id):
     blog = Blog.query.filter_by(id=id).first()
-    lines = blog.content.split('\r\n\r\n')
+    lines = blog.section_content.split('\r\n\r\n')
+    html=[]
+    for text in lines:
+        if text:
+            string = str(text)
+            html.append(string)
+    return html
+
+def change_text_subsection_content(id):
+    blog = Blog.query.filter_by(id=id).first()
+    lines = blog.subsection_content.split('\r\n\r\n')
     html=[]
     for text in lines:
         if text:
@@ -28,11 +38,18 @@ def bloglist():
 @bp.route('/blog/<int:blog_id>', methods=['GET', 'POST'])
 def blog(blog_id):
     blog = Blog.query.get_or_404(blog_id)
-    returnedHtml = change_text(blog_id)
+    section_content_paragraphs = change_text_section_content(blog_id)
+    paragraph_one = section_content_paragraphs.pop(0)
+    subsection_content_paragraphs = change_text_subsection_content(blog_id)
     loginForm = LoginForm()
-    # paragraph = blog.content
 
-    return render_template('blog/blog.html', title=blog.title, blog=blog, loginForm=loginForm, returnedHtml=returnedHtml)
+    return render_template('blog/blog.html', 
+                            title=blog.title, 
+                            blog=blog, 
+                            loginForm=loginForm, 
+                            paragraph_one=paragraph_one, 
+                            section_content_paragraphs=section_content_paragraphs,
+                            subsection_content_paragraphs=subsection_content_paragraphs)
 
 @bp.route('/blog/<string:category>')
 def filtered_blogs(category):

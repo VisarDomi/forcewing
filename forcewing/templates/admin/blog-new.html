@@ -7,7 +7,7 @@
         <form method='post' action='' enctype="multipart/form-data">
             {{form.hidden_tag()}}
             <fieldset class='form-group'>
-                <legend class='border-bottom mb-4'>New Blog</legend>
+                <legend class='border-bottom mb-4'>{{title}}</legend>
                 <div class='form-group'>
                     {{form.title.label(class='form-control-label')}} 
                     {% if form.title.errors %} 
@@ -35,19 +35,6 @@
                     {% endif %}
                 </div>
                 <div class='form-group'>
-                    {{form.content.label(class='form-control-label')}} 
-                    {% if form.content.errors %} 
-                        {{form.content(class='form-control form-control-lg is-invalid')}}
-                        <div class='invalid-feedback'>
-                            {% for error in form.content.errors %}
-                                <span> {{error}} </span>
-                            {% endfor %}
-                        </div>
-                    {% else %} 
-                        {{form.content(class='form-control form-control-lg', rows=40)}} 
-                    {% endif %}
-                </div>
-                <div class='form-group'>
                     {{form.section_title.label(class='form-control-label')}} 
                     {% if form.section_title.errors %} 
                         {{form.section_title(class='form-control form-control-lg is-invalid')}}
@@ -61,6 +48,19 @@
                     {% endif %}
                 </div>
                 <div class='form-group'>
+                    {{form.section_content.label(class='form-control-label')}} 
+                    {% if form.section_content.errors %} 
+                        {{form.section_content(class='form-control form-control-lg is-invalid')}}
+                        <div class='invalid-feedback'>
+                            {% for error in form.section_content.errors %}
+                                <span> {{error}} </span>
+                            {% endfor %}
+                        </div>
+                    {% else %} 
+                        {{form.section_content(class='form-control form-control-lg', rows=40)}} 
+                    {% endif %}
+                </div>
+                <div class='form-group'>
                     {{form.subsection_title.label(class='form-control-label')}} 
                     {% if form.subsection_title.errors %} 
                     {{form.subsection_title(class='form-control form-control-lg is-invalid')}}
@@ -71,6 +71,19 @@
                         </div>
                     {% else %} 
                         {{form.subsection_title(class='form-control form-control-lg')}} 
+                    {% endif %}
+                </div>
+                <div class='form-group'>
+                    {{form.subsection_content.label(class='form-control-label')}} 
+                    {% if form.subsection_content.errors %} 
+                        {{form.subsection_content(class='form-control form-control-lg is-invalid')}}
+                        <div class='invalid-feedback'>
+                            {% for error in form.subsection_content.errors %}
+                                <span> {{error}} </span>
+                            {% endfor %}
+                        </div>
+                    {% else %} 
+                        {{form.subsection_content(class='form-control form-control-lg', rows=40)}} 
                     {% endif %}
                 </div>
                 <div class='form-group'>

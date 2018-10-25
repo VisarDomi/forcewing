@@ -1,7 +1,7 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, flash
 from flask_mail import Message
-from flask_login import login_user, logout_user
-from forcewing import bcrypt, mail
+from flask_login import current_user, login_user, logout_user
+from forcewing import mail
 from forcewing.main import bp
 from forcewing.main.forms import LoginForm, ContactForm
 from forcewing.models import User, Blog
@@ -35,18 +35,17 @@ def index():
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
-    #blogs = Blog.query.order_by(Blog.date_posted.desc()).limit(3).all()
+    if current_user.is_authenticated:
+        return redirect(url_for('main.index'))
     loginForm = LoginForm()
-    #contactForm = ContactForm()
-
     if loginForm.validate_on_submit():
         user = User.query.filter_by(username=loginForm.username.data).first()
-        # hashed_password = bcrypt.generate_password_hash(loginForm.password.data).decode('utf-8')
-        if loginForm.username.data == 'Forcewing' and bcrypt.check_password_hash(user.password, loginForm.password.data):
-            login_user(user, remember=loginForm.remember.data)
-            return redirect(url_for('main.admin_page'))
-
-    return render_template('login.html', loginForm=loginForm)
+        if user is None or not user.check_password(loginForm.password.data):
+            flash('Invalid username or password')
+            return redirect(url_for('admin.admin_page'))
+        login_user(user, remember=loginForm.remember.data)
+        return redirect(url_for('admin.admin_page'))
+    return render_template('login.html', title='Sign In', loginForm=loginForm)
 
 @bp.route('/logout')
 def logout():

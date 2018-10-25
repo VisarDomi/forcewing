@@ -5,7 +5,6 @@ from flask import Flask, request, current_app
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
-from flask_bcrypt import Bcrypt
 from flask_mail import Mail
 from config import Config
 
@@ -13,7 +12,6 @@ mail = Mail()
 db = SQLAlchemy()
 migrate = Migrate(db)
 login_manager = LoginManager()
-bcrypt = Bcrypt()
 login_manager.login_view = 'main.login'
 
 def create_app(config_class=Config):
@@ -23,7 +21,6 @@ def create_app(config_class=Config):
     mail.init_app(app)
     db.init_app(app)
     login_manager.init_app(app)
-    bcrypt.init_app(app)
     migrate.init_app(app, db)
 
     from forcewing.admin import bp as admin_bp

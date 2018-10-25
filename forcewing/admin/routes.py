@@ -1,4 +1,4 @@
-import secrets, os
+import secrets, os, shutil
 from PIL import Image, ImageOps
 from flask import render_template, redirect, url_for, request
 from flask_login import login_required
@@ -57,16 +57,28 @@ def admin_update_photo():
     form = UpdateAccountPhotoForm()
     user = User.query.first()
     if form.validate_on_submit():
+
+        directory = os.path.join(os.path.dirname(bp.root_path), 'static/profile_pics/')
+        recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin')
+        directory_recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin/profile_pics')
+
+        if os.path.exists(directory):
+            if os.path.exists(directory_recycle_bin):
+                shutil.rmtree(directory_recycle_bin)
+            shutil.move(directory, recycle_bin)
+            os.makedirs(directory)
+        else:
+            os.makedirs(directory)
+        
         if form.picture.data:
             picture_file = save_picture(form.picture.data, 'profile_pics', 130, 130)
             user.image_file = picture_file
-        # user.username = form.username.data 
         db.session.commit()
         return redirect(url_for('admin.admin_update_photo'))
     user_image_file = url_for('static', filename='profile_pics/' + user.image_file)
     return render_template('admin/admin-update-photo.html', title='Update Account', image_file=user_image_file, form=form, user=user)
 
-@bp.route('/admin/blog/new', methods=['POST', 'GET'])
+@bp.route('/admin/blog-new', methods=['POST', 'GET'])
 @login_required
 def blog_new():
 
@@ -79,14 +91,33 @@ def blog_new():
 
     if form.validate_on_submit():
 
-        image_file = save_picture(form.image_file.data, 'blog_pics', 900, 900)
-        photo_image_file = url_for('static', filename='blog_pics/' + image_file)
+        folder_name = form.title.data
+        directory = os.path.join(os.path.dirname(bp.root_path), 'static/', 'blog_pics/', folder_name)
+        recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin')
+        directory_recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin/', folder_name)
+
+        if os.path.exists(directory):
+            if os.path.exists(directory_recycle_bin):
+                shutil.rmtree(directory_recycle_bin)
+            shutil.move(directory, recycle_bin)
+            os.makedirs(directory)
+        else:
+            os.makedirs(directory)
+        
+        image_file = save_picture(form.image_file.data, 'blog_pics/' + folder_name, 900, 900)
+        photo_image_file = url_for('static', filename='blog_pics/' + folder_name + '/' + image_file)
 
         user = User.query.first()
-        blog = Blog(title=form.title.data, content=form.content.data, quote=form.quote.data, 
-                    image_file=photo_image_file, section_title=form.section_title.data, author=user, 
+        blog = Blog(title=form.title.data, 
+                    subtitle=form.subtitle.data, 
+                    section_title=form.section_title.data, 
+                    section_content=form.section_content.data, 
                     subsection_title=form.subsection_title.data,
-                    subtitle=form.subtitle.data, category=form.category.data)
+                    subsection_content=form.subsection_content.data,
+                    quote=form.quote.data, 
+                    category=form.category.data,
+                    image_file=photo_image_file, 
+                    author=user) 
 
         db.session.add(blog)
         db.session.commit()
@@ -94,14 +125,6 @@ def blog_new():
 
     image_file = url_for('static', filename='profile_pics/' + user.image_file)
     return render_template('admin/blog-new.html', title='New Blog', form=form, user=user, image_file=image_file)
-
-@bp.route('/admin/blog/<int:blog_id>/delete', methods=['GET', 'POST'])
-@login_required
-def blog_delete(blog_id):
-    blog = Blog.query.get_or_404(blog_id)
-    db.session.delete(blog)
-    db.session.commit()
-    return redirect(url_for('admin.admin_page'))
 
 @bp.route('/admin/blog/<int:blog_id>/update', methods=['POST', 'GET'])
 @login_required
@@ -114,22 +137,34 @@ def blog_update(blog_id):
     form.category.choices = choiceList
     print(form.validate_on_submit())
     if form.validate_on_submit():
+
+        folder_name = form.title.data
+        directory = os.path.join(os.path.dirname(bp.root_path), 'static/', 'blog_pics/', folder_name)
+        recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin')
+        directory_recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin/', folder_name)
+
+        if os.path.exists(directory):
+            if os.path.exists(directory_recycle_bin):
+                shutil.rmtree(directory_recycle_bin)
+            shutil.move(directory, recycle_bin)
+            os.makedirs(directory)
+        else:
+            os.makedirs(directory)
+
         blog.title = form.title.data 
         blog.subtitle = form.subtitle.data
         blog.section_title = form.section_title.data 
-        blog.content = form.content.data 
-        blog.quote = form.quote.data 
+        blog.section_content = form.section_content.data 
         blog.subsection_title = form.subsection_title.data 
+        blog.subsection_content = form.subsection_content.data 
+        blog.quote = form.quote.data 
         blog.category = form.category.data
+
         #image_file is the input name
         if 'image_file' in request.files:
-            # image_to_be_deleted = blog.image_file 
-            print('1 blog.image_file: ', blog.image_file)
-            # blog.delete_images
-            image_file = save_picture(form.image_file.data, 'blog_pics', 900, 900)
-            photo_image_file = url_for('static', filename='blog_pics/' + image_file)
+            image_file = save_picture(form.image_file.data, 'blog_pics/' + folder_name, 900, 900)
+            photo_image_file = url_for('static', filename='blog_pics/' + folder_name + '/' + image_file)
             blog.image_file = photo_image_file
-            print('2 blog.image_file: ', blog.image_file)
 
         db.session.commit()
         return redirect(url_for('admin.admin_page'))
@@ -138,16 +173,45 @@ def blog_update(blog_id):
         form.title.data = blog.title
         form.subtitle.data = blog.subtitle
         form.section_title.data = blog.section_title
-        form.content.data = blog.content
+        form.section_content.data = blog.section_content
         form.subsection_title.data = blog.subsection_title
+        form.subsection_content.data = blog.subsection_content
         form.quote.data = blog.quote
         form.category.data = blog.category
         # if blog.image_file:
             # form.image_file = blog.image_file
 
     user_image_file = url_for('static', filename='profile_pics/' + user.image_file)
-    return render_template('admin/blog-update.html', title='Update Blog', user=user, image_file=user_image_file,
-                                form=form, legend='Update Blog')
+    return render_template('admin/blog-update.html', 
+                            title='Update Blog', 
+                            user=user, 
+                            image_file=user_image_file,
+                            form=form, 
+                            legend='Update Blog')
+
+@bp.route('/admin/blog/<int:blog_id>/delete', methods=['GET', 'POST'])
+@login_required
+def blog_delete(blog_id):
+    blog = Blog.query.get_or_404(blog_id)
+    db.session.delete(blog)
+    db.session.commit()
+    return redirect(url_for('admin.admin_page'))
+
+@bp.route('/admin/category', methods=['GET', 'POST'])
+def category():
+    user = User.query.first()
+    image_file = url_for('static', filename='profile_pics/' + user.image_file)
+    form = CategoryForm()
+    categories = Category.query.all()
+    if form.validate_on_submit():
+        category = Category(name=form.category_type.data)
+        db.session.add(category)
+        db.session.commit()
+
+
+        return redirect(url_for('admin.category'))
+
+    return render_template('admin/category.html', title='Category', image_file=image_file, user=user, form=form, categories=categories) 
 
 @bp.route('/admin/category/<int:category_id>/delete', methods=['GET', 'POST'])
 @login_required
@@ -157,18 +221,3 @@ def category_delete(category_id):
     db.session.commit()
     return redirect(url_for('admin.category'))
 
-@bp.route('/admin/category', methods=['GET', 'POST'])
-def category():
-    user = User.query.first()
-    image_file = url_for('static', filename='profile_pics/' + user.image_file)
-    form = CategoryForm()
-    categories = Category.query.all()
-    if form.validate_on_submit():
-        tag = Category(name=form.category_type.data)
-        db.session.add(tag)
-        db.session.commit()
-
-
-        return redirect(url_for('admin.category'))
-
-    return render_template('admin/category.html', title='Category', image_file=image_file, user=user, form=form, categories=categories) 

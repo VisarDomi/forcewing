@@ -1,19 +1,30 @@
 from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from forcewing import db, login_manager
+
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), nullable=False, unique=True)
-    image_file = db.Column(db.String(100), nullable=False, default='Dead_Dragon.png')
+    image_file = db.Column(db.String(100), default='Dead_Dragon.png')
     #email = db.Column(db.String(100), unique=True, nullable=False)
-    password = db.Column(db.String(100), nullable=False)
+    password_hash = db.Column(db.String(128))
+    
     posts = db.relationship('Blog', backref='author', lazy=True)
     portfolios = db.relationship('Portfolio', backref='user', lazy=True)
 
     def __repr__(self):
         return f"User(('{self.username}', {self.image_file}"
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+    
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -21,7 +32,11 @@ def load_user(user_id):
 
 
 class Category(db.Model):
-    """no relationships with other classes"""
+    """
+    No relationships with other classes.
+
+    Needs to have many to many relationship with Blog.
+    """
     __tablename__ = 'categories'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False, unique=True)
@@ -41,14 +56,15 @@ class Blog(db.Model):
     #here
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(1000), nullable=False)
-    subtitle = db.Column(db.String(1000), default='Subtitle')
-    content = db.Column(db.Text, nullable=False)
-    section_title = db.Column(db.String(3000), default='Section title')
-    subsection_title = db.Column(db.String(3000), default='Subsection title')
-    quote = db.Column(db.String(200), default='Quote')
+    subtitle = db.Column(db.String(1000))
+    section_title = db.Column(db.String(3000), nullable=False)
+    section_content = db.Column(db.Text, nullable=False)
+    subsection_title = db.Column(db.String(3000))
+    subsection_content = db.Column(db.Text)
+    quote = db.Column(db.String(1000))
     #First\r\nSecond line\r\n\r\n
     category = db.Column(db.String(100), nullable=False)
-    image_file = db.Column(db.String(100), nullable=False)
+    image_file = db.Column(db.String(100))
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
@@ -74,10 +90,10 @@ class Portfolio(db.Model):
     """
     __tablename__ = 'portfolios'
     id = db.Column(db.Integer, primary_key=True)
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(1000), nullable=False)
     subtitle = db.Column(db.String(1000), default='Subtitle')
     content = db.Column(db.Text, nullable=False)
-    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     tag = db.Column(db.String(100), nullable=False)
     image_file = db.Column(db.String(100), nullable=False)
     client_logo = db.Column(db.String(100), nullable=False)

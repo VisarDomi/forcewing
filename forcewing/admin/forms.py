@@ -17,10 +17,11 @@ class CategoryForm(FlaskForm):
 
 class BlogForm(FlaskForm):
     title = StringField('Blog Title', validators=[DataRequired()])
-    subtitle = StringField('Subtitle')
-    content = TextAreaField('Blog Content', validators=[DataRequired()])
-    section_title = StringField('Section Title')
-    subsection_title = StringField('Subsection Title')
+    subtitle = StringField('Subtitle', validators=[DataRequired()])
+    section_title = StringField('Section Title', validators=[DataRequired()])
+    section_content = TextAreaField('Section Content', validators=[DataRequired()])
+    subsection_title = StringField('Subsection Title', validators=[DataRequired()])
+    subsection_content = TextAreaField('Subsection Content', validators=[DataRequired()])
     quote = StringField('Quote')
     category = SelectField('Category', choices=[], validators=[DataRequired()])
     image_file = FileField('Photo', validators=[DataRequired(), FileAllowed(['png', 'jpg', 'jpeg'])])
@@ -30,11 +31,12 @@ class UpdateBlogForm(FlaskForm):
     title = StringField('Blog Title', validators=[DataRequired()])
     subtitle = StringField('Subtitle', validators=[DataRequired()])
     section_title = StringField('Section Title', validators=[DataRequired()])
-    subsection_title = StringField('Subsection Title', validators=[DataRequired()])
-    quote = StringField('Quote', validators=[DataRequired()])
-    content = TextAreaField('Blog Content', validators=[DataRequired()])
-    image_file = FileField('Photo', validators=[DataRequired(), FileAllowed(['png', 'jpg', 'jpeg'])])
+    section_content = TextAreaField('Section Content', validators=[DataRequired()])
+    subsection_title = StringField('Subsection Title')
+    subsection_content = TextAreaField('Subsection Content')
+    quote = StringField('Quote')
     category = SelectField('Category', choices=[], validators=[DataRequired()])
+    image_file = FileField('Photo', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
     submit = SubmitField('Update Blog')
 
 class UpdateAccountInformationForm(FlaskForm):

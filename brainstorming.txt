@@ -1,11 +1,16 @@
-to dos:
+To-dos:
 
-slider gradient colors
-slider png images
-slider slogans
+    Frontend:
+        slider gradient colors
+        slider png images
+        slider slogans
 
-about us description
+        about us description
 
+        @admin/admin-page, blog and categories scroll -> fix to fixed so they dont scroll
+
+    Backend:
+        tests
 
 
 --------backlog for ideas---------
