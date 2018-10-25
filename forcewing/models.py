@@ -8,7 +8,7 @@ from forcewing import db, login_manager
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(100), nullable=False, unique=True)
+    username = db.Column(db.String(100), unique=True)
     image_file = db.Column(db.String(100), default='Dead_Dragon.png')
     #email = db.Column(db.String(100), unique=True, nullable=False)
     password_hash = db.Column(db.String(128))
@@ -39,7 +39,7 @@ class Category(db.Model):
     """
     __tablename__ = 'categories'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False, unique=True)
+    name = db.Column(db.String(100), unique=True)
     def __repr__(self):
         return f"Category('{self.name}')"
 
@@ -55,18 +55,18 @@ class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     #here
     date_posted = db.Column(db.DateTime, default=datetime.utcnow)
-    title = db.Column(db.String(1000), nullable=False)
+    title = db.Column(db.String(1000))
     subtitle = db.Column(db.String(1000))
     section_title = db.Column(db.String(3000))
-    section_content = db.Column(db.Text, nullable=False)
+    section_content = db.Column(db.Text)
     subsection_title = db.Column(db.String(3000))
     subsection_content = db.Column(db.Text)
     quote = db.Column(db.String(1000))
     #First\r\nSecond line\r\n\r\n
-    category = db.Column(db.String(100), nullable=False)
+    category = db.Column(db.String(100))
     image_file = db.Column(db.String(100))
 
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def __repr__(self):
         return f"Blog('{self.title}', '{self.user_id}')"
@@ -75,7 +75,7 @@ class Tag(db.Model):
     """no relationships with other classes"""
     __tablename__ = 'tags'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False, unique=True)
+    name = db.Column(db.String(100), unique=True)
 
     def __repr__(self):
         return f"Tag('{self.name}')"
@@ -91,10 +91,10 @@ class Portfolio(db.Model):
     __tablename__ = 'portfolios'
     id = db.Column(db.Integer, primary_key=True)
     date_posted = db.Column(db.DateTime, default=datetime.utcnow)
-    title = db.Column(db.String(1000), nullable=False)
-    subtitle = db.Column(db.String(1000), default='Subtitle')
-    content = db.Column(db.Text, nullable=False)
-    tag = db.Column(db.String(100), nullable=False)
+    title = db.Column(db.String(1000))
+    subtitle = db.Column(db.String(1000))
+    content = db.Column(db.Text)
+    tag = db.Column(db.String(100))
     image_file1 = db.Column(db.String(100))
     image_file2 = db.Column(db.String(100))
     image_file3 = db.Column(db.String(100))

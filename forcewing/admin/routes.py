@@ -262,30 +262,36 @@ def portfolio_new():
         else:
             os.makedirs(directory)
         
-        
-        image_file1 = save_picture(form.image_file1.data, 'portfolio_pics/' + folder_name, 900, 900)
-        photo_image_file1 = url_for('static', filename='portfolio_pics/' + folder_name + '/' + image_file1)
-        image_file2 = save_picture(form.image_file2.data, 'portfolio_pics/' + folder_name, 900, 900)
-        photo_image_file2 = url_for('static', filename='portfolio_pics/' + folder_name + '/' + image_file2)
-        image_file3 = save_picture(form.image_file3.data, 'portfolio_pics/' + folder_name, 900, 900)
-        photo_image_file3 = url_for('static', filename='portfolio_pics/' + folder_name + '/' + image_file3)
-        client_logo = save_picture(form.client_logo.data, 'portfolio_pics/' + folder_name, 900, 900)
-        photo_client_logo = url_for('static', filename='portfolio_pics/' + folder_name + '/' + client_logo)
-
         user = User.query.first()
         portfolio = Portfolio(title=form.title.data, 
                             subtitle=form.subtitle.data, 
                             content=form.content.data, 
                             tag=form.tag.data,
-                            image_file1=photo_image_file1, 
-                            image_file2=photo_image_file2, 
-                            image_file3=photo_image_file3, 
-                            client_logo=photo_client_logo,
-                            client_name=form.client_name.data) 
+                            client_name=form.client_name.data,
+                            user=user) 
+        
+        if 'image_file1' in request.files:
+            image_file1 = save_picture(form.image_file1.data, 'portfolio_pics/' + folder_name, 900, 900)
+            photo_image_file1 = url_for('static', filename='portfolio_pics/' + folder_name + '/' + image_file1)
+            portfolio.image_file1 = photo_image_file1
+        if 'image_file2' in request.files:
+            image_file2 = save_picture(form.image_file2.data, 'portfolio_pics/' + folder_name, 900, 900)
+            photo_image_file2 = url_for('static', filename='portfolio_pics/' + folder_name + '/' + image_file2)
+            portfolio.image_file2 = photo_image_file2
+        if 'image_file3' in request.files:
+            image_file3 = save_picture(form.image_file3.data, 'portfolio_pics/' + folder_name, 900, 900)
+            photo_image_file3 = url_for('static', filename='portfolio_pics/' + folder_name + '/' + image_file3)
+            portfolio.image_file3 = photo_image_file3
+        if 'client_logo' in request.files:
+            client_logo = save_picture(form.image_file1.data, 'portfolio_pics/' + folder_name, 900, 900)
+            photo_client_logo = url_for('static', filename='portfolio_pics/' + folder_name + '/' + client_logo)
+            portfolio.client_logo = photo_client_logo
+
+        
 
         db.session.add(portfolio)
         db.session.commit()
-        return redirect(url_for('admin.admin_page'))
+        return redirect(url_for('admin.portfolio_page'))
 
     image_file = url_for('static', filename='profile_pics/' + user.image_file)
     return render_template('admin/portfolio-new.html', title='New portfolio', form=form, user=user, image_file=image_file)
@@ -318,7 +324,6 @@ def portfolio_update(portfolio_id):
         portfolio.title = form.title.data 
         portfolio.subtitle = form.subtitle.data
         portfolio.content = form.content.data 
-        portfolio.date_posted = form.date_posted.data 
         portfolio.tag = form.tag.data
         portfolio.client_name = form.client_name.data
 
@@ -327,27 +332,29 @@ def portfolio_update(portfolio_id):
             image_file1 = save_picture(form.image_file1.data, 'portfolio_pics/' + folder_name, 900, 900)
             photo_image_file1 = url_for('static', filename='portfolio_pics/' + folder_name + '/' + image_file1)
             portfolio.image_file1 = photo_image_file1
-        if 'image_file1' in request.files:
+        if 'image_file2' in request.files:
             image_file2 = save_picture(form.image_file2.data, 'portfolio_pics/' + folder_name, 900, 900)
             photo_image_file2 = url_for('static', filename='portfolio_pics/' + folder_name + '/' + image_file2)
             portfolio.image_file2 = photo_image_file2
-        if 'image_file1' in request.files:
+        if 'image_file3' in request.files:
             image_file3 = save_picture(form.image_file3.data, 'portfolio_pics/' + folder_name, 900, 900)
             photo_image_file3 = url_for('static', filename='portfolio_pics/' + folder_name + '/' + image_file3)
             portfolio.image_file3 = photo_image_file3
-        if 'image_file1' in request.files:
+        if 'client_logo' in request.files:
             client_logo = save_picture(form.image_file1.data, 'portfolio_pics/' + folder_name, 900, 900)
             photo_client_logo = url_for('static', filename='portfolio_pics/' + folder_name + '/' + client_logo)
             portfolio.client_logo = photo_client_logo
 
+        # for f in request.files:
+
+
         db.session.commit()
-        return redirect(url_for('admin.admin_page'))
+        return redirect(url_for('admin.portfolio_page'))
 
     elif request.method == 'GET':
         form.title.data = portfolio.title
         form.subtitle.data = portfolio.subtitle
         form.content.data = portfolio.content
-        form.date_posted.data = portfolio.date_posted
         form.tag.data = portfolio.tag
         form.client_name.data = portfolio.client_name
         # if portfolio.image_file:
@@ -367,7 +374,7 @@ def portfolio_delete(portfolio_id):
     portfolio = Portfolio.query.get_or_404(portfolio_id)
     db.session.delete(portfolio)
     db.session.commit()
-    return redirect(url_for('admin.admin_page'))
+    return redirect(url_for('admin.portfolio_page'))
 
 # tag
 @bp.route('/admin/tag', methods=['GET', 'POST'])

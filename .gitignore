@@ -3,6 +3,7 @@ node_modules
 .vscode
 __pycache__
 .pyc
+.cpython-37.pyc
 venv
 
 logs
