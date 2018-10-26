@@ -91,7 +91,7 @@
                         </a>
                     </li>
                     <li class="nav-item g-mx-20--lg">
-                        <a href="{{url_for('blog.bloglist')}}" class="nav-link px-0">Blog
+                        <a href="#blog" class="nav-link px-0">Blog
     
                         </a>
                     </li>
@@ -123,7 +123,7 @@
                     </a>
                     </li>
                     <li class="nav-item g-mx-20--lg">
-                    <a href="{{url_for('blog.bloglist')}}" class="nav-link px-0">Blog
+                    <a href="{{url_for('main.index')}}#blog" class="nav-link px-0">Blog
                     </a>
                     </li>
                     <li class="nav-item g-ml-20--lg g-mr-0--lg">
@@ -140,6 +140,19 @@
       </div>
     </header>
     <!-- End Header -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     {% block content %}
     <!-- Revolution Slider -->
@@ -612,6 +625,11 @@
           <!-- End Cube Portfolio Blocks - Content -->
         </div>
         <!-- End Cube Portfolio Blocks -->
+        <div class="text-center">
+            <a href="{{url_for('portfolio.portfoliolist')}}" class="btn btn-xl u-btn-primary g-mr-10 g-mb-15">All portfolios</a>
+          <!-- <a href="{{url_for('portfolio.portfoliolist')}}" class="btn btn-lg g-color-white g-mr-10 g-mb-15 align-self-md-center" data-bgcolor='linear-gradient(90deg, #000000 0%, #24243e 100%)'
+          style='background:linear-gradient(90deg, #000000 0%, #24243e 100%)'>Read more</a> -->
+        </div>
       </div>
 
     </section>
@@ -645,6 +663,7 @@
                    "slidesToShow": 1
                  }
                }]'>
+            
           <div class="js-slide u-block-hover">
             <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/myassets/clatn.jpg" alt="Image Description">
           </div>
@@ -794,6 +813,16 @@
     </section>
 
     {% endblock %}
+
+
+
+
+
+
+
+
+
+
 
     <!-- Copyright Footer -->
     <div class="g-pt-1 g-bg-primary" style='background:linear-gradient(to right, #000000,#5338B6 , #24243e ); border-top-color: #aaaaaa;'>

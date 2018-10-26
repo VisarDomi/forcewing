@@ -9,7 +9,7 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True)
-    image_file = db.Column(db.String(100), default='Dead_Dragon.png')
+    image_file = db.Column(db.String(100))
     #email = db.Column(db.String(100), unique=True, nullable=False)
     password_hash = db.Column(db.String(128))
     
@@ -100,6 +100,7 @@ class Portfolio(db.Model):
     image_file3 = db.Column(db.String(100))
     client_logo = db.Column(db.String(100))
     client_name = db.Column(db.String(100))
+    website = db.Column(db.String(1000))
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 

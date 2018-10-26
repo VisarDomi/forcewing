@@ -82,54 +82,6 @@
                         {% endfor %} 
                     {% endif %}
                 </div>
-                <div class="form-group">
-
-                    {{ form.image_file1.label()}} 
-                    {{ form.image_file1(class="form-control-file js-file-attachment", style="position: absolute;
-                    left: -9999px; top: -9999px; z-index: -9999;") }} 
-                    {% if form.image_file1.errors %} 
-                        {% for error in form.image_file1.errors %}
-                            <span class="text-danger">{{ error }}</span>
-                            </br>
-                        {% endfor %} 
-                    {% endif %}
-                </div>
-                <div class="form-group">
-
-                    {{ form.image_file2.label()}} 
-                    {{ form.image_file2(class="form-control-file js-file-attachment", style="position: absolute;
-                    left: -9999px; top: -9999px; z-index: -9999;") }} 
-                    {% if form.image_file2.errors %} 
-                        {% for error in form.image_file2.errors %}
-                            <span class="text-danger">{{ error }}</span>
-                            </br>
-                        {% endfor %} 
-                    {% endif %}
-                </div>
-                <div class="form-group">
-
-                    {{ form.image_file3.label()}} 
-                    {{ form.image_file3(class="form-control-file js-file-attachment", style="position: absolute;
-                    left: -9999px; top: -9999px; z-index: -9999;") }} 
-                    {% if form.image_file3.errors %} 
-                        {% for error in form.image_file3.errors %}
-                            <span class="text-danger">{{ error }}</span>
-                            </br>
-                        {% endfor %} 
-                    {% endif %}
-                </div>
-                <div class="form-group">
-
-                    {{ form.client_logo.label()}} 
-                    {{ form.client_logo(class="form-control-file js-file-attachment", style="position: absolute;
-                    left: -9999px; top: -9999px; z-index: -9999;") }} 
-                    {% if form.client_logo.errors %} 
-                        {% for error in form.client_logo.errors %}
-                            <span class="text-danger">{{ error }}</span>
-                            </br>
-                        {% endfor %} 
-                    {% endif %}
-                </div>
 
             </fieldset>
                 <div class='form-group'>

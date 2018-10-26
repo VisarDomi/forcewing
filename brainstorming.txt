@@ -7,7 +7,7 @@ To-dos:
 
         about us description
 
-        @admin/admin-page, blog and categories scroll -> fix to fixed so they dont scroll
+        admin/admin-page, blog, categories, portfolio, tags scroll -> fix to fixed so they dont scroll
 
     Backend:
         tests

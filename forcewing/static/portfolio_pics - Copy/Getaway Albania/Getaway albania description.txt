@@ -1,5 +1,7 @@
 Getaway Albania
+
 The uncommon element
+
 
 Getaway Albania is a fast moving travel agency offering great deals for trips in Albania and abroad. This company wanted to move from a WordPress solution to something more tailored and personalized to their experience, and we offered just that. 
 
@@ -7,3 +9,5 @@ Featuring the agency prominent colors, the website gives an intensive experience
 
 The website features and admin area, where the trip planners regularly update their trips, images and content. The administrator panel is fully personalized to the needs of the website, having just the right amount of features and control, making it very user friendly.
 
+
+Getaway Albania

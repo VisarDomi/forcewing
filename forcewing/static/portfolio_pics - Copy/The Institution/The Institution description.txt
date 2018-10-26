@@ -1,6 +1,10 @@
 The Institution
+
 A musical experience
+
 
 The creation of this website went through a multitude of variations, making this website one of the most challenging when it comes to front-end work. 
 
 With a 100% unique design, this work is geared more towards a simplified teaser to the musicians youtube channel. 
+
+The Institution

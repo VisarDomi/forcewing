@@ -5,21 +5,21 @@
         <div class="container">
             <div class="d-sm-flex text-center">
             <div class="align-self-center">
-                <h2 class="h3 g-font-weight-300 w-100 g-mb-10 g-mb-0--md">Eco Riciklim</h2>
+                <h2 class="h3 g-font-weight-300 w-100 g-mb-10 g-mb-0--md">{{portfolio.title}}</h2>
             </div>
 
             <div class="align-self-center ml-auto">
                 <ul class="u-list-inline">
                 <li class="list-inline-item g-mr-5">
-                    <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">Home</a>
+                    <a class="u-link-v5 g-color-main g-color-primary--hover" href="{{url_for('main.index')}}#home">Home</a>
                     <i class="g-color-gray-light-v2 g-ml-5">/</i>
                 </li>
                 <li class="list-inline-item g-mr-5">
-                    <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">Portfolio</a>
+                    <a class="u-link-v5 g-color-main g-color-primary--hover" href="{{url_for('portfolio.portfoliolist')}}">Portfolio</a>
                     <i class="g-color-gray-light-v2 g-ml-5">/</i>
                 </li>
                 <li class="list-inline-item g-color-primary">
-                    <span>Eco Riciklim</span>
+                    <span>{{portfolio.title}}</span>
                 </li>
                 </ul>
             </div>
@@ -31,14 +31,17 @@
     <!-- Portfolio Single Item -->
     <section class="container g-py-100">
         <!-- Cube Portfolio Blocks - Content -->
-        <div class="cbp g-mb-50" data-controls="#filterControls1" data-animation="quicksand" data-x-gap="30" data-y-gap="30" data-media-queries='[{"width": 1500, "cols": 3}, {"width": 1100, "cols": 3}, {"width": 800, "cols": 3}, {"width": 480, "cols": 2}, {"width": 300, "cols": 1}]'>
+        <div class="cbp g-mb-50" data-controls="#filterControls1" data-animation="quicksand" data-x-gap="30" data-y-gap="30" 
+        data-media-queries='[{"width": 1500, "cols": 3}, {"width": 1100, "cols": 3}, {"width": 800, "cols": 3}, {"width": 480, "cols": 2}, {"width": 300, "cols": 1}]'>
             <!-- Cube Portfolio Blocks - Item -->
             <div class="cbp-item identity design">
             <div class="u-block-hover g-parent">
-                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="../static/portfolio_pics/Eco Riciklim/Eco Riciklim Hero.JPG" alt="Image description">
+                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" 
+                src="..{{portfolio.image_file1}}" alt="Image description">
                 <div class="d-flex w-100 h-100 g-bg-black-opacity-0_6 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-20">
                 <div class="align-items-end flex-column mt-auto ml-auto">
-                    <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="../static/portfolio_pics/Eco Riciklim/Eco Riciklim Hero.JPG">
+                    <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" 
+                    href="..{{portfolio.image_file1}}">
                     <i class="icon-communication-017 u-line-icon-pro"></i>
                     </a>
                 </div>
@@ -50,10 +53,10 @@
             <!-- Cube Portfolio Blocks - Item -->
             <div class="cbp-item design">
             <div class="u-block-hover g-parent">
-                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="../static/portfolio_pics/Eco Riciklim/Eco Riciklim Quote.JPG" alt="Image description">
+                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="..{{portfolio.image_file2}}" alt="Image description">
                 <div class="d-flex w-100 h-100 g-bg-black-opacity-0_6 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-20">
                 <div class="align-items-end flex-column mt-auto ml-auto">
-                    <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="../static/portfolio_pics/Eco Riciklim/Eco Riciklim Quote.JPG">
+                    <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="..{{portfolio.image_file2}}">
                     <i class="icon-communication-017 u-line-icon-pro"></i>
                     </a>
                 </div>
@@ -65,10 +68,10 @@
             <!-- Cube Portfolio Blocks - Item -->
             <div class="cbp-item graphic identity">
             <div class="u-block-hover g-parent">
-                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="../static/portfolio_pics/Eco Riciklim/Eco Riciklim Teknologjia.JPG" alt="Image description">
+                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="..{{portfolio.image_file3}}" alt="Image description">
                 <div class="d-flex w-100 h-100 g-bg-black-opacity-0_6 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-20">
                 <div class="align-items-end flex-column mt-auto ml-auto">
-                    <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="../static/portfolio_pics/Eco Riciklim/Eco Riciklim Teknologjia.JPG">
+                    <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="..{{portfolio.image_file3}}">
                     <i class="icon-communication-017 u-line-icon-pro"></i>
                     </a>
                 </div>
@@ -83,15 +86,14 @@
         <div class="row g-mb-70">
             <div class="col-md-8 g-mb-30">
                 <div class="mb-5">
-                    <h2 class="g-color-black mb-1">Eco Riciklim</h2>
-                    <span class="d-block lead mb-4">A focus on sustainability </span>
-                    <p>
-                        This hospital waste recycling company founded 2 years ago had a quick growth due to their professional staff and high tech equipment. To accomodate a better web presence, they contacted us to discuss about building a web site where prospective clients could learn more about them and their work. </p>
-                    <p>After discussing their priorities and the way the company operates, we decided the building blocks of the website and their content. After having the layout in place, we chose colors that matched the company, in order to preserve a unified look. </p>
-                    <p>The website is responsive across devices. The design was handcrafted using HTML/CSS, based on the web design standards of the year. </p>
+                    <h2 class="g-color-black mb-1">{{portfolio.title}}</h2>
+                    <span class="d-block lead mb-4">{{portfolio.subtitle}}</span>
+                    {% for paragraph in content_paragraphs%}
+                        <p>{{paragraph}}</p>
+                    {%endfor%}
                 </div>
 
-            <a class="btn btn-md u-btn-primary g-font-size-default g-rounded-25 g-px-30 g-py-12" href="http://ecoriciklim.al/" target="_blank">Launch website</a>
+            <a class="btn btn-md u-btn-primary g-font-size-default g-rounded-25 g-px-30 g-py-12" href="{{portfolio.website}}" target="_blank">Launch website</a>
             </div>
 
             <div class="col-md-4 g-mb-30">
@@ -99,7 +101,7 @@
                 <div class="mb-5">
                     <h3 class="h5 g-color-black mb-3">Client:</h3>
                     <a class="g-color-gray-dark-v4 g-text-underline--none--hover" href="#!">
-                    <img class="g-width-50 g-height-25 rounded-circle mr-2 mb-1" src="../static/myassets/ecologo.png" alt="Image Description">Eco Riciklim Sh.P.K
+                    <img class="g-width-50 g-height-25 rounded-circle mr-2 mb-1" src="..{{portfolio.client_logo}}" alt="Image Description">{{portfolio.client_name}}
                     </a>
                 </div>
                 <!-- End Client -->
@@ -107,10 +109,10 @@
 
             <!-- Tags -->
             <div class="g-mb-30">
-                <h3 class="h5 g-color-black mb-3">Tags:</h3>
+                <h3 class="h5 g-color-black mb-3">Tag:</h3>
                 <ul class="u-list-inline mb-0">
                 <li class="list-inline-item g-mb-10">
-                    <a class="u-tags-v1 g-color-main g-brd-around g-brd-gray-light-v3 g-bg-gray-dark-v2--hover g-brd-gray-dark-v2--hover g-color-white--hover g-rounded-50 g-py-4 g-px-15" href="">Website</a>
+                    <a class="u-tags-v1 g-color-main g-brd-around g-brd-gray-light-v3 g-bg-gray-dark-v2--hover g-brd-gray-dark-v2--hover g-color-white--hover g-rounded-50 g-py-4 g-px-15" href="">{{portfolio.tag}}</a>
                 </li>
                 </ul>
             </div>

@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField, TextAreaField, DateField
 from wtforms.validators import DataRequired, ValidationError
 from flask_wtf.file import FileField, FileAllowed
-from forcewing.models import Category
+from forcewing.models import Category, Tag
 
 # admin
 
@@ -20,7 +20,7 @@ class CategoryForm(FlaskForm):
     submit = SubmitField('Create Category')
 
     def validate_category_type(self, category_type):
-        category = Category.query.filter_by(category_type=category_type.data).first()
+        category = Category.query.filter_by(name=category_type.data).first()
         if category:
             raise ValidationError('That category is taken. Please choose a different one.')
 
@@ -54,7 +54,7 @@ class TagForm(FlaskForm):
     submit = SubmitField('Create Tag')
 
     def validate_tag_type(self, tag_type):
-        tag = Tag.query.filter_by(tag_type=tag_type.data).first()
+        tag = Tag.query.filter_by(name=tag_type.data).first()
         if tag:
             raise ValidationError('That tag is taken. Please choose a different one.')
 
@@ -64,11 +64,9 @@ class PortfolioForm(FlaskForm):
     subtitle = StringField('Subtitle')
     content = TextAreaField('Portfolio Content')
     tag = SelectField('Tag', choices=[])
-    image_file1 = FileField('Photo1', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
-    image_file2 = FileField('Photo2', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
-    image_file3 = FileField('Photo3', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
-    client_logo = FileField('Client Logo', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
+    image_file = FileField('Client Logo', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
     client_name = StringField('Client Name')
+    website = StringField('Website')
     submit = SubmitField('Create Portfolio')
 
 class UpdatePortfolioForm(FlaskForm):
@@ -77,9 +75,10 @@ class UpdatePortfolioForm(FlaskForm):
     subtitle = StringField('Subtitle')
     content = TextAreaField('Portfolio Content')
     tag = SelectField('Tag', choices=[])
-    image_file1 = FileField('Photo1', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
-    image_file2 = FileField('Photo2', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
-    image_file3 = FileField('Photo3', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
-    client_logo = FileField('Client Logo', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
+    image_file = FileField('Client Logo', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
     client_name = StringField('Client Name')
+    submit = SubmitField('Update Portfolio')
+
+class ImagesPortfolioForm(FlaskForm):
+    image_file = FileField('Photo', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
     submit = SubmitField('Update Portfolio')
