@@ -4,7 +4,7 @@ from flask_login import current_user, login_user, logout_user
 from forcewing import mail
 from forcewing.main import bp
 from forcewing.main.forms import LoginForm, ContactForm
-from forcewing.models import User, Blog
+from forcewing.models import User, Blog, Category, Portfolio, Tag
 
 #main
 def send_contact_email(name, email, message):
@@ -28,10 +28,19 @@ def send_contact_email(name, email, message):
 @bp.route('/home', methods=['GET', 'POST'])
 def index():
     blogs = Blog.query.order_by(Blog.date_posted.desc()).limit(3).all()
+    portfolios = Portfolio.query.order_by(Portfolio.date_posted.desc()).limit(6).all()
     contactForm = ContactForm()
     loginForm = LoginForm()
+    categories = Category.query.all()
+    tags = Tag.query.all()
 
-    return render_template('index.html', blogs=blogs, loginForm=loginForm, contactForm=contactForm)
+    return render_template('index.html', 
+                            blogs=blogs, 
+                            portfolios=portfolios, 
+                            loginForm=loginForm, 
+                            contactForm=contactForm, 
+                            categories=categories,
+                            tags=tags)
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
