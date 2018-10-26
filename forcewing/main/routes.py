@@ -34,6 +34,12 @@ def index():
     categories = Category.query.all()
     tags = Tag.query.all()
 
+    for tag in tags:
+        tag.name_lower_case = tag.name.replace(" ", '_', -1)
+    
+    for portfolio in portfolios:
+        portfolio.tag_lower_case = portfolio.tag.replace(" ", '_', -1)
+
     return render_template('index.html', 
                             blogs=blogs, 
                             portfolios=portfolios, 

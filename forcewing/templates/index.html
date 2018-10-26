@@ -440,7 +440,7 @@
             </li>
             {%for tag in tags%}
             <li class="list-inline-item cbp-filter-item g-brd-around g-brd-gray-light-v4 g-brd-primary--active g-color-gray-dark-v4 g-color-primary--hover g-color-primary--active g-font-size-12 rounded g-transition-0_3 g-px-20 g-py-7 mb-2"
-              role="button" data-filter=".{{tag.name}}">{{tag.name}}
+              role="button" data-filter=".{{tag.name_lower_case}}">{{tag.name}}
             </li>
             {%endfor%}
             <!-- <li class="list-inline-item cbp-filter-item g-brd-around g-brd-gray-light-v4 g-brd-primary--active g-color-gray-dark-v4 g-color-primary--hover g-color-primary--active g-font-size-12 rounded g-transition-0_3 g-px-20 g-py-7 mb-2"
@@ -462,7 +462,7 @@
   ]'>
             {%for portfolio in portfolios%}
             <!-- Cube Portfolio Blocks - Item -->
-            <div class="cbp-item {{portfolio.tag}}">
+            <div class="cbp-item {{portfolio.tag_lower_case}}">
               <div class="u-block-hover g-parent">
                 <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="..{{portfolio.image_file1}}"
                   alt="Image description">
@@ -530,31 +530,12 @@
                    "slidesToShow": 1
                  }
                }]'>
-            
-          <div class="js-slide u-block-hover">
-            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/myassets/clatn.jpg" alt="Image Description">
-          </div>
-  
-          <div class="js-slide u-block-hover">
-            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/myassets/getaway.jpg" alt="Image Description">
-          </div>
-  
-          <div class="js-slide u-block-hover">
-            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/myassets/logo-mini.png" alt="Image Description">
-          </div>
-  
-          <div class="js-slide u-block-hover">
-            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/myassets/ecologo.png" alt="Image Description">
-          </div>
-  
-          <div class="js-slide u-block-hover">
-            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/myassets/lisphera.jpg" alt="Image Description">
-          </div>
-  
-          <div class="js-slide u-block-hover">
-            <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/myassets/nakedtrans.png" alt="Image Description">
-          </div>
-  
+                {%for portfolio in portfolios%}
+                    <div class="js-slide u-block-hover">
+                        <img class="mx-auto g-width-80 u-block-hover__main--grayscale 
+                        g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="..{{portfolio.client_logo}}" alt="Image Description">
+                    </div>
+                {%endfor%}
         </div>
       </div>
     </section>

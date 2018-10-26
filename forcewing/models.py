@@ -76,6 +76,7 @@ class Tag(db.Model):
     __tablename__ = 'tags'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True)
+    name_lower_case = db.Column(db.String(100))
 
     def __repr__(self):
         return f"Tag('{self.name}')"
@@ -95,6 +96,7 @@ class Portfolio(db.Model):
     subtitle = db.Column(db.String(1000))
     content = db.Column(db.Text)
     tag = db.Column(db.String(100))
+    tag_lower_case = db.Column(db.String(100))
     image_file1 = db.Column(db.String(100))
     image_file2 = db.Column(db.String(100))
     image_file3 = db.Column(db.String(100))
