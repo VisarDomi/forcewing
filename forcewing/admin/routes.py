@@ -266,7 +266,7 @@ def portfolio_new():
                             content=form.content.data, 
                             tag=form.tag.data,
                             client_name=form.client_name.data,
-                            website=form.website,
+                            website=form.website.data,
                             user=user) 
         
         db.session.add(portfolio)
@@ -309,12 +309,6 @@ def portfolio_update(portfolio_id):
         portfolio.client_name = form.client_name.data
         portfolio.website = form.website.data
 
-        #image_file is the input name
-        if 'image_file' in request.files:
-            image_file = save_picture(form.image_file.data, 'portfolio_pics/' + folder_name, 900, 900)
-            photo_client_logo = url_for('static', filename='portfolio_pics/' + folder_name + '/' + image_file)
-            portfolio.client_logo = photo_client_logo
-
         db.session.commit()
         return redirect(url_for('admin.portfolio_image_one', portfolio_id=portfolio.id))
 
@@ -324,7 +318,7 @@ def portfolio_update(portfolio_id):
         form.content.data = portfolio.content
         form.tag.data = portfolio.tag
         form.client_name.data = portfolio.client_name
-        form.website = portfolio.website
+        form.website.data = portfolio.website
 
     user_image_file = url_for('static', filename='myassets/logo/mylogodark.png')
     if user.image_file: user_image_file = url_for('static', filename='profile_pics/' + user.image_file)

@@ -77,6 +77,7 @@ class UpdatePortfolioForm(FlaskForm):
     tag = SelectField('Tag', choices=[])
     image_file = FileField('Client Logo', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
     client_name = StringField('Client Name')
+    website = StringField('Website')
     submit = SubmitField('Update Portfolio')
 
 class ImagesPortfolioForm(FlaskForm):
