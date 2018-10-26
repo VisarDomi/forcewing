@@ -112,7 +112,7 @@
                 <h3 class="h5 g-color-black mb-3">Tag:</h3>
                 <ul class="u-list-inline mb-0">
                 <li class="list-inline-item g-mb-10">
-                    <a class="u-tags-v1 g-color-main g-brd-around g-brd-gray-light-v3 g-bg-gray-dark-v2--hover g-brd-gray-dark-v2--hover g-color-white--hover g-rounded-50 g-py-4 g-px-15" href="">{{portfolio.tag}}</a>
+                    <a class="u-tags-v1 g-color-main g-brd-around g-brd-gray-light-v3 g-bg-gray-dark-v2--hover g-brd-gray-dark-v2--hover g-color-white--hover g-rounded-50 g-py-4 g-px-15" href="{{url_for('portfolio.filtered_portfolios', tag=portfolio.tag)}}">{{portfolio.tag}}</a>
                 </li>
                 </ul>
             </div>
