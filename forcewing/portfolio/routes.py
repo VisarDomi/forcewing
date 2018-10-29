@@ -2,17 +2,8 @@ from flask import render_template, request
 from forcewing.portfolio import bp
 from forcewing.main.forms import LoginForm
 from forcewing.models import Portfolio, Tag
+from forcewing.func import change_text_content
 
-# portfolio
-def change_text_content(id):
-    portfolio = Portfolio.query.filter_by(id=id).first()
-    lines = portfolio.content.split('\r\n\r\n')
-    html=[]
-    for text in lines:
-        if text:
-            string = str(text)
-            html.append(string)
-    return html
 
 # portfolio
 

@@ -5,22 +5,8 @@ from forcewing import mail
 from forcewing.main import bp
 from forcewing.main.forms import LoginForm, ContactForm
 from forcewing.models import User, Blog, Category, Portfolio, Tag
+from forcewing.func import send_contact_email
 
-#main
-def send_contact_email(name, email, message):
-    #send a email to recipients from sender with the following arguments as information
-
-    msg = Message('Forcewing', sender='forcewing.worker@gmail.com', recipients=['ronalddomi4@gmail.com'])
-    msg.body = f'''Someone just submitted your form on forcewing.com, here's what they had to say:
-    ------
-    Name:  {name}
-
-    Email:  {email}
-
-    Message:  {message}
-    
-    '''
-    mail.send(msg)
 
 # main
 
@@ -35,10 +21,10 @@ def index():
     tags = Tag.query.all()
 
     for tag in tags:
-        tag.name_lower_case = tag.name.replace(" ", '_', -1)
+        tag.name_lower_case = tag.name.replace(" ", '_')
     
     for portfolio in portfolios:
-        portfolio.tag_lower_case = portfolio.tag.replace(" ", '_', -1)
+        portfolio.tag_lower_case = portfolio.tag.replace(" ", '_')
 
     return render_template('index.html', 
                             blogs=blogs, 

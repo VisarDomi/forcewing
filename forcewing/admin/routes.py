@@ -1,7 +1,7 @@
 import secrets, os, shutil
 from PIL import Image, ImageOps
 from flask import render_template, redirect, url_for, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 from forcewing import db
 from forcewing.admin import bp
 from forcewing.main.forms import LoginForm
@@ -9,24 +9,7 @@ from forcewing.admin.forms import CategoryForm, BlogForm, UpdateBlogForm
 from forcewing.admin.forms import UpdateAccountInformationForm, UpdateAccountPhotoForm
 from forcewing.admin.forms import TagForm, PortfolioForm, UpdatePortfolioForm, ImagesPortfolioForm
 from forcewing.models import User, Blog, Category, Portfolio, Tag
-
-#admin
-def save_picture(form_picture, dest_folder, output_size_1, output_size_2):
-    """
-    save_picture saves picture from user input to static folder, hashing the filename  
-    form_picture is the file name of the input
-    dest_folder is the folder where the image will be saved
-    """
-    random_hex = secrets.token_hex(8) #8 bytes
-    _, f_ext = os.path.splitext(form_picture.filename)
-    picture_fn = random_hex + f_ext
-    picture_path = os.path.join(os.path.dirname(bp.root_path), 'static/', dest_folder, picture_fn)
-    output_size = (output_size_1, output_size_2)
-    i = Image.open(form_picture)
-    i = i.convert('RGB')
-    i = ImageOps.fit(i, output_size, Image.ANTIALIAS)
-    i.save(picture_path)
-    return picture_fn
+from forcewing.func import save_picture
 
 # admin
 
@@ -329,6 +312,10 @@ def portfolio_update(portfolio_id):
                             form=form,
                             legend='Update Portfolio')
 
+
+
+
+
 @bp.route('/admin/portfolio/<int:portfolio_id>/image_one', methods=['POST', 'GET'])
 @login_required
 def portfolio_image_one(portfolio_id):
@@ -488,6 +475,11 @@ def portfolio_image_client_logo(portfolio_id):
                             image_file=user_image_file,
                             form=form,
                             legend='Update Portfolio Client Logo')
+
+
+
+
+
 
 
 @bp.route('/admin/portfolio/<int:portfolio_id>/delete', methods=['GET', 'POST'])

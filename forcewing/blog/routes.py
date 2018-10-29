@@ -2,27 +2,7 @@ from flask import render_template, request
 from forcewing.blog import bp
 from forcewing.main.forms import LoginForm
 from forcewing.models import Blog, Category
-
-# blog
-def change_text_section_content(id):
-    blog = Blog.query.filter_by(id=id).first()
-    lines = blog.section_content.split('\r\n\r\n')
-    html=[]
-    for text in lines:
-        if text:
-            string = str(text)
-            html.append(string)
-    return html
-
-def change_text_subsection_content(id):
-    blog = Blog.query.filter_by(id=id).first()
-    lines = blog.subsection_content.split('\r\n\r\n')
-    html=[]
-    for text in lines:
-        if text:
-            string = str(text)
-            html.append(string)
-    return html
+from forcewing.func import change_text_section_content, change_text_subsection_content
 
 # blog
 
