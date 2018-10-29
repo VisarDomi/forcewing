@@ -81,5 +81,5 @@ class UpdatePortfolioForm(FlaskForm):
     submit = SubmitField('Update Portfolio')
 
 class ImagesPortfolioForm(FlaskForm):
-    image_file = FileField('Photo', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
+    image_file = FileField('Photo', render_kw={'multiple': True}, validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
     submit = SubmitField('Update Portfolio')

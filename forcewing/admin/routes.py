@@ -1,5 +1,3 @@
-import secrets, os, shutil
-from PIL import Image, ImageOps
 from flask import render_template, redirect, url_for, request
 from flask_login import login_required, current_user
 from forcewing import db
@@ -8,8 +6,9 @@ from forcewing.main.forms import LoginForm
 from forcewing.admin.forms import CategoryForm, BlogForm, UpdateBlogForm
 from forcewing.admin.forms import UpdateAccountInformationForm, UpdateAccountPhotoForm
 from forcewing.admin.forms import TagForm, PortfolioForm, UpdatePortfolioForm, ImagesPortfolioForm
-from forcewing.models import User, Blog, Category, Portfolio, Tag
+from forcewing.models import User, Blog, Category, Portfolio, Tag, PortfolioImage
 from forcewing.func import save_picture
+import os, shutil
 
 # admin
 
@@ -56,23 +55,12 @@ def admin_update_photo():
     user = User.query.first()
     if form.validate_on_submit():
 
-        directory = os.path.join(os.path.dirname(bp.root_path), 'static/profile_pics/')
-        recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin')
-        directory_recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin/profile_pics')
-
-        if os.path.exists(directory):
-            if os.path.exists(directory_recycle_bin):
-                shutil.rmtree(directory_recycle_bin)
-            shutil.move(directory, recycle_bin)
-            os.makedirs(directory)
-        else:
-            os.makedirs(directory)
-        
         if form.picture.data:
             picture_file = save_picture(form.picture.data, 'profile_pics', 130, 130)
             user.image_file = picture_file
         db.session.commit()
         return redirect(url_for('admin.admin_update_photo'))
+        
     user_image_file = url_for('static', filename='myassets/logo/mylogodark.png')
     if user.image_file: user_image_file = url_for('static', filename='profile_pics/' + user.image_file)
     return render_template('admin/admin-update-photo.html', title='Update Account', image_file=user_image_file, form=form, user=user)
@@ -324,28 +312,28 @@ def portfolio_image_one(portfolio_id):
     form = ImagesPortfolioForm()
 
     if form.validate_on_submit():
-    
-        folder_name = portfolio.title + ' image one'
-        directory = os.path.join(os.path.dirname(bp.root_path), 'static/', 'portfolio_pics/', folder_name)
-        recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin')
-        directory_recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin/', folder_name)
+        # a=request.files.getlist('image_file')
+        # image_file = save_picture(a, 'portfolio_pics/' , 900, 900)
 
-        if os.path.exists(directory):
-            if os.path.exists(directory_recycle_bin):
-                shutil.rmtree(directory_recycle_bin)
-            shutil.move(directory, recycle_bin)
-            os.makedirs(directory)
-        else:
-            os.makedirs(directory)
+        print(request.files.getlist('image_file'))
+        # for thing in request.files.getlist('image_file'):
 
-        #image_file is the input name
+        requested_files_list = request.files.getlist('image_file') # requested_files_list is a list of FileStorage
         if 'image_file' in request.files:
-            image_file = save_picture(form.image_file.data, 'portfolio_pics/' + folder_name, 900, 900)
-            photo_image_file = url_for('static', filename='portfolio_pics/' + folder_name + '/' + image_file)
-            portfolio.image_file1 = photo_image_file
+            # delete_from_database
+            for p_object in portfolio.portfolioimages:
+                db.session.delete(p_object)
+
+            for one_file in requested_files_list: # one_file is FileStorage
+                image_file = save_picture(one_file, 'portfolio_pics/' , 900, 900)
+                photo_image_file = url_for('static', filename='portfolio_pics/' + image_file)
+                image = PortfolioImage(image=photo_image_file, portfolio=portfolio)
+                db.session.add(image)
+
+
 
         db.session.commit()
-        return redirect(url_for('admin.portfolio_image_two', portfolio_id=portfolio.id))
+        return redirect(url_for('admin.portfolio_image_one', portfolio_id=portfolio.id))
 
     user_image_file = url_for('static', filename='myassets/logo/mylogodark.png')
     if user.image_file: user_image_file = url_for('static', filename='profile_pics/' + user.image_file)
@@ -356,177 +344,55 @@ def portfolio_image_one(portfolio_id):
                             form=form,
                             legend='Update Portfolio Image One')
 
-@bp.route('/admin/portfolio/<int:portfolio_id>/image_two', methods=['POST', 'GET'])
-@login_required
-def portfolio_image_two(portfolio_id):
-    portfolio = Portfolio.query.get_or_404(portfolio_id)
-    user = User.query.first()
-    form = ImagesPortfolioForm()
 
-    if form.validate_on_submit():
+# @bp.route('/admin/portfolio/<int:portfolio_id>/image_client_logo', methods=['POST', 'GET'])
+# @login_required
+# def portfolio_image_client_logo(portfolio_id):
+#     portfolio = Portfolio.query.get_or_404(portfolio_id)
+#     user = User.query.first()
+#     form = ImagesPortfolioForm()
+
+#     if form.validate_on_submit():
     
-        folder_name = portfolio.title + ' image two'
-        directory = os.path.join(os.path.dirname(bp.root_path), 'static/', 'portfolio_pics/', folder_name)
-        recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin')
-        directory_recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin/', folder_name)
+#         folder_name = portfolio.title + ' image client_logo'
+#         directory = os.path.join(os.path.dirname(bp.root_path), 'static/', 'portfolio_pics/', folder_name)
+#         recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin')
+#         directory_recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin/', folder_name)
 
-        if os.path.exists(directory):
-            if os.path.exists(directory_recycle_bin):
-                shutil.rmtree(directory_recycle_bin)
-            shutil.move(directory, recycle_bin)
-            os.makedirs(directory)
-        else:
-            os.makedirs(directory)
+#         if os.path.exists(directory):
+#             if os.path.exists(directory_recycle_bin):
+#                 shutil.rmtree(directory_recycle_bin)
+#             shutil.move(directory, recycle_bin)
+#             os.makedirs(directory)
+#         else:
+#             os.makedirs(directory)
 
-        #image_file is the input name
-        if 'image_file' in request.files:
-            image_file = save_picture(form.image_file.data, 'portfolio_pics/' + folder_name, 900, 900)
-            photo_image_file = url_for('static', filename='portfolio_pics/' + folder_name + '/' + image_file)
-            portfolio.image_file2 = photo_image_file
+#         #image_file is the input name
+#         if 'image_file' in request.files:
+#             image_file = save_picture(form.image_file.data, 'portfolio_pics/' + folder_name, 900, 900)
+#             photo_image_file = url_for('static', filename='portfolio_pics/' + folder_name + '/' + image_file)
+#             portfolio.client_logo = photo_image_file
 
-        db.session.commit()
-        return redirect(url_for('admin.portfolio_image_three', portfolio_id=portfolio.id))
+#         db.session.commit()
+#         return redirect(url_for('admin.portfolio_page'))
 
-    user_image_file = url_for('static', filename='myassets/logo/mylogodark.png')
-    if user.image_file: user_image_file = url_for('static', filename='profile_pics/' + user.image_file)
-    return render_template('admin/portfolio-images.html',
-                            title='Image Two Portfolio',
-                            user=user,
-                            image_file=user_image_file,
-                            form=form,
-                            legend='Update Portfolio Image Two')
-
-@bp.route('/admin/portfolio/<int:portfolio_id>/image_three', methods=['POST', 'GET'])
-@login_required
-def portfolio_image_three(portfolio_id):
-    portfolio = Portfolio.query.get_or_404(portfolio_id)
-    user = User.query.first()
-    form = ImagesPortfolioForm()
-
-    if form.validate_on_submit():
-    
-        folder_name = portfolio.title + ' image three'
-        directory = os.path.join(os.path.dirname(bp.root_path), 'static/', 'portfolio_pics/', folder_name)
-        recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin')
-        directory_recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin/', folder_name)
-
-        if os.path.exists(directory):
-            if os.path.exists(directory_recycle_bin):
-                shutil.rmtree(directory_recycle_bin)
-            shutil.move(directory, recycle_bin)
-            os.makedirs(directory)
-        else:
-            os.makedirs(directory)
-
-        #image_file is the input name
-        if 'image_file' in request.files:
-            image_file = save_picture(form.image_file.data, 'portfolio_pics/' + folder_name, 900, 900)
-            photo_image_file = url_for('static', filename='portfolio_pics/' + folder_name + '/' + image_file)
-            portfolio.image_file3 = photo_image_file
-
-        db.session.commit()
-        return redirect(url_for('admin.portfolio_image_client_logo', portfolio_id=portfolio.id))
-
-    user_image_file = url_for('static', filename='myassets/logo/mylogodark.png')
-    if user.image_file: user_image_file = url_for('static', filename='profile_pics/' + user.image_file)
-    return render_template('admin/portfolio-images.html',
-                            title='Image Three Portfolio',
-                            user=user,
-                            image_file=user_image_file,
-                            form=form,
-                            legend='Update Portfolio Image Three')
-
-@bp.route('/admin/portfolio/<int:portfolio_id>/image_client_logo', methods=['POST', 'GET'])
-@login_required
-def portfolio_image_client_logo(portfolio_id):
-    portfolio = Portfolio.query.get_or_404(portfolio_id)
-    user = User.query.first()
-    form = ImagesPortfolioForm()
-
-    if form.validate_on_submit():
-    
-        folder_name = portfolio.title + ' image client_logo'
-        directory = os.path.join(os.path.dirname(bp.root_path), 'static/', 'portfolio_pics/', folder_name)
-        recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin')
-        directory_recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin/', folder_name)
-
-        if os.path.exists(directory):
-            if os.path.exists(directory_recycle_bin):
-                shutil.rmtree(directory_recycle_bin)
-            shutil.move(directory, recycle_bin)
-            os.makedirs(directory)
-        else:
-            os.makedirs(directory)
-
-        #image_file is the input name
-        if 'image_file' in request.files:
-            image_file = save_picture(form.image_file.data, 'portfolio_pics/' + folder_name, 900, 900)
-            photo_image_file = url_for('static', filename='portfolio_pics/' + folder_name + '/' + image_file)
-            portfolio.client_logo = photo_image_file
-
-        db.session.commit()
-        return redirect(url_for('admin.portfolio_page'))
-
-    user_image_file = url_for('static', filename='myassets/logo/mylogodark.png')
-    if user.image_file: user_image_file = url_for('static', filename='profile_pics/' + user.image_file)
-    return render_template('admin/portfolio-images.html',
-                            title='Client Logo Portfolio',
-                            user=user,
-                            image_file=user_image_file,
-                            form=form,
-                            legend='Update Portfolio Client Logo')
-
-
-
-
-
+#     user_image_file = url_for('static', filename='myassets/logo/mylogodark.png')
+#     if user.image_file: user_image_file = url_for('static', filename='profile_pics/' + user.image_file)
+#     return render_template('admin/portfolio-images.html',
+#                             title='Client Logo Portfolio',
+#                             user=user,
+#                             image_file=user_image_file,
+#                             form=form,
+#                             legend='Update Portfolio Client Logo')
 
 
 @bp.route('/admin/portfolio/<int:portfolio_id>/delete', methods=['GET', 'POST'])
 @login_required
 def portfolio_delete(portfolio_id):
     portfolio = Portfolio.query.get_or_404(portfolio_id)
-
-    folder_name = portfolio.data + ' client logo'
-    directory = os.path.join(os.path.dirname(bp.root_path), 'static/', 'portfolio_pics/', folder_name)
-    recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin')
-    directory_recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin/', folder_name)
-
-    if os.path.exists(directory_recycle_bin):
-        shutil.rmtree(directory_recycle_bin)
-    shutil.move(directory, recycle_bin)
-
-    folder_name = portfolio.data + ' image one'
-    directory = os.path.join(os.path.dirname(bp.root_path), 'static/', 'portfolio_pics/', folder_name)
-    recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin')
-    directory_recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin/', folder_name)
-
-    if os.path.exists(directory_recycle_bin):
-        shutil.rmtree(directory_recycle_bin)
-    shutil.move(directory, recycle_bin)
-
-    folder_name = portfolio.data + ' image two'
-    directory = os.path.join(os.path.dirname(bp.root_path), 'static/', 'portfolio_pics/', folder_name)
-    recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin')
-    directory_recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin/', folder_name)
-
-    if os.path.exists(directory_recycle_bin):
-        shutil.rmtree(directory_recycle_bin)
-    shutil.move(directory, recycle_bin)
-
-    folder_name = portfolio.data + ' image three'
-    directory = os.path.join(os.path.dirname(bp.root_path), 'static/', 'portfolio_pics/', folder_name)
-    recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin')
-    directory_recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin/', folder_name)
-
-    if os.path.exists(directory_recycle_bin):
-        shutil.rmtree(directory_recycle_bin)
-    shutil.move(directory, recycle_bin)
-
-
     db.session.delete(portfolio)
     db.session.commit()
-    return redirect(url_for('admin.portfolio_page'))
+    return redirect(url_for('admin.admin_page'))
 
 # tag
 @bp.route('/admin/tag', methods=['GET', 'POST'])

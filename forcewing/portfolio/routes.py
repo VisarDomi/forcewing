@@ -18,12 +18,14 @@ def portfoliolist():
 @bp.route('/portfolio/<int:portfolio_id>', methods=['GET', 'POST'])
 def portfolio(portfolio_id):
     portfolio = Portfolio.query.get_or_404(portfolio_id)
+    portfolio_images = portfolio.portfolioimages
     content_paragraphs = change_text_content(portfolio_id)
     loginForm = LoginForm()
 
     return render_template('portfolio/portfolio.html', 
                             title=portfolio.title, 
                             portfolio=portfolio, 
+                            portfolio_images=portfolio_images,
                             loginForm=loginForm, 
                             content_paragraphs=content_paragraphs)
 

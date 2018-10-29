@@ -91,20 +91,40 @@ class Portfolio(db.Model):
     """
     __tablename__ = 'portfolios'
     id = db.Column(db.Integer, primary_key=True)
+
     date_posted = db.Column(db.DateTime, default=datetime.utcnow)
     title = db.Column(db.String(1000))
     subtitle = db.Column(db.String(1000))
     content = db.Column(db.Text)
     tag = db.Column(db.String(100))
     tag_lower_case = db.Column(db.String(100))
-    image_file1 = db.Column(db.String(100))
-    image_file2 = db.Column(db.String(100))
-    image_file3 = db.Column(db.String(100))
+
+    # image_file1 = db.Column(db.String(100))
+    # image_file2 = db.Column(db.String(100))
+    # image_file3 = db.Column(db.String(100))
+    
     client_logo = db.Column(db.String(100))
     client_name = db.Column(db.String(100))
     website = db.Column(db.String(1000))
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    portfolioimages = db.relationship('PortfolioImage', backref='portfolio', lazy=True)
 
     def __repr__(self):
         return f"Portfolio('{self.title}')"
+
+class PortfolioImage(db.Model):
+    """
+    One to many relationship with Portfolio
+    one -> Portfolio
+    many-> PortfolioImage
+    portfolioimage.portfolio
+    portfolio.portfolioimages
+    """
+    __tablename__ = 'portfolioimages'
+    id = db.Column(db.Integer, primary_key=True)
+
+    image = db.Column(db.String(100))
+    portfolio_id = db.Column(db.Integer, db.ForeignKey('portfolios.id'))
+
+

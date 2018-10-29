@@ -1,5 +1,5 @@
 from forcewing import create_app, db
-from forcewing.models import User, Category, Blog, Portfolio, Tag
+from forcewing.models import User, Category, Blog, Portfolio, Tag, PortfolioImage
 
 app = create_app()
 
@@ -9,5 +9,6 @@ def make_shell_context():
             'User': User,
             'Category': Category,
             'Blog': Blog,
+            'PortfolioImage':PortfolioImage,
             'Portfolio': Portfolio,
             'Tag': Tag}
