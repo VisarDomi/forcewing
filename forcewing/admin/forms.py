@@ -64,7 +64,9 @@ class PortfolioForm(FlaskForm):
     subtitle = StringField('Subtitle')
     content = TextAreaField('Portfolio Content')
     tag = SelectField('Tag', choices=[])
-    image_file = FileField('Client Logo', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
+    logo_image = FileField('Client Logo', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
+    main_image = FileField('Main Image', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
+    portfolio_images = FileField('Photos', render_kw={'multiple': True}, validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
     client_name = StringField('Client Name')
     website = StringField('Website')
     submit = SubmitField('Create Portfolio')
@@ -75,11 +77,13 @@ class UpdatePortfolioForm(FlaskForm):
     subtitle = StringField('Subtitle')
     content = TextAreaField('Portfolio Content')
     tag = SelectField('Tag', choices=[])
-    image_file = FileField('Client Logo', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
+    logo_image = FileField('Client Logo', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
+    main_image = FileField('Main Image', validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
+    portfolio_images = FileField('Photos', render_kw={'multiple': True}, validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
     client_name = StringField('Client Name')
     website = StringField('Website')
     submit = SubmitField('Update Portfolio')
 
-class ImagesPortfolioForm(FlaskForm):
-    image_file = FileField('Photo', render_kw={'multiple': True}, validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
-    submit = SubmitField('Update Portfolio')
+# class ImagesPortfolioForm(FlaskForm):
+#     image_file = FileField('Photo', render_kw={'multiple': True}, validators=[FileAllowed(['png', 'jpg', 'jpeg'])])
+#     submit = SubmitField('Update Portfolio')

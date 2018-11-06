@@ -14,14 +14,13 @@ from forcewing.func import send_contact_email
 @bp.route('/home', methods=['GET', 'POST'])
 def index():
     blogs = Blog.query.order_by(Blog.date_posted.desc()).limit(3).all()
-    portfolios = Portfolio.query.order_by(Portfolio.date_posted.desc()).limit(6).all()
+    portfolios = Portfolio.query.order_by(Portfolio.date_posted.desc()).all()
+    
     contactForm = ContactForm()
     loginForm = LoginForm()
     categories = Category.query.all()
     tags = Tag.query.all()
-
-    for tag in tags:
-        tag.name_lower_case = tag.name.replace(" ", '_')
+    
     
     for portfolio in portfolios:
         portfolio.tag_lower_case = portfolio.tag.replace(" ", '_')

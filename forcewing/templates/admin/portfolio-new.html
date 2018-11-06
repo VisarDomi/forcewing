@@ -82,6 +82,41 @@
                         {% endfor %} 
                     {% endif %}
                 </div>
+                <div class="form-group">
+
+                        {{ form.logo_image.label()}} 
+                        {{ form.logo_image(class="form-control-file js-file-attachment", style="position: absolute;
+                        left: -9999px; top: -9999px; z-index: -9999;") }} 
+                        {% if form.logo_image.errors %} 
+                            {% for error in form.logo_image.errors %}
+                                <span class="text-danger">{{ error }}</span>
+                                </br>
+                            {% endfor %} 
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+
+                            {{ form.main_image.label()}} 
+                            {{ form.main_image(class="form-control-file js-file-attachment", style="position: absolute;
+                            left: -9999px; top: -9999px; z-index: -9999;") }} 
+                            {% if form.main_image.errors %} 
+                                {% for error in form.main_image.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                    </br>
+                                {% endfor %} 
+                            {% endif %}
+                        </div>
+                        <div>
+                                {{ form.portfolio_images.label()}} 
+                                {{ form.portfolio_images(class="form-control-file js-file-attachment", style="position: absolute;
+                                left: -9999px; top: -9999px; z-index: -9999;") }} 
+                                {% if form.portfolio_images.errors %} 
+                                    {% for error in form.portfolio_images.errors %}
+                                        <span class="text-danger">{{ error }}</span>
+                                        </br>
+                                    {% endfor %} 
+                                {% endif %}
+                            </div>
 
             </fieldset>
                 <div class='form-group'>

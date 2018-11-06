@@ -5,9 +5,9 @@ from forcewing.admin import bp
 from forcewing.main.forms import LoginForm
 from forcewing.admin.forms import CategoryForm, BlogForm, UpdateBlogForm
 from forcewing.admin.forms import UpdateAccountInformationForm, UpdateAccountPhotoForm
-from forcewing.admin.forms import TagForm, PortfolioForm, UpdatePortfolioForm, ImagesPortfolioForm
+from forcewing.admin.forms import TagForm, PortfolioForm, UpdatePortfolioForm
 from forcewing.models import User, Blog, Category, Portfolio, Tag, PortfolioImage
-from forcewing.func import save_picture
+from forcewing.func import save_picture, save_picture_port
 import os, shutil
 
 # admin
@@ -79,22 +79,8 @@ def blog_new():
 
     if form.validate_on_submit():
 
-        folder_name = form.title.data
-        directory = os.path.join(os.path.dirname(bp.root_path), 'static/', 'blog_pics/', folder_name)
-        recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin')
-        directory_recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin/', folder_name)
-
-        if os.path.exists(directory):
-            if os.path.exists(directory_recycle_bin):
-                shutil.rmtree(directory_recycle_bin)
-            shutil.move(directory, recycle_bin)
-            os.makedirs(directory)
-        else:
-            os.makedirs(directory)
-        
-        image_file = save_picture(form.image_file.data, 'blog_pics/' + folder_name, 900, 900)
-        photo_image_file = url_for('static', filename='blog_pics/' + folder_name + '/' + image_file)
-
+        image_file = save_picture_port(form.image_file.data, 'blog_pics/')
+        photo_image_file = url_for('static', filename='blog_pics/' + image_file)
         user = User.query.first()
         blog = Blog(title=form.title.data, 
                     subtitle=form.subtitle.data, 
@@ -112,7 +98,8 @@ def blog_new():
         return redirect(url_for('admin.admin_page'))
 
     user_image_file = url_for('static', filename='myassets/logo/mylogodark.png')
-    if user.image_file: user_image_file = url_for('static', filename='profile_pics/' + user.image_file)
+    if user.image_file: 
+        user_image_file = url_for('static', filename='profile_pics/' + user.image_file)
     return render_template('admin/blog-new.html', title='New Blog', form=form, user=user, image_file=user_image_file)
 
 @bp.route('/admin/blog/<int:blog_id>/update', methods=['POST', 'GET'])
@@ -127,19 +114,6 @@ def blog_update(blog_id):
 
     if form.validate_on_submit():
 
-        folder_name = form.title.data
-        directory = os.path.join(os.path.dirname(bp.root_path), 'static/', 'blog_pics/', folder_name)
-        recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin')
-        directory_recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin/', folder_name)
-
-        if os.path.exists(directory):
-            if os.path.exists(directory_recycle_bin):
-                shutil.rmtree(directory_recycle_bin)
-            shutil.move(directory, recycle_bin)
-            os.makedirs(directory)
-        else:
-            os.makedirs(directory)
-
         blog.title = form.title.data 
         blog.subtitle = form.subtitle.data
         blog.section_title = form.section_title.data 
@@ -150,15 +124,10 @@ def blog_update(blog_id):
         blog.category = form.category.data
 
 
-        print('request.files: ', request.files)
-
         #image_file is the input name
         if 'image_file' in request.files:
-            print('request.files: ', request.files)
-            print('form.image_file: ', form.image_file)
-            print('form.image_file.data: ', form.image_file.data)
-            image_file = save_picture(form.image_file.data, 'blog_pics/' + folder_name, 900, 900)
-            photo_image_file = url_for('static', filename='blog_pics/' + folder_name + '/' + image_file)
+            image_file = save_picture_port(form.image_file.data, 'blog_pics/')
+            photo_image_file = url_for('static', filename='blog_pics/' + image_file)
             blog.image_file = photo_image_file
 
         db.session.commit()
@@ -173,11 +142,10 @@ def blog_update(blog_id):
         form.subsection_content.data = blog.subsection_content
         form.quote.data = blog.quote
         form.category.data = blog.category
-        # if blog.image_file:
-            # form.image_file = blog.image_file
 
     user_image_file = url_for('static', filename='myassets/logo/mylogodark.png')
-    if user.image_file: user_image_file = url_for('static', filename='profile_pics/' + user.image_file)
+    if user.image_file: 
+        user_image_file = url_for('static', filename='profile_pics/' + user.image_file)
     return render_template('admin/blog-update.html', 
                             title='Update Blog', 
                             user=user, 
@@ -231,14 +199,34 @@ def portfolio_new():
     user = User.query.first()
 
     if form.validate_on_submit():
+        #logo image uploading
+        logo_image = save_picture_port(form.logo_image.data, 'portfolio_pics/' )
+        url_logo_image = url_for('static', filename='portfolio_pics/' + logo_image)
 
+        #main image for showing in home page uploading
+        main_image = save_picture_port(form.main_image.data, 'portfolio_pics/' )
+        url_main_image = url_for('static', filename='portfolio_pics/' + main_image)
+
+        #create the portfolio with all the information but the images
         portfolio = Portfolio(title=form.title.data, 
                             subtitle=form.subtitle.data, 
                             content=form.content.data, 
                             tag=form.tag.data,
                             client_name=form.client_name.data,
-                            website=form.website.data,
+                            client_logo=url_logo_image,
+                            main_image=url_main_image,
+                            website=form.website.data,                            
                             user=user) 
+
+        #retrieve the images
+        requested_files_list = request.files.getlist('portfolio_images') # requested_files_list is a list of FileStorage
+        if 'portfolio_images' in request.files:
+            for one_file in requested_files_list: # one_file is FileStorage
+                portfolio_image = save_picture_port(one_file, 'portfolio_pics/')
+                portfolio_image_url = url_for('static', filename='portfolio_pics/' + portfolio_image)
+                image = PortfolioImage(image=portfolio_image_url, portfolio=portfolio)
+                db.session.add(image)
+
         
         db.session.add(portfolio)
         db.session.commit()
@@ -260,28 +248,35 @@ def portfolio_update(portfolio_id):
 
     if form.validate_on_submit():
     
-        folder_name = form.title.data + ' client logo'
-        directory = os.path.join(os.path.dirname(bp.root_path), 'static/', 'portfolio_pics/', folder_name)
-        recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin')
-        directory_recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin/', folder_name)
-
-        if os.path.exists(directory):
-            if os.path.exists(directory_recycle_bin):
-                shutil.rmtree(directory_recycle_bin)
-            shutil.move(directory, recycle_bin)
-            os.makedirs(directory)
-        else:
-            os.makedirs(directory)
-
+        
         portfolio.title = form.title.data 
         portfolio.subtitle = form.subtitle.data
         portfolio.content = form.content.data 
         portfolio.tag = form.tag.data
         portfolio.client_name = form.client_name.data
         portfolio.website = form.website.data
-
+        #image_file is the input name
+        if 'logo_image' in request.files:
+            logo_image = save_picture_port(form.logo_image.data, 'portfolio_pics/')
+            logo_image_url = url_for('static', filename='portfolio_pics/' + logo_image)
+            portfolio.client_logo = logo_image_url
+        if 'main_image' in request.files:
+            main_image = save_picture_port(form.main_image.data, 'portfolio_pics/')
+            main_image_url = url_for('static', filename='portfolio_pics/' + main_image)
+            portfolio.main_image = main_image_url
+        if 'portfolio_images' in request.files:
+            requested_files_list = request.files.getlist('portfolio_images') # requested_files_list is a list of FileStorage
+            if 'portfolio_images' in request.files:
+                # delete old pictures from the database (replace functionality)
+                for p_object in portfolio.portfolioimages:
+                    db.session.delete(p_object)
+                for one_file in requested_files_list: # one_file is FileStorage
+                    portfolio_image = save_picture_port(one_file, 'portfolio_pics/')
+                    portfolio_image_url = url_for('static', filename='portfolio_pics/' + portfolio_image)
+                    image = PortfolioImage(image=portfolio_image_url, portfolio=portfolio)
+                    db.session.add(image)
         db.session.commit()
-        return redirect(url_for('admin.portfolio_image_one', portfolio_id=portfolio.id))
+        return redirect(url_for('admin.portfolio_page'))
 
     elif request.method == 'GET':
         form.title.data = portfolio.title
@@ -302,90 +297,6 @@ def portfolio_update(portfolio_id):
 
 
 
-
-
-@bp.route('/admin/portfolio/<int:portfolio_id>/image_one', methods=['POST', 'GET'])
-@login_required
-def portfolio_image_one(portfolio_id):
-    portfolio = Portfolio.query.get_or_404(portfolio_id)
-    user = User.query.first()
-    form = ImagesPortfolioForm()
-
-    if form.validate_on_submit():
-        # a=request.files.getlist('image_file')
-        # image_file = save_picture(a, 'portfolio_pics/' , 900, 900)
-
-        print(request.files.getlist('image_file'))
-        # for thing in request.files.getlist('image_file'):
-
-        requested_files_list = request.files.getlist('image_file') # requested_files_list is a list of FileStorage
-        if 'image_file' in request.files:
-            # delete_from_database
-            for p_object in portfolio.portfolioimages:
-                db.session.delete(p_object)
-
-            for one_file in requested_files_list: # one_file is FileStorage
-                image_file = save_picture(one_file, 'portfolio_pics/' , 900, 900)
-                photo_image_file = url_for('static', filename='portfolio_pics/' + image_file)
-                image = PortfolioImage(image=photo_image_file, portfolio=portfolio)
-                db.session.add(image)
-
-
-
-        db.session.commit()
-        return redirect(url_for('admin.portfolio_image_one', portfolio_id=portfolio.id))
-
-    user_image_file = url_for('static', filename='myassets/logo/mylogodark.png')
-    if user.image_file: user_image_file = url_for('static', filename='profile_pics/' + user.image_file)
-    return render_template('admin/portfolio-images.html',
-                            title='Image One Portfolio',
-                            user=user,
-                            image_file=user_image_file,
-                            form=form,
-                            legend='Update Portfolio Image One')
-
-
-# @bp.route('/admin/portfolio/<int:portfolio_id>/image_client_logo', methods=['POST', 'GET'])
-# @login_required
-# def portfolio_image_client_logo(portfolio_id):
-#     portfolio = Portfolio.query.get_or_404(portfolio_id)
-#     user = User.query.first()
-#     form = ImagesPortfolioForm()
-
-#     if form.validate_on_submit():
-    
-#         folder_name = portfolio.title + ' image client_logo'
-#         directory = os.path.join(os.path.dirname(bp.root_path), 'static/', 'portfolio_pics/', folder_name)
-#         recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin')
-#         directory_recycle_bin = os.path.join(os.path.dirname(bp.root_path), 'static/recycle_bin/', folder_name)
-
-#         if os.path.exists(directory):
-#             if os.path.exists(directory_recycle_bin):
-#                 shutil.rmtree(directory_recycle_bin)
-#             shutil.move(directory, recycle_bin)
-#             os.makedirs(directory)
-#         else:
-#             os.makedirs(directory)
-
-#         #image_file is the input name
-#         if 'image_file' in request.files:
-#             image_file = save_picture(form.image_file.data, 'portfolio_pics/' + folder_name, 900, 900)
-#             photo_image_file = url_for('static', filename='portfolio_pics/' + folder_name + '/' + image_file)
-#             portfolio.client_logo = photo_image_file
-
-#         db.session.commit()
-#         return redirect(url_for('admin.portfolio_page'))
-
-#     user_image_file = url_for('static', filename='myassets/logo/mylogodark.png')
-#     if user.image_file: user_image_file = url_for('static', filename='profile_pics/' + user.image_file)
-#     return render_template('admin/portfolio-images.html',
-#                             title='Client Logo Portfolio',
-#                             user=user,
-#                             image_file=user_image_file,
-#                             form=form,
-#                             legend='Update Portfolio Client Logo')
-
-
 @bp.route('/admin/portfolio/<int:portfolio_id>/delete', methods=['GET', 'POST'])
 @login_required
 def portfolio_delete(portfolio_id):
@@ -404,6 +315,7 @@ def tag():
     tags = Tag.query.all()
     if form.validate_on_submit():
         tag = Tag(name=form.tag_type.data)
+        tag.name_lower_case = tag.name.replace(" ", '_')
         db.session.add(tag)
         db.session.commit()
 

@@ -23,6 +23,23 @@ def save_picture(form_picture, dest_folder, output_size_1, output_size_2):
 
     return picture_fn
 
+def save_picture_port(form_picture, dest_folder):
+    #save_picture saves picture from user input to static folder, hashing the filename  
+    #form_picture is the file name of the input
+    #desc_folder is the folder where the image is 
+    
+    picture_fn = form_picture.filename
+    picture_path = os.path.join(current_app.root_path, 'static/', dest_folder, picture_fn)
+
+    # output_size = (output_size_1, output_size_2)
+    i = Image.open(form_picture)
+    i = i.convert('RGB')
+    # i.thumbnail(output_size)
+    # i = ImageOps.fit(i, output_size, Image.ANTIALIAS)
+
+    i.save(picture_path)
+
+    return picture_fn
 
 #main
 def send_contact_email(name, email, message):

@@ -142,23 +142,17 @@
     <!-- End Header -->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     {% block content %}
     <!-- Revolution Slider -->
-    <div id="home" class="g-overflow-hidden g-mt-60">
+    <div id="home" class="g-overflow-hidden g-mt-60 ">
       <div id="rev_slider_26_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="mask-showcase" data-source="gallery"
         style="background:#aaaaaa;padding:0px;">
+
+        <!-- <div class="mobile">
+          hello mobile
+        </div> -->
+
+
         <!-- START REVOLUTION SLIDER 5.4.1 fullscreen mode -->
         <div id="rev_slider_26_1" class="rev_slider fullscreenbanner tiny_bullet_slider" style="display:none;" data-version="5.4.1">
           <ul>
@@ -174,40 +168,75 @@
               <!-- LAYERS -->
 
               <!-- LAYER NR. 5 -->
-              <div class="tp-caption   tp-resizeme rs-parallaxlevel-2" id="slide-75-layer-1" data-x="['center','center','center','center']"
-                data-hoffset="['-600','-500','-390','-220']" data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+              <div class="tp-caption   tp-resizeme rs-parallaxlevel-2" id="slide-75-layer-1" 
+              data-x="['center','center','center','center']"
+                data-hoffset="['-600','-500','-390','-220']" 
+                data-y="['middle','middle','middle','middle']" 
+                data-voffset="['0','0','0','0']"
                 data-width="none" data-height="none" data-whitespace="nowrap" data-type="image" data-responsive_offset="on"
                 data-frames='[{"delay":200,"speed":750,"sfxcolor":"#243949","sfx_effect":"blockfromright","frame":"0","from":"z:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"sfxcolor":"#ffffff","sfx_effect":"blocktoright","frame":"999","to":"z:0;","ease":"Power4.easeOut"}]'
-                data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;">
-                <img src="{{url_for('static',filename='myassets/webportal.png')}}" alt="" data-ww="['700px','700px','800px','500px']" data-hh="['563px','563px','450px','281px']"
+                data-textAlign="['inherit','inherit','inherit','inherit']" 
+                data-paddingtop="[0,0,0,0]" 
+                data-paddingright="[0,0,0,0]"
+                data-paddingbottom="[0,0,0,0]" 
+                data-paddingleft="[0,0,0,50]" 
+                style="z-index: 5;">
+                <img src="{{url_for('static',filename='myassets/webportal.png')}}" alt="" 
+                data-ww="['600px','700px','800px','300px']" 
+                data-hh="['463px','563px','450px','281px']"
                   width="510" height="445" data-no-retina>
               </div>
 
               <!-- LAYER NR. 6 -->
               <a href="#contact">
-                <div class="tp-caption rev-btn  tp-resizeme" id="slide-74-layer-4" data-x="['left','left','left','left']" data-hoffset="['880','760','600','330']"
-                  data-y="['middle','middle','middle','middle']" data-voffset="['150','150','150','110']" data-width="none"
-                  data-height="none" data-whitespace="normal" data-type="button" data-responsive_offset="on" data-frames='[{"delay":500,"speed":750,"sfxcolor":"#cbbacc","sfx_effect":"blockfromright","frame":"0","from":"z:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"sfxcolor":"#ffffff","sfx_effect":"blocktoright","frame":"999","to":"z:0;","ease":"Power4.easeOut"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgb(0,0,0);bg:rgb(255,255,255);"}]'
-                  data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[30,30,30,30]"
-                  data-paddingbottom="[0,0,0,0]" data-paddingleft="[30,30,30,30]" style="z-index: 6; white-space: normal; font-size: 15px; line-height: 50px; font-weight: 400; color: rgba(255,255,255,1); letter-spacing: 2px;border-color:rgb(255,255,255);border-style:solid;border-width:1px 1px 1px 1px;border-radius: 50px; outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">Learn&nbsp;more
+                <div class="tp-caption rev-btn  tp-resizeme" id="slide-74-layer-4" 
+                data-x="['left','left','left','left']" 
+                data-hoffset="['880','760','600','300']"
+                  data-y="['middle','middle','middle','middle']" 
+                  data-voffset="['150','150','150','130']" 
+                  data-width="none"
+                  data-height="none" data-whitespace="normal" data-type="button" data-responsive_offset="on" 
+                  data-frames='[{"delay":500,"speed":750,"sfxcolor":"#cbbacc","sfx_effect":"blockfromright","frame":"0","from":"z:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"sfxcolor":"#ffffff","sfx_effect":"blocktoright","frame":"999","to":"z:0;","ease":"Power4.easeOut"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgb(0,0,0);bg:rgb(255,255,255);"}]'
+                  data-textAlign="['inherit','inherit','inherit','inherit']" 
+                  data-paddingtop="[0,0,0,0]" 
+                  data-paddingright="[30,30,30,30]"
+                  data-paddingbottom="[0,0,0,0]" 
+                  data-paddingleft="[30,30,30,30]" style="z-index: 6; white-space: normal; font-size: 15px; line-height: 50px; font-weight: 400; color: rgba(255,255,255,1); letter-spacing: 2px;border-color:rgb(255,255,255);border-style:solid;border-width:1px 1px 1px 1px;border-radius: 50px; outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">Learn&nbsp;more
                 </div>
               </a>
               <!-- LAYER NR. 7 -->
-              <div class="tp-caption   tp-resizeme" id="slide-74-layer-3" data-x="['left','left','left','left']" data-hoffset="['820','700','540','270']"
-                data-y="['middle','middle','middle','middle']" data-voffset="['-177','-177','-177','-157']" data-width="none"
-                data-height="none" data-whitespace="normal" data-type="text" data-responsive_offset="on" data-frames='[{"delay":400,"speed":750,"sfxcolor":"#cbbacc","sfx_effect":"blockfromright","frame":"0","from":"z:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"sfxcolor":"#ffffff","sfx_effect":"blocktoright","frame":"999","to":"z:0;","ease":"Power4.easeOut"}]'
-                data-textAlign="['left','left','left','left']" data-paddingtop="[10,10,10,10]" data-paddingright="[20,20,20,20]"
-                data-paddingbottom="[10,10,10,10]" data-paddingleft="[20,20,20,20]" style="z-index: 7; white-space: normal; font-size: 20px; line-height: 20px; font-weight: 400; color: #ffffff; letter-spacing: 10px;">Web&nbsp;applications
+              <div class="tp-caption   tp-resizeme" id="slide-74-layer-3" 
+              data-x="['left','left','left','left']" 
+              data-hoffset="['820','700','540','170']"
+                data-y="['middle','middle','middle','middle']" 
+                data-voffset="['-177','-177','-177','-157']" data-width="none"
+                data-height="none" data-whitespace="normal" data-type="text" data-responsive_offset="on" 
+                data-frames='[{"delay":400,"speed":750,"sfxcolor":"#cbbacc","sfx_effect":"blockfromright","frame":"0","from":"z:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"sfxcolor":"#ffffff","sfx_effect":"blocktoright","frame":"999","to":"z:0;","ease":"Power4.easeOut"}]'
+                data-textAlign="['left','left','left','left']" 
+                data-paddingtop="[10,10,10,10]" 
+                data-paddingright="[20,20,20,20]"
+                data-paddingbottom="[10,10,10,10]" 
+                data-paddingleft="[0,0,0,0]" 
+                style="z-index: 7; white-space: normal; font-size: 20px; line-height: 20px; font-weight: 400; color: #ffffff; letter-spacing: 10px;">Web&nbsp;applications
               </div>
 
               <!-- LAYER NR. 8 -->
-              <div class="tp-caption   tp-resizeme" id="slide-74-layer-2" data-x="['left','left','left','left']" data-hoffset="['360','240','110','80']"
-                data-y="['middle','middle','middle','middle']" data-voffset="['-30','-30','-30','-30']" data-fontsize="['70','70','70','50']"
-                data-lineheight="['70','70','70','50']" data-width="['650','650','620','380']" data-height="none" data-whitespace="normal"
+              <div class="tp-caption   tp-resizeme" id="slide-74-layer-2" 
+              data-x="['left','left','left','left']" 
+              data-hoffset="['360','240','110','100']"
+                data-y="['middle','middle','middle','middle']" 
+                data-voffset="['-30','-30','-30','-30']" 
+                data-fontsize="['70','70','70','50']"
+                data-lineheight="['70','70','70','50']" 
+                data-width="['650','650','620','380']" 
+                data-height="none" data-whitespace="normal"
                 data-type="text" data-responsive_offset="on" data-frames='[{"delay":300,"speed":750,"sfxcolor":"#cbbacc","sfx_effect":"blockfromright","frame":"0","from":"z:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"sfxcolor":"#ffffff","sfx_effect":"blocktoright","frame":"999","to":"z:0;","ease":"Power4.easeOut"}]'
-                data-textAlign="['right','right','right','right']" data-paddingtop="[20,20,20,20]" data-paddingright="[20,20,20,20]"
-                data-paddingbottom="[30,30,30,30]" data-paddingleft="[20,20,20,20]" style="z-index: 8; min-width: 650px; max-width: 650px; white-space: normal; font-size: 70px; font-weight: 600; line-height: 70px; color: #ffffff; letter-spacing: -2px;">Digital
+                data-textAlign="['right','right','right','right']" 
+                data-paddingtop="[20,20,20,50]"
+                data-paddingright="[20,20,20,20]"
+                data-paddingbottom="[30,30,30,30]" 
+                data-paddingleft="[20,20,20,20]" 
+                style="z-index: 8; min-width: 650px; max-width: 650px; white-space: normal; font-size: 45px; font-weight: 600; line-height: 80px; color: #ffffff; letter-spacing: -2px;">Digital
                 <span class="g-color-primary">services</span> for the next step of your business.
               </div>
             </li>
@@ -273,31 +302,54 @@
               <!-- LAYERS -->
 
               <!-- LAYER NR. 5 -->
-              <div class="tp-caption   tp-resizeme rs-parallaxlevel-2" id="slide-74-layer-1" data-x="['center','center','center','center']"
-                data-hoffset="['-500','-500','-390','-220']" data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+              <div class="tp-caption   tp-resizeme rs-parallaxlevel-2" id="slide-74-layer-1" 
+              data-x="['center','center','center','center']"
+                data-hoffset="['-450','-500','-390','-120']" 
+                data-y="['middle','middle','middle','middle']" 
+                data-voffset="['0','0','0','70']"
                 data-width="none" data-height="none" data-whitespace="nowrap" data-type="image" data-responsive_offset="on"
                 data-frames='[{"delay":200,"speed":750,"sfxcolor":"#243949","sfx_effect":"blockfromright","frame":"0","from":"z:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"sfxcolor":"#ffffff","sfx_effect":"blocktoright","frame":"999","to":"z:0;","ease":"Power4.easeOut"}]'
-                data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;">
+                data-textAlign="['inherit','inherit','inherit','inherit']" 
+                data-paddingtop="[0,0,0,0]" 
+                data-paddingright="[0,0,0,0]"
+                data-paddingbottom="[0,0,0,0]" 
+                data-paddingleft="[0,0,0,0]" 
+                style="z-index: 5;">
                 <img src="{{url_for('static',filename='myassets/main8.png')}}" alt="" data-ww="['1000px','1000px','800px','500px']" data-hh="['563px','563px','450px','281px']"
                   width="1200" height="675" data-no-retina>
               </div>
 
               <!-- LAYER NR. 6 -->
               <a href="#contact">
-                <div class="tp-caption rev-btn  tp-resizeme" id="slide-74-layer-4" data-x="['left','left','left','left']" data-hoffset="['880','760','600','330']"
-                  data-y="['middle','middle','middle','middle']" data-voffset="['150','150','150','110']" data-width="none"
+                <div class="tp-caption rev-btn  tp-resizeme" id="slide-74-layer-4" 
+                data-x="['left','left','left','left']" 
+                data-hoffset="['880','760','600','300']"
+                  data-y="['middle','middle','middle','middle']" 
+                  data-voffset="['150','150','150','110']" 
+                  data-width="none"
                   data-height="none" data-whitespace="normal" data-type="button" data-responsive_offset="on" data-frames='[{"delay":500,"speed":750,"sfxcolor":"#cbbacc","sfx_effect":"blockfromright","frame":"0","from":"z:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"sfxcolor":"#ffffff","sfx_effect":"blocktoright","frame":"999","to":"z:0;","ease":"Power4.easeOut"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgb(0,0,0);bg:rgb(255,255,255);"}]'
-                  data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[30,30,30,30]"
-                  data-paddingbottom="[0,0,0,0]" data-paddingleft="[30,30,30,30]" style="z-index: 6; white-space: normal; font-size: 15px; line-height: 50px; font-weight: 400; color: rgba(255,255,255,1); letter-spacing: 2px;border-color:rgb(255,255,255);border-style:solid;border-width:1px 1px 1px 1px;border-radius: 50px; outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">Learn&nbsp;more
+                  data-textAlign="['inherit','inherit','inherit','inherit']" 
+                  data-paddingtop="[0,0,0,0]" 
+                  data-paddingright="[30,30,30,30]"
+                  data-paddingbottom="[0,0,0,0]" 
+                  data-paddingleft="[30,30,30,30]" 
+                  style="z-index: 6; white-space: normal; font-size: 15px; line-height: 50px; font-weight: 400; color: rgba(255,255,255,1); letter-spacing: 2px;border-color:rgb(255,255,255);border-style:solid;border-width:1px 1px 1px 1px;border-radius: 50px; outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">Learn&nbsp;more
                 </div>
               </a>
               <!-- LAYER NR. 7 -->
-              <div class="tp-caption   tp-resizeme" id="slide-74-layer-3" data-x="['left','left','left','left']" data-hoffset="['820','700','540','270']"
-                data-y="['middle','middle','middle','middle']" data-voffset="['-177','-177','-177','-157']" data-width="none"
+              <div class="tp-caption   tp-resizeme" id="slide-74-layer-3" 
+              data-x="['left','left','left','left']" 
+              data-hoffset="['820','700','540','230']"
+                data-y="['middle','middle','middle','middle']" 
+                data-voffset="['-177','-177','-177','-157']" 
+                data-width="none"
                 data-height="none" data-whitespace="normal" data-type="text" data-responsive_offset="on" data-frames='[{"delay":400,"speed":750,"sfxcolor":"#cbbacc","sfx_effect":"blockfromright","frame":"0","from":"z:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"sfxcolor":"#ffffff","sfx_effect":"blocktoright","frame":"999","to":"z:0;","ease":"Power4.easeOut"}]'
-                data-textAlign="['left','left','left','left']" data-paddingtop="[10,10,10,10]" data-paddingright="[20,20,20,20]"
-                data-paddingbottom="[10,10,10,10]" data-paddingleft="[20,20,20,20]" style="z-index: 7; white-space: normal; font-size: 20px; line-height: 20px; font-weight: 400; color: #ffffff; letter-spacing: 10px;">Prototyping
+                data-textAlign="['left','left','left','left']" 
+                data-paddingtop="[10,10,10,10]" 
+                data-paddingright="[20,20,20,20]"
+                data-paddingbottom="[10,10,10,10]" 
+                data-paddingleft="[20,20,20,20]" 
+                style="z-index: 7; white-space: normal; font-size: 20px; line-height: 20px; font-weight: 400; color: #ffffff; letter-spacing: 10px;">Prototyping
               </div>
 
               <!-- LAYER NR. 8 -->
@@ -318,6 +370,8 @@
     </div>
     <!-- End Revolution Slider -->
     
+
+
     <!-- about-->
     <section id="about" class="container g-pt-100 g-pb-70">
       <div class="row align-items-center">
@@ -327,14 +381,15 @@
             <h2 class="h1 g-color-black g-font-weight-700 text-uppercase">Forcewing</h2>
           </div>
 
-          <p class="lead">We're a small and <span class="g-color-primary">agile</span> team that adopts the best practices in all aspects of <span class="g-color-primary">web</span> development. </p>
+          <p class="lead">We're a small and <span class="g-color-primary">agile</span> team that adopts the best practices in all aspects of <span class="g-color-primary">software</span> development. </p>
           <p class="lead">By having a <span class="g-color-primary">lean</span> approach, we are able to deliver <span class="g-color-primary">quality</span> solutions out of roboust technologies built
             by tech giants. </p>
           <p class="lead">We believe in <span class="g-color-primary">cooperating</span> with growing businesses, and offer <span class="g-color-primary">services</span> that will take them to the next step and beyond.</p>
         </div>
 
         <div class="col-md-5 g-mb-30">
-          <img class="img-fluid mb-4" src="../static/assets/img-temp/770x502/img1.png" alt="Image description">
+          <!-- <img class="img-fluid mb-4" src="../static/assets/img-temp/770x502/img1.png" alt="Image description"> -->
+          <img class="img-fluid mb-4" src="../static/myassets/development.gif" alt="Image description">
         </div>
       </div>
     </section>
@@ -346,7 +401,7 @@
         <div class="col-lg-9">
           <h2 class="h3 g-color-black g-font-weight-600 text-uppercase mb-2">Services</h2>
           <div class="d-inline-block g-width-35 g-height-2 g-bg-primary mb-2"></div>
-          <p class="lead mb-0">Our primary focus in everything we offer is quality. This is imposed by always being up to date with industry standards.
+          <p class="lead mb-0">The primary focus in everything we offer is quality. Our motto is reducing technological debt to a minimum.
           </p>
         </div>
       </div>
@@ -360,15 +415,15 @@
               <i class="icon-communication-021 u-line-icon-pro"></i>
             </span>
             <h3 class="h5 g-color-black g-mb-10">Web Design &amp; Development</h3>
-            <p class="g-color-gray-dark-v4">Establish your online presence with a well designed website.</p>
+            <p class="g-color-gray-dark-v4">Establish your online presence and engage your visitors with a great looking website.</p>
             <div class="d-inline-block g-width-40 g-brd-bottom g-brd-gray-dark-v5 g-my-15"></div>
             <ul class="list-unstyled g-px-30 g-mb-0">
               <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">SEO optimization &amp; packages</li>
               <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">Hosting &amp; domain support</li>
               <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">Handcrafted websites</li>
+              <li class=" g-brd-bottom g-brd-gray-light-v3 g-py-10">Latest design trends</li>
               <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">Speed optimizations</li>
-              <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">Responsive designs</li>
-              <li class="g-py-8">UX orientation</li>
+              <li class="g-py-8">Responsive designs</li>
             </ul>
           </div>
           <!-- End Icon Blocks -->
@@ -379,16 +434,16 @@
               <span class="d-block g-color-gray-dark-v4 g-font-size-40 g-mb-15">
                 <i class="icon-communication-023 u-line-icon-pro"></i>
               </span>
-              <h3 class="h5 g-color-black g-mb-10">App development</h3>
+              <h3 class="h5 g-color-black g-mb-10">App Development</h3>
               <p class="g-color-gray-dark-v4">Whether you want your idea come to life or an app for your business, we got you covered.</p>
               <div class="d-inline-block g-width-40 g-brd-bottom g-brd-gray-dark-v5 g-my-15"></div>
               <ul class="list-unstyled g-px-30 g-mb-0">
                 <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">Wireframing &amp; prototyping</li>
-                <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">Major operating systems</li>
                 <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">Backups &amp; support</li>
                 <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">App submission</li>
+                <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">Material Design</li>
                 <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">Documentation</li>
-                <li class="g-py-8">Icon Design</li>
+                <li class="g-py-8">iOS/Android</li>
               </ul>
             </div>
             <!-- End Icon Blocks -->
@@ -399,15 +454,15 @@
               <span class="d-block g-color-gray-dark-v4 g-font-size-40 g-mb-15">
                 <i class="icon-electronics-118 u-line-icon-pro"></i>
               </span>
-              <h3 class="h5 g-color-black g-mb-10">Web apps</h3>
-              <p class="g-color-gray-dark-v4">Get your own tailored made portal to fulfill the digital needs of your enterprise.</p>
+              <h3 class="h5 g-color-black g-mb-10">Web Applications & Platforms</h3>
+              <p class="g-color-gray-dark-v4">We will build you a custom made portal to digitally transform your business.</p>
               <div class="d-inline-block g-width-40 g-brd-bottom g-brd-gray-dark-v5 g-my-15"></div>
               <ul class="list-unstyled g-px-30 g-mb-0">
-                <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">Quick downtime recovery</li>
-                <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">Google/Bing Analysis</li>
+                <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">Third-party integrations</li>
                 <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">Scalable architecture</li>
+                <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">Secure deployments</li>
                 <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">Proximity services</li>
-                <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">App integration</li>
+                <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">API endpoints</li>
                 <li class="g-py-8">Modern UI</li>
               </ul>
             </div>
@@ -426,7 +481,7 @@
           <div class="col-lg-9">
             <h2 class="h3 g-color-black g-font-weight-600 text-uppercase mb-2">Portfolio</h2>
             <div class="d-inline-block g-width-35 g-height-2 g-bg-primary mb-2"></div>
-            <p class="lead mb-0">Shuffle through our previous and ongoing projects.
+            <p class="lead mb-0">Explore our work and learn more about our processes.
             </p>
           </div>
         </div>
@@ -464,7 +519,7 @@
             <!-- Cube Portfolio Blocks - Item -->
             <div class="cbp-item {{portfolio.tag_lower_case}}">
               <div class="u-block-hover g-parent">
-                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="..{{portfolio.image_file1}}"
+                <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="{{portfolio.main_image}}"
                   alt="Image description">
                 <div class="d-flex w-100 h-100 g-bg-black-opacity-0_6 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-30">
                   <ul class="align-items-end flex-column list-inline mt-auto ml-auto mb-0">
@@ -474,7 +529,7 @@
                       </a>
                     </li>
                     <li class="list-inline-item">
-                      <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="..{{portfolio.image_file1}}">
+                      <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="{{portfolio.main_image}}">
                         <i class="icon-communication-017 u-line-icon-pro"></i>
                       </a>
                     </li>
@@ -493,7 +548,7 @@
         </div>
         <!-- End Cube Portfolio Blocks -->
         <div class="text-center">
-            <a href="{{url_for('portfolio.portfoliolist')}}" class="btn btn-xl u-btn-primary g-mr-10 g-mb-15">All portfolios</a>
+            <!-- <a href="{{url_for('portfolio.portfoliolist')}}" class="btn btn-xl u-btn-primary g-mr-10 g-mb-15">All portfolios</a> -->
           <!-- <a href="{{url_for('portfolio.portfoliolist')}}" class="btn btn-lg g-color-white g-mr-10 g-mb-15 align-self-md-center" data-bgcolor='linear-gradient(90deg, #000000 0%, #24243e 100%)'
           style='background:linear-gradient(90deg, #000000 0%, #24243e 100%)'>Read more</a> -->
         </div>
@@ -503,47 +558,67 @@
 
     <!-- Clients -->
     <section id="clients" class="g-pb-130 g-pt-40">
-      <div class="container ">
-        <div class="js-carousel" data-infinite="true" data-autoplay="true" data-slides-show="5" data-responsive='[{
-                 "breakpoint": 1200,
-                 "settings": {
-                   "slidesToShow": 5
-                 }
-               }, {
-                 "breakpoint": 992,
-                 "settings": {
-                   "slidesToShow": 5
-                 }
-               }, {
-                 "breakpoint": 768,
-                 "settings": {
-                   "slidesToShow": 4
-                 }
-               }, {
-                 "breakpoint": 576,
-                 "settings": {
-                   "slidesToShow": 2
-                 }
-               }, {
-                 "breakpoint": 446,
-                 "settings": {
-                   "slidesToShow": 1
-                 }
-               }]'>
-                {%for portfolio in portfolios%}
-                    <div class="js-slide u-block-hover">
-                        <img class="mx-auto g-width-80 u-block-hover__main--grayscale 
-                        g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="..{{portfolio.client_logo}}" alt="Image Description">
-                    </div>
-                {%endfor%}
+        <div class="container ">
+          <div class="js-carousel" data-infinite="true" data-autoplay="true" data-slides-show="5" data-responsive='[{
+                   "breakpoint": 1200,
+                   "settings": {
+                     "slidesToShow": 5
+                   }
+                 }, {
+                   "breakpoint": 992,
+                   "settings": {
+                     "slidesToShow": 5
+                   }
+                 }, {
+                   "breakpoint": 768,
+                   "settings": {
+                     "slidesToShow": 4
+                   }
+                 }, {
+                   "breakpoint": 576,
+                   "settings": {
+                     "slidesToShow": 2
+                   }
+                 }, {
+                   "breakpoint": 446,
+                   "settings": {
+                     "slidesToShow": 1
+                   }
+                 }]'>
+            <div class="js-slide u-block-hover">
+              <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/myassets/clatn.jpg" alt="Image Description">
+            </div>
+    
+            <div class="js-slide u-block-hover">
+              <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/myassets/getaway.jpg" alt="Image Description">
+            </div>
+    
+            <div class="js-slide u-block-hover">
+              <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/myassets/logo-mini.png" alt="Image Description">
+            </div>
+    
+            <div class="js-slide u-block-hover">
+              <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/myassets/ecologo.png" alt="Image Description">
+            </div>
+    
+            <div class="js-slide u-block-hover">
+              <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/myassets/lisphera.jpg" alt="Image Description">
+            </div>
+    
+            <div class="js-slide u-block-hover">
+              <img class="mx-auto g-width-80 u-block-hover__main--grayscale g-opacity-0_3 g-opacity-1--hover g-cursor-pointer" src="../static/myassets/nakedtrans.png" alt="Image Description">
+            </div>
+    
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+  
+      <!-- End Clients -->
 
     <!-- Blog -->
-    <section id="blog" class="g-pb-100">
+    <!-- <section id="blog" class="g-pb-100">
       <div class="container">
-        <!-- Heading -->
+        
         <div class="row justify-content-center text-center g-mb-50">
           <div class="col-lg-9">
             <h2 class="h3 g-color-black g-font-weight-600 text-uppercase mb-2">Blog</h2>
@@ -552,11 +627,11 @@
             </p>
           </div>
         </div>
-        <!-- End Heading -->
+        
         <div class="row">
           {% for blog in blogs %}
           <div class="col-lg-4 g-mb-10">
-            <!-- Article -->
+            
             <article class="g-bg-white">
               <figure class="g-pos-rel">
                 <img class="img-fluid w-100" src="{{blog.image_file}}" alt="Image Description">
@@ -575,18 +650,17 @@
                 <p>{{blog.subtitle}}</p>
               </div>
             </article>
-            <!-- End Article -->
+            
           </div>
           {% endfor %}
         </div>
         <div class="text-center">
             <a href="{{url_for('blog.bloglist')}}" class="btn btn-xl u-btn-primary g-mr-10 g-mb-15">All posts</a>
-          <!-- <a href="{{url_for('blog.bloglist')}}" class="btn btn-lg g-color-white g-mr-10 g-mb-15 align-self-md-center" data-bgcolor='linear-gradient(90deg, #000000 0%, #24243e 100%)'
-          style='background:linear-gradient(90deg, #000000 0%, #24243e 100%)'>Read more</a> -->
+
         </div>
       </div>
 
-    </section>
+    </section> -->
 
     <!-- Contact -->
     <section id="contact" class="g-bg-black-opacity-0_9 g-color-white g-py-100"  data-bgcolor='linear-gradient(90deg, #000000 0%, #24243e 100%)'
@@ -688,24 +762,7 @@
                 <li class="list-inline-item">
                   <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Privacy Policy</a>
                 </li>
-                <li class="list-inline-item">
-                  <span>|</span>
-                </li>
-                <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Terms of Use</a>
-                </li>
-                <li class="list-inline-item">
-                  <span>|</span>
-                </li>
-                <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">License</a>
-                </li>
-                <li class="list-inline-item">
-                  <span>|</span>
-                </li>
-                <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Support</a>
-                </li>
+
                 {% if current_user.is_authenticated %}
                 <li class="list-inline-item">
                   <span>|</span>

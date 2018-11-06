@@ -10,9 +10,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True)
     image_file = db.Column(db.String(100))
-    #email = db.Column(db.String(100), unique=True, nullable=False)
-    password_hash = db.Column(db.String(128))
-    
+    password_hash = db.Column(db.String(128))    
     posts = db.relationship('Blog', backref='author', lazy=True)
     portfolios = db.relationship('Portfolio', backref='user', lazy=True)
 
@@ -53,7 +51,6 @@ class Blog(db.Model):
     """
     __tablename__ = 'blogs'
     id = db.Column(db.Integer, primary_key=True)
-    #here
     date_posted = db.Column(db.DateTime, default=datetime.utcnow)
     title = db.Column(db.String(1000))
     subtitle = db.Column(db.String(1000))
@@ -97,16 +94,10 @@ class Portfolio(db.Model):
     subtitle = db.Column(db.String(1000))
     content = db.Column(db.Text)
     tag = db.Column(db.String(100))
-    tag_lower_case = db.Column(db.String(100))
-
-    # image_file1 = db.Column(db.String(100))
-    # image_file2 = db.Column(db.String(100))
-    # image_file3 = db.Column(db.String(100))
-    
     client_logo = db.Column(db.String(100))
     client_name = db.Column(db.String(100))
     website = db.Column(db.String(1000))
-
+    main_image = db.Column(db.String(1000))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     portfolioimages = db.relationship('PortfolioImage', backref='portfolio', lazy=True)
 

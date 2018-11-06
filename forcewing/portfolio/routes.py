@@ -3,6 +3,7 @@ from forcewing.portfolio import bp
 from forcewing.main.forms import LoginForm
 from forcewing.models import Portfolio, Tag
 from forcewing.func import change_text_content
+from  sqlalchemy.sql.expression import func
 
 
 # portfolio
@@ -18,6 +19,7 @@ def portfoliolist():
 @bp.route('/portfolio/<int:portfolio_id>', methods=['GET', 'POST'])
 def portfolio(portfolio_id):
     portfolio = Portfolio.query.get_or_404(portfolio_id)
+    rand_portfolios = Portfolio.query.order_by(func.random()).limit(3).all()
     portfolio_images = portfolio.portfolioimages
     content_paragraphs = change_text_content(portfolio_id)
     loginForm = LoginForm()
@@ -27,7 +29,8 @@ def portfolio(portfolio_id):
                             portfolio=portfolio, 
                             portfolio_images=portfolio_images,
                             loginForm=loginForm, 
-                            content_paragraphs=content_paragraphs)
+                            content_paragraphs=content_paragraphs,
+                            random_portfolios=rand_portfolios)
 
 @bp.route('/portfolio/<string:tag>')
 def filtered_portfolios(tag):
