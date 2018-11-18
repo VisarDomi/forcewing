@@ -23,8 +23,8 @@ services:
       - "443:443"
     volumes:
       - /www/static
-      - certs:/etc/letsencrypt
-      - certs-data:/data/letsencrypt
+      - /etc/letsencrypt
+      - /data/letsencrypt
     volumes_from:
       - web
     depends_on:
