@@ -17,14 +17,14 @@ services:
   nginx:
     restart: always
     build: ./nginx
-    container_name: nginx
+    # container_name: nginx
     ports:
       - "80:80"
-      - "443:443"
+      # - "443:443"
     volumes:
       - /www/static
-      - /etc/letsencrypt
-      - /data/letsencrypt
+      # - /etc/letsencrypt
+      # - /data/letsencrypt
     volumes_from:
       - web
     depends_on:

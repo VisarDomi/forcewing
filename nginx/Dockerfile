@@ -3,4 +3,4 @@ RUN rm /etc/nginx/nginx.conf
 COPY nginx.conf /etc/nginx/
 RUN rm /etc/nginx/conf.d/default.conf 
 COPY forcewing.conf /etc/nginx/conf.d/
-EXPOSE 80 443
+# EXPOSE 80 443
