@@ -72,3 +72,7 @@ def contactForm():
 @bp.route('/form_sent', methods=['GET', 'POST'])
 def form_sent():
     return render_template('contact.html')
+
+@bp.route('/cookiepolicy', methods=['GET'])
+def cookie():
+    return render_template('cookie.html')
