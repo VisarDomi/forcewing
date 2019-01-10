@@ -1,11 +1,11 @@
 from flask import render_template, redirect, url_for, flash
 from flask_mail import Message
 from flask_login import current_user, login_user, logout_user
-from forcewing import mail
-from forcewing.main import bp
-from forcewing.main.forms import LoginForm, ContactForm
-from forcewing.models import User, Blog, Category, Portfolio, Tag
-from forcewing.func import send_contact_email
+from app import mail
+from app.main import bp
+from app.main.forms import LoginForm, ContactForm
+from app.models import User, Blog, Category, Portfolio, Tag
+from app.func import send_contact_email
 
 
 # main

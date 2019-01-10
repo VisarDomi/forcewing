@@ -8,34 +8,38 @@ from flask_login import LoginManager
 from flask_mail import Mail
 from config import Config
 
-mail = Mail()
 db = SQLAlchemy()
 migrate = Migrate(db)
 login_manager = LoginManager()
 login_manager.login_view = 'main.login'
+mail = Mail()
 
 def create_app(config_class=Config):
     app = Flask(__name__)
+
+    #config app
     app.config.from_object(Config)
 
-    mail.init_app(app)
+    #initialize
     db.init_app(app)
-    login_manager.init_app(app)
     migrate.init_app(app, db)
+    login_manager.init_app(app)
+    mail.init_app(app)
 
-    from forcewing.admin import bp as admin_bp
+    # register blueprints
+    from app.admin import bp as admin_bp
     app.register_blueprint(admin_bp)
 
-    from forcewing.blog import bp as blog_bp
+    from app.blog import bp as blog_bp
     app.register_blueprint(blog_bp)
 
-    from forcewing.errors import bp as errors_bp
+    from app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
 
-    from forcewing.main import bp as main_bp
+    from app.main import bp as main_bp
     app.register_blueprint(main_bp)
-
-    from forcewing.portfolio import bp as portfolio_bp
+    
+    from app.portfolio import bp as portfolio_bp
     app.register_blueprint(portfolio_bp)
 
     if not app.debug and not app.testing:
@@ -70,4 +74,4 @@ def create_app(config_class=Config):
 
     return app
 
-from forcewing import models
+from app import models

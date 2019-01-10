@@ -1,13 +1,13 @@
 from flask import render_template, redirect, url_for, request
 from flask_login import login_required, current_user
-from forcewing import db
-from forcewing.admin import bp
-from forcewing.main.forms import LoginForm
-from forcewing.admin.forms import CategoryForm, BlogForm, UpdateBlogForm
-from forcewing.admin.forms import UpdateAccountInformationForm, UpdateAccountPhotoForm
-from forcewing.admin.forms import TagForm, PortfolioForm, UpdatePortfolioForm
-from forcewing.models import User, Blog, Category, Portfolio, Tag, PortfolioImage
-from forcewing.func import save_picture, save_picture_port
+from app import db
+from app.admin import bp
+from app.main.forms import LoginForm
+from app.admin.forms import CategoryForm, BlogForm, UpdateBlogForm
+from app.admin.forms import UpdateAccountInformationForm, UpdateAccountPhotoForm
+from app.admin.forms import TagForm, PortfolioForm, UpdatePortfolioForm
+from app.models import User, Blog, Category, Portfolio, Tag, PortfolioImage
+from app.func import save_picture, save_picture_port
 import os, shutil
 
 # admin

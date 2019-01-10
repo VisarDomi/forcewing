@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField, TextAreaField, DateField
 from wtforms.validators import DataRequired, ValidationError
 from flask_wtf.file import FileField, FileAllowed
-from forcewing.models import Category, Tag
+from app.models import Category, Tag
 
 # admin
 

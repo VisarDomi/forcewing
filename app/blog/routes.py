@@ -1,8 +1,8 @@
 from flask import render_template, request
-from forcewing.blog import bp
-from forcewing.main.forms import LoginForm
-from forcewing.models import Blog, Category
-from forcewing.func import change_text_section_content, change_text_subsection_content
+from app.blog import bp
+from app.main.forms import LoginForm
+from app.models import Blog, Category
+from app.func import change_text_section_content, change_text_subsection_content
 
 # blog
 

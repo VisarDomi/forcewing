@@ -1,6 +1,6 @@
 from flask import render_template
-from forcewing.main.forms import LoginForm
-from forcewing.errors import bp
+from app.main.forms import LoginForm
+from app.errors import bp
 
 @bp.errorhandler(404)
 def error_404(error):

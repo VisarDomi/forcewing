@@ -1,8 +1,8 @@
 from flask import render_template, request
-from forcewing.portfolio import bp
-from forcewing.main.forms import LoginForm
-from forcewing.models import Portfolio, Tag
-from forcewing.func import change_text_content
+from app.portfolio import bp
+from app.main.forms import LoginForm
+from app.models import Portfolio, Tag
+from app.func import change_text_content
 from  sqlalchemy.sql.expression import func
 
 

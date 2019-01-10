@@ -1,5 +1,5 @@
-from forcewing import create_app, db
-from forcewing.models import User, Category, Blog, Portfolio, Tag, PortfolioImage
+from app import create_app, db
+from app.models import User, Category, Blog, Portfolio, Tag, PortfolioImage
 
 app = create_app()
 

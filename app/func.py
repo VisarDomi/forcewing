@@ -1,4 +1,4 @@
-from forcewing.models import Portfolio, Blog
+from app.models import Portfolio, Blog
 import secrets, os
 from PIL import Image, ImageOps
 from flask import current_app
