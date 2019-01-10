@@ -1,0 +1,9 @@
+FLASK_APP=forcewing.py
+SQLALCHEMY_DATABASE_URI=postgresql://postgres:postgres@localhost:5432/forcewing
+FLASK_DEBUG=1
+SECRET_KEY=b'aadfgweijfols'
+MAIL_SERVER = smtp.googlemail.com
+MAIL_PORT=587
+MAIL_USE_TLS = 1
+MAIL_USERNAME=forcewing.worker@gmail.com
+MAIL_PASSWORD=ForcewingWorker123

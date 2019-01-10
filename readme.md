@@ -1,19 +1,7 @@
-This is the codebase for forcewing.com
+C:\Users\Visar\AppData\Local\Programs\Python\Python37\python.exe -m venv venv
 
-
-Installation procedure: 
-
- -Create virtual environment
-    Windows: 
-py -m virtualenv venv
-    Linux: 
-python3 -m virtualenv env
-
- -Activate venv with 
-    Windows: 
 venv/scripts/activate
-    Linux: 
-source venv/bin/activate
 
- -Install requirements with pip
-pip install -r requirements.txt 
+pip install pipenv
+
+SQLALCHEMY_DATABASE_URI=postgresql://postgres:postgres@localhost:5432/forcewing

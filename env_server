@@ -1,0 +1,5 @@
+SQLALCHEMY_DATABASE_URI=postgresql://postgres:postgres@localhost:5432/forcewing
+FLASK_DEBUG=1
+SECRET_KEY=b'adfgweijfols'
+MAIL_SERVER=localhost
+MAIL_PORT=25
