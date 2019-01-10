@@ -107,3 +107,7 @@ ENV/
 
 # logs
 logs/
+
+# Ubuntu swap file
+.swp
+.pipfile.swp
